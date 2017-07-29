@@ -1,4 +1,3 @@
-diary 'Exercicio_06.txt' % salva o output deste script em arquivo texto
 disp('EXERCÍCIO 06')
 
 disp('Itens 1 a 3 -------------------------------------------------------')
@@ -7,7 +6,7 @@ disp('Logo a solução se dará sobre a reta y = 2.5 - x.')
 
 x = linspace(0,2.5,10);
 y = 2.5 - x;
-f = x .* y
+f = x .* y;
 
 k = find(f >= max(f));
 x_opt = x(k)
@@ -32,4 +31,3 @@ for t = [50, 100, 200, 500, 1000]
     f_star = 25/16;
     ef = ((f_star - f_opt) * time) ^ (-1)
 end
-diary off
