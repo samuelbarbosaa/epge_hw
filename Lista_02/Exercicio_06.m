@@ -56,16 +56,3 @@ ylabel('Função valor V(k)');
 subplot(2,1,2); hold on;
 plot(g);
 ylabel('Função política g(k)');
-
-
-%% FUNÇÕES
-
-% Função produção
-function y = f(k, A, alpha)
-    y = A * k .^ alpha;
-end
-
-% Função utilidade
-function U = u(c, gamma)
-    U = (c .^ (1 - gamma) - 1) / (1 - gamma);
-end
