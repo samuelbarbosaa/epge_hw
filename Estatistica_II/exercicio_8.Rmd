@@ -1,6 +1,8 @@
 ---
 title: "Statistics II - Problem Set 4"
-output: html_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ## Exercise 08
