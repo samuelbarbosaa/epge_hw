@@ -3,7 +3,7 @@ Exercise 08
 
 > In this problem we will do a simple econometric exercise using Mroz (1987) data on the wages of 428 working, married women. Use ~~Stata~~ **R** to answer the following items. Please attach your code to the answer.
 >
-> 1.  Run the regression lwage = *β*<sub>0</sub> + *β*<sub>1</sub>kidslt6 + *β*<sub>2</sub>kidsge6 + *u*, where lwage is the logarithm of the wage, the number of children less than six and the number of children at least six years of age. Test the hypothesis *H*<sub>0</sub> : *β*<sub>1</sub> = 0, *β*<sub>2</sub> = 0.
+> (a)  Run the regression lwage = *β*<sub>0</sub> + *β*<sub>1</sub>kidslt6 + *β*<sub>2</sub>kidsge6 + *u*, where lwage is the logarithm of the wage, the number of children less than six and the number of children at least six years of age. Test the hypothesis *H*<sub>0</sub> : *β*<sub>1</sub> = 0, *β*<sub>2</sub> = 0.
 
 ``` r
 mroz = haven::read_dta("mroz.dta")
@@ -34,11 +34,11 @@ summary(short)
 
 Observe que `F = 3.117`, com `p-valor = 0.04532`. Rejeitamos a hipótese nula ao nível de confiança de 95%.
 
-> 1.  Comment on the exogeneity of the regressors from the last item.
+> (b)  Comment on the exogeneity of the regressors from the last item.
 
 (...)
 
-> 1.  Now run the regression lwage = *β*<sub>0</sub> + *β*<sub>1</sub>kidslt6 + *β*<sub>2</sub>kidsge6 + *β*<sub>3</sub>age + *β*<sub>4</sub>educ + *β*<sub>5</sub>exper + *β*<sub>6</sub>expersq + *u*
+> (c)  Now run the regression lwage = *β*<sub>0</sub> + *β*<sub>1</sub>kidslt6 + *β*<sub>2</sub>kidsge6 + *β*<sub>3</sub>age + *β*<sub>4</sub>educ + *β*<sub>5</sub>exper + *β*<sub>6</sub>expersq + *u*
 
 ``` r
 long = lm(lwage ~ kidslt6 + kidsge6 + age + educ + exper + expersq, data = mroz)
