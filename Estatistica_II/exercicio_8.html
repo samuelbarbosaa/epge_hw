@@ -125,7 +125,7 @@ $(document).ready(function () {
 <blockquote>
 <p>In this problem we will do a simple econometric exercise using Mroz (1987) data on the wages of 428 working, married women. Use <del>Stata</del> <strong>R</strong> to answer the following items. Please attach your code to the answer.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Run the regression <span class="math inline">\(\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + u\)</span>, where <span class="math inline">\(\text{lwage}\)</span> is the logarithm of the wage,  the number of children less than six and  the number of children at least six years of age. Test the hypothesis <span class="math inline">\(H_0 : \beta_1 = 0, \beta_2 = 0\)</span>.</li>
+<li>Run the regression <span class="math display">\[\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + u\]</span>, where <span class="math inline">\(\text{lwage}\)</span> is the logarithm of the wage,  the number of children less than six and  the number of children at least six years of age. Test the hypothesis <span class="math inline">\(H_0 : \beta_1 = 0, \beta_2 = 0\)</span>.</li>
 </ol>
 </blockquote>
 <pre class="r"><code>mroz = haven::read_dta(&quot;mroz.dta&quot;)
@@ -160,7 +160,7 @@ summary(short)</code></pre>
 <p>(…)</p>
 <blockquote>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>Now run the regression <span class="math inline">\(\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + \beta_3 \text{age} + \beta_4 \text{educ} + \beta_5 \text{exper} + \beta_6 \text{expersq} + u\)</span></li>
+<li>Now run the regression <span class="math inline">\(\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + \beta_3 \text{age} + \beta_4 \text{educ} + \beta_5 \text{exper} + \beta_6 \text{expersq} + u\)</span> where the last three variables are the woman’s years of education, years of experience in the market and years of experience squared. Test the hypothesis <span class="math inline">\(H_0: \beta_1 = 0, \beta_2 = 0\)</span>.</li>
 </ol>
 </blockquote>
 <pre class="r"><code>long = lm(lwage ~ kidslt6 + kidsge6 + age + educ + exper + expersq, data = mroz)
@@ -182,7 +182,12 @@ car::linearHypothesis(long, H, rhs)</code></pre>
 ##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
 ## 1    423 188.30                           
 ## 2    421 187.99  2   0.31599 0.3538 0.7022</code></pre>
-<p>Agora temos <code>F = 0.3538</code>, com <code>p-valor = 0.7022</code>. Não podemos, portanto, rejeitar a hipótese nula.</p>
+<blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Compare the tests from items (a) and (c). Comment on potential problems with our inference.</li>
+</ol>
+</blockquote>
+<p>No item (c) obtemos <code>F = 0.3538</code>, com <code>p-valor = 0.7022</code>. Não podemos, neste caso, rejeitar a hipótese nula, ao contrário do que acontece no item (a).</p>
 </div>
 
 

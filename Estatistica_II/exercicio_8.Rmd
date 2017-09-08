@@ -1,8 +1,6 @@
 ---
 title: "Statistics II - Problem Set 4"
-output:
-  md_document:
-    variant: markdown_github
+output: html_document
 ---
 
 ## Exercise 08
@@ -10,7 +8,7 @@ output:
 > In this problem we will do a simple econometric exercise using Mroz (1987) data on the wages of 428 working, married 
 > women. Use ~~Stata~~ **R** to answer the following items. Please attach your code to the answer. 
 > 
-> (a) Run the regression $\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + u$, where $\text{lwage}$ is the logarithm of the wage, 
+> (a) Run the regression $$\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + u$$, where $\text{lwage}$ is the logarithm of the wage, 
 > \text{kidslt6} the number of children less than six and \text{kidsge6} the number of children at least six years of age. Test the hypothesis $H_0 : \beta_1 = 0, \beta_2 = 0$.
 
 
@@ -26,7 +24,8 @@ Observe que `F = 3.117`, com `p-valor = 0.04532`. Rejeitamos a hipótese nula ao
 
 (...)
 
-> (c) Now run the regression $\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + \beta_3 \text{age} + \beta_4 \text{educ} + \beta_5 \text{exper} + \beta_6 \text{expersq} + u$
+> (c) Now run the regression $\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + \beta_3 \text{age} + \beta_4 \text{educ} + \beta_5 \text{exper} + \beta_6 \text{expersq} + u$ where the last three variables are the woman’s years of education, years of experience in the market and years of experience squared.
+Test the hypothesis $H_0: \beta_1 = 0, \beta_2 = 0$.
 
 ```{r, echo=TRUE}
 long = lm(lwage ~ kidslt6 + kidsge6 + age + educ + exper + expersq, data = mroz)
@@ -38,4 +37,7 @@ H = matrix(data = c(row1, row2), nrow = 2, byrow = TRUE)
 car::linearHypothesis(long, H, rhs)
 ```
 
-Agora temos `F = 0.3538`, com `p-valor = 0.7022`. Não podemos, portanto, rejeitar a hipótese nula.
+> (d) Compare the tests from items (a) and (c). Comment on potential problems with our inference.
+
+No item (c) obtemos `F = 0.3538`, com `p-valor = 0.7022`. Não podemos, neste caso, rejeitar a hipótese nula, ao contrário do que acontece no item (a).
+
