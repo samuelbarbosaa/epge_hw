@@ -1,0 +1,141 @@
+---
+title: "Micro III - Lista -7"
+output: html_document
+---
+
+### Item 3
+
+Importamos os dados e salvamos no objeto `tbl`:
+
+```{r, echo = TRUE}
+library(data.table)
+tbl = fread("data.txt") 
+tbl
+```
+
+Vamos calcular $s_{0t}$ e $y_{jt} = log(s_{jt}) - log(s_{0t})$:
+
+```{r, echo = TRUE}
+tbl[, s0 := 1 - s1 - s2]
+tbl[, y1 := log(s1) - log(s0)]
+tbl[, y2 := log(s2) - log(s0)]
+tbl[, s0 := NULL]
+```
+
+Agora podemos "empilhar" a base de dados para o formato desejado.
+
+```{r, echo = TRUE}
+tbl = melt(data = tbl, 
+           measure.vars = list(c("p1", "p2"), 
+                               c("s1", "s2"), 
+                               c("x1", "x2"), 
+                               c("z1", "z2"), 
+                               c("y1", "y2")), 
+           variable.name = "empresa", 
+           variable.factor = TRUE, 
+           value.name = c("p", "s", "x", "z", "y"))
+tbl
+```
+
+Por fim, rodamos a regressão de $y_{jt}$ em $\text{empresa1} + \text{empresa2} + \gamma x_{jt} + \lambda p_{jt}$:
+
+```{r, echo = TRUE}
+model = lm(y ~ x + p + empresa + 0, data = tbl)
+summary(model)
+```
+
+Observe que o coeficiente de $p$ é positivo, ao contrário do previsto no modelo.
+
+### Item 6
+
+Vimos que $E[p_{jt} \xi_{jt}] \ne 0$. Vamos usar $z_{jt}$ como instrumento para estimar os parâmetros corretamente, removendo a endogeneidade:
+
+```{r, echo = TRUE}
+ivmodel = AER::ivreg(y ~ x + p + empresa + 0 | x + z + empresa + 0, data = tbl)
+summary(ivmodel)
+```
+
+Note que agora obtemos um coeficiente negativo para $p$, de forma consistente com a teoria.
+
+### Item 7
+Vamos recuperar o custo médio das empresas, a partir dos preços e *market shares* médios:
+
+```{r, echo = TRUE}
+beta = -coefficients(ivmodel)["p"]
+avgs = tbl[, list(s = mean(s), p = mean(p), x = mean(x)), by = empresa]
+avgs[, c := p + 1 / (beta * (s - 1))]
+avgs
+```
+
+### Item 8
+
+Neste item vamos criar uma função que retorne *market shares* estimados a partir de preços $p$, quantidades de canais $x$, coeficientes da regressão em dois estágios do item 6 e $\xi_j, j=1,2$. 
+
+```{r, echo = TRUE}
+market_share = function(p, coefs, x, xi) {
+  alpha = c(coefs["empresa1"], coefs["empresa2"])
+  gamma = rep(coefs["x"], 2)
+  beta = rep(-coefs["p"], 2)
+  sigma = exp(alpha + gamma * x - beta * p + xi)
+  s = sigma / (1 + sum(sigma))
+  names(s) = c("s1", "s2")
+  return(s)
+}
+```
+
+Vamos testar nossa função com as médias obtidas no item 7:
+```{r, echo = TRUE}
+market_share(avgs$p, coef(ivmodel), avgs$x, 0)
+```
+
+Agora podemos estimar os preços de equilíbrio que as firmas praticariam ao operar conjuntamente. 
+Vamos utilizar o algoritmo sugerido na lista:
+
+```{r, echo = TRUE}
+# while loop
+err = 1
+tol = 10^-5
+iter = 0
+maxit = 2000
+p_old = avgs$c
+beta = coef(ivmodel)["p"]
+
+while(err > tol && iter < maxit) {
+  iter = iter + 1
+  s = market_share(p_old, coef(ivmodel), avgs$x, 0)
+  Sigma = matrix(c(-beta * (s[1] - s[1]^2), beta * s[1] * s[2],
+                   beta * s[1] * s[2], -beta * (s[2] - s[2]^2)), ncol = 2)
+  p_new = s %*% solve(Sigma) + avgs$c
+  err = max(abs(p_new - p_old))
+  p_old = p_new
+}
+
+p_old
+```
+
+Se as firmas obtém 15% de redução no custo marginal com a fusão, os preços estimados de equilíbrio se reduzem para 
+
+```{r, echo=FALSE}
+# while loop
+err = 1
+tol = 10^-5
+iter = 0
+maxit = 2000
+p_old = avgs$c * 0.85
+beta = coef(ivmodel)["p"]
+
+while(err > tol && iter < maxit) {
+  iter = iter + 1
+  s = market_share(p_old, coef(ivmodel), avgs$x, 0)
+  Sigma = matrix(c(-beta * (s[1] - s[1]^2), beta * s[1] * s[2],
+                   beta * s[1] * s[2], -beta * (s[2] - s[2]^2)), ncol = 2)
+  p_new = s %*% solve(Sigma) + avgs$c * 0.85
+  err = max(abs(p_new - p_old))
+  p_old = p_new
+}
+
+p_old
+```
+
+
+
