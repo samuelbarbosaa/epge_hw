@@ -14,8 +14,7 @@ output: html_document
 
 ```{r, echo=TRUE}
 mroz = haven::read_dta("mroz.dta")
-short = lm(lwage ~ kidslt6 + kidsge6, data = mroz)
-summary(short)
+summary(lm(lwage ~ kidslt6 + kidsge6, data = mroz))
 ```
 
 Observe que `F = 3.117`, com `p-valor = 0.04532`. Rejeitamos a hipótese nula ao nível de confiança de 95%.
@@ -29,12 +28,8 @@ Test the hypothesis $H_0: \beta_1 = 0, \beta_2 = 0$.
 
 ```{r, echo=TRUE}
 long = lm(lwage ~ kidslt6 + kidsge6 + age + educ + exper + expersq, data = mroz)
-
-rhs = c(0, 0)
-row1 = c(0, 1, 0, 0, 0, 0, 0)
-row2 = c(0, 0, 1, 0, 0, 0, 0)
-H = matrix(data = c(row1, row2), nrow = 2, byrow = TRUE)
-car::linearHypothesis(long, H, rhs)
+short = lm(lwage ~ age + educ + exper + expersq, data = mroz)
+anova(short, long)
 ```
 
 > (d) Compare the tests from items (a) and (c). Comment on potential problems with our inference.

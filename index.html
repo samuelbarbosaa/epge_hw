@@ -129,8 +129,7 @@ $(document).ready(function () {
 </ol>
 </blockquote>
 <pre class="r"><code>mroz = haven::read_dta(&quot;mroz.dta&quot;)
-short = lm(lwage ~ kidslt6 + kidsge6, data = mroz)
-summary(short)</code></pre>
+summary(lm(lwage ~ kidslt6 + kidsge6, data = mroz))</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = lwage ~ kidslt6 + kidsge6, data = mroz)
@@ -164,21 +163,12 @@ summary(short)</code></pre>
 </ol>
 </blockquote>
 <pre class="r"><code>long = lm(lwage ~ kidslt6 + kidsge6 + age + educ + exper + expersq, data = mroz)
-
-rhs = c(0, 0)
-row1 = c(0, 1, 0, 0, 0, 0, 0)
-row2 = c(0, 0, 1, 0, 0, 0, 0)
-H = matrix(data = c(row1, row2), nrow = 2, byrow = TRUE)
-car::linearHypothesis(long, H, rhs)</code></pre>
-<pre><code>## Linear hypothesis test
+short = lm(lwage ~ age + educ + exper + expersq, data = mroz)
+anova(short, long)</code></pre>
+<pre><code>## Analysis of Variance Table
 ## 
-## Hypothesis:
-## kidslt6 = 0
-## kidsge6 = 0
-## 
-## Model 1: restricted model
+## Model 1: lwage ~ age + educ + exper + expersq
 ## Model 2: lwage ~ kidslt6 + kidsge6 + age + educ + exper + expersq
-## 
 ##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
 ## 1    423 188.30                           
 ## 2    421 187.99  2   0.31599 0.3538 0.7022</code></pre>
