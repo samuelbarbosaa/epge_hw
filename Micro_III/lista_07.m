@@ -1,7 +1,8 @@
-X = csvread("data.txt", 1, 0); %sem labels
+X = csvread("data.txt", 1, 0);
 
-s0 = 1 - X(:,3) - X(:,4); %Market share outside option
-%identificando variaveis
+s0 = 1 - X(:,3) - X(:,4); % Market share da outside option
+
+%Identificando variaveis
 p1 = X(:,1);
 p2 = X(:,2);
 s1 = X(:,3);
@@ -11,17 +12,16 @@ x2 = X(:,6);
 z1 = X(:,7);
 z2 = X(:,8);
 
-%tratando dados
+% Empilhando dados
 y1 = log(s1./s0);
 y2 = log(s2./s0);
-
 Y = [y1;y2];
 A = [ones(500,1) zeros(500,1) x1 p1 ; zeros(500,1) ones(500,1) x2 p2];
 
-%pau na máquina
+% Item 3
 regress(Y,A)
 
-%2SLS
+% 2SLS
 P = [p1 ; p2];
 Z = [ones(500,1) zeros(500,1) x1 z1 ; zeros(500,1) ones(500,1) x2 z2];
 b1 = regress(P,Z);
@@ -29,11 +29,11 @@ Pchapeu = Z*b1;
 D = [ones(500,1) zeros(500,1) x1 Pchapeu(1:500,:) ; zeros(500,1) ones(500,1) x2 Pchapeu(501:1000,:)];
 b2sls = regress(Y,D);
 
-%recuperando custos
+% Recuperando custos marginais
 c1 = mean(p1) + (1/((mean(s1)-1)*(-b2sls(4))));
 c2 = mean(p2) + (1/((mean(s2)-1)*(-b2sls(4))));
 
-%exercício 8
+% Item 8
 err = 1;
 tol = 10^-5;
 iter = 0;
@@ -50,7 +50,7 @@ while err>tol && iter<maxit
   p_old = p_new;
 end
 
-%com redução de custos
+% Reducao de 15% nos custos marginais
 err = 1;
 tol = 10^-5;
 iter = 0;

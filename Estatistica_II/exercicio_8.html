@@ -156,7 +156,7 @@ summary(lm(lwage ~ kidslt6 + kidsge6, data = mroz))</code></pre>
 <li>Comment on the exogeneity of the regressors from the last item.</li>
 </ol>
 </blockquote>
-<p>(…)</p>
+<p>No item anterior estamos “estimando” o efeito de ter filhos de até 18 anos (em duas variáveis separadas) no salário de mulheres casadas e empregadas. Contudo esta especificação de regressão ignora que o próprio salário influencia a decisão de ter filhos, de modo que <span class="math inline">\(\text{kidslt6}\)</span> e <span class="math inline">\(\text{kidsge6}\)</span> são variáveis endogenamente determinadas.</p>
 <blockquote>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Now run the regression <span class="math inline">\(\text{lwage} = \beta_0 + \beta_1 \text{kidslt6} + \beta_2 \text{kidsge6} + \beta_3 \text{age} + \beta_4 \text{educ} + \beta_5 \text{exper} + \beta_6 \text{expersq} + u\)</span> where the last three variables are the woman’s years of education, years of experience in the market and years of experience squared. Test the hypothesis <span class="math inline">\(H_0: \beta_1 = 0, \beta_2 = 0\)</span>.</li>
@@ -177,7 +177,7 @@ anova(short, long)</code></pre>
 <li>Compare the tests from items (a) and (c). Comment on potential problems with our inference.</li>
 </ol>
 </blockquote>
-<p>No item (c) obtemos <code>F = 0.3538</code>, com <code>p-valor = 0.7022</code>. Não podemos, neste caso, rejeitar a hipótese nula, ao contrário do que acontece no item (a).</p>
+<p>No item (c) obtemos <code>F = 0.3538</code>, com <code>p-valor = 0.7022</code>. Não podemos, neste caso, rejeitar a hipótese nula, ao contrário do que acontece no item (a). Apesar de incluirmos mais variáveis relevantes no modelo e diminuir o potencial de viés no estimador das variáveis de interesse, ainda não contornamos o problema de endogeneidade apontado no item (b).</p>
 </div>
 
 
