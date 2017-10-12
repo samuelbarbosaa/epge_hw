@@ -54,7 +54,7 @@ plot(w, G);
 title('Funcao politica');
 ylabel('g(w)');
 xlabel('w');
-
+saveas(gcf, 'ex1_1.png');
 
 
 %% (ii)
@@ -97,3 +97,5 @@ plot(w, G);
 title('Funcao politica');
 ylabel('g(w)');
 xlabel('w');
+
+saveas(gcf, 'ex1_2.png');
