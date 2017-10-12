@@ -17,27 +17,28 @@ n = 1000;
 w = linspace(0, 20, n)';
 
 V = zeros(n, 1);
-G0 = zeros(n, 1);
+G = V;
 
 tol = 10^-5;
 itmax = 3000;
 iter = 1;
-d = 1;
+err = 1;
+
 % integracao numerica
 x = linspace(wmin, wmax, n);
 h = x(2) - x(1);
-E = @(w, V, n) h/2 * ( V(n) * f(w(n), alpha_1, alpha_2) + V(1) * f(w(1), alpha_1, alpha_2) + 2 * V' * f(w, alpha_1, alpha_2) );
+E = @(w, V, n) V' * ( f(w, alpha_1, alpha_2) ./ sum(f(w, alpha_1, alpha_2)) );
 
-while d > tol && iter < itmax
-    N = beta * E(w, V, n);
+while err > tol && iter < itmax
+    N = u(b, gamma) + beta * E(w, V, n);
     N = repmat(N, n, 1);
     A = u(w, gamma) + beta * ( (1-pi) * V + pi * N );
  
-    [TV G] = max([N A], [], 2);
+    [TV, G] = max([N A], [], 2);
 
-    d = max(abs(TV - V));
+    err = max(abs(TV - V));
     V = TV;
-    fprintf('Iteração: %d, Desvio: %1.7f \n', iter, d)
+    fprintf('Iteração: %d, Desvio: %1.7f \n', iter, err)
     iter = iter + 1;
 end
 
@@ -56,6 +57,49 @@ ylabel('g(w)');
 xlabel('w');
 
 
-R = min(x(G == 2));
+R = min(x(G == 1));
 R
 
+%% (ii)
+
+alpha_1 = 1/30;
+alpha_2 = 1/600;
+
+tol = 10^-5;
+itmax = 3000;
+iter = 1;
+err = 1;
+
+% integracao numerica
+E = @(w, V, n) V' * ( f(w, alpha_1, alpha_2) ./ sum(f(w, alpha_1, alpha_2)) );
+
+while err > tol && iter < itmax
+    N = u(b, gamma) + beta * E(w, V, n);
+    N = repmat(N, n, 1);
+    A = u(w, gamma) + beta * ( (1-pi) * V + pi * N );
+ 
+    [TV, G] = max([N A], [], 2);
+
+    err = max(abs(TV - V));
+    V = TV;
+    fprintf('Iteração: %d, Desvio: %1.7f \n', iter, err)
+    iter = iter + 1;
+end
+
+G = G - 1;
+
+subplot(2,1,1);
+plot(x, V);
+title('Funcao valor');
+ylabel('v(w)');
+xlabel('w');
+
+subplot(2,1,2);
+plot(x, G);
+title('Funcao politica');
+ylabel('g(w)');
+xlabel('w');
+
+
+R = min(x(G == 1));
+R
