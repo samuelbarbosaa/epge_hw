@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.1.3)  12 OCT 2017 13:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.1.3)  12 OCT 2017 15:30
 entering extended mode
-**./exercicio_1.tex
-(exercicio_1.tex
+**./ex1.tex
+(ex1.tex
 LaTeX2e <2016/03/31> patch level 1
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("E:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -651,9 +651,8 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 )
 \Gin@req@height=\dimen117
 \Gin@req@width=\dimen118
-)
-(exercicio_1.aux)
-\openout1 = `exercicio_1.aux'.
+) (ex1.aux)
+\openout1 = `ex1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -669,7 +668,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
- ("E:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+
+("E:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 17.
@@ -794,27 +794,27 @@ Overfull \hbox (76.57396pt too wide) in paragraph at lines 130--131
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3 <./ex1_1.png (PNG copy)>] [4 <./ex1_2.png (PNG copy)>] (exercicio_1.aux) ) 
+[3 <./ex1_1.png (PNG copy)>] [4 <./ex1_2.png (PNG copy)>] (ex1.aux) ) 
 Here is how much of TeX's memory you used:
  5631 strings out of 493335
- 72621 string characters out of 3139261
+ 72541 string characters out of 3139261
  158113 words of memory out of 3000000
  9082 multiletter control sequences out of 15000+200000
  6685 words of font info for 25 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,6n,42p,239b,1314s stack positions out of 5000i,500n,10000p,200000b,50000s
-{E
-:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<E:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi7.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmmi8.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><E
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/Program Files/M
-iKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on exercicio_1.pdf (4 pages, 159832 bytes).
+ 40i,6n,42p,231b,1314s stack positions out of 5000i,500n,10000p,200000b,50000s
+{E:/Progra
+m Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<E:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmmi7.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+<E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/Program Files/MiKTeX 2.
+9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on ex1.pdf (4 pages, 159756 bytes).
 PDF statistics:
  58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

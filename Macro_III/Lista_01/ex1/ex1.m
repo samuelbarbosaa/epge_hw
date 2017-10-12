@@ -23,14 +23,13 @@ err = 1;
 tol = 10^-5;
 itmax = 2000;
 iter = 1;
-
-% fdp discretizada e funcao valor esperado
-fw = f(w, alpha_1, alpha_2) ./ sum(f(w, alpha_1, alpha_2));
-E = @(fw, V, n) V' * fw; 
+h = w(2) - w(1);
 
 % algoritmo de iteracao
 while err > tol && iter < itmax
-    N = u(b, gamma) + beta * E(fw, V, n);
+    F = V .* f(w, alpha_1, alpha_2);
+    E = h/2 * (F(1) + F(n) + 2 * sum(F(2:n-1)));
+    N = u(b, gamma) + beta * E;
     N = repmat(N, n, 1);
     A = u(w, gamma) + beta * ((1-pi) * V + pi * N);
     [TV, G] = max([N A], [], 2);
@@ -66,14 +65,13 @@ tol = 10^-5;
 itmax = 3000;
 iter = 1;
 err = 1;
-
-% fdp discretizada e funcao valor esperado
-fw = f(w, alpha_1, alpha_2) ./ sum(f(w, alpha_1, alpha_2));
-E = @(fw, V, n) V' * fw; 
+h = w(2) - w(1);
 
 % algoritmo de iteracao
 while err > tol && iter < itmax
-    N = u(b, gamma) + beta * E(fw, V, n);
+    F = V .* f(w, alpha_1, alpha_2);
+    E = h/2 * (F(1) + F(n) + 2 * sum(F(2:n-1)));    
+    N = u(b, gamma) + beta * E;
     N = repmat(N, n, 1);
     A = u(w, gamma) + beta * ((1-pi) * V + pi * N);
     [TV, G] = max([N A], [], 2);
