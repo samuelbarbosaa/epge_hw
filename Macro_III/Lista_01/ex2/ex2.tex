@@ -1,0 +1,77 @@
+\documentclass{article}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\usepackage{listings}
+\usepackage{mcode}
+\usepackage[section]{placeins}
+
+\usepackage{graphicx}
+
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\begin{document}
+
+\begin{flushleft}
+FUNDAÇÃO GETÚLIO VARGAS \\
+
+Escola de Pós-Graduação em Economia
+
+Teoria Macroeconômica III
+
+Professor: Ricardo de Oliveira Cavalcanti
+
+Monitora: Kátia Aiko Nishiyama Alves
+
+Alunos: Gustavo Bulhões e Samuel Barbosa
+\end{flushleft}
+
+\section*{Exercício 02}
+
+Neste exercício temos o modelo clássico de crescimento econômico, cujo problema do planejador
+é escolher sequências de consumo $\{c_t\}_{t=0}^{\infty}$ e de capital $\{k_t\}_{t=0}^{\infty}$ que resolvem
+
+\begin{equation}
+\begin{aligned}
+& \max & & \sum_{t=0}^{\infty} \beta^t u(c_t) \\
+& \text{s.a.} & &  c_t + k_{t+1} \leq f(k_t) + (1-\delta) k_t \\
+& & &  k_{t+1} \geq 0, c_t \geq 0 \,\, \forall t \geq 0  \\
+& & &  k_0 \text{ dado} \\
+\end{aligned}
+\end{equation}
+
+com $f(k) = k^\alpha$ e $u(c) = \frac{c^{1-\gamma}}{1-\gamma}$.
+
+
+\subsection*{Item (i)}
+
+Observe que $u(c)$ é monótona crescente em $c$ e, portanto satisfaz a propriedade de não saciedade local.
+Logo vale a Lei de Walras, e podemos reescrever a primeira restrição com igualdade,
+resolver para $c_t$ e substituir na função objetivo. Desta forma o problema se torna 
+
+\begin{equation}
+\begin{aligned}
+& \max & & \sum_{t=0}^{\infty} \beta^t u(f(k_t) + (1-\delta) k_t - k_{t+1}) \\
+& \text{s.a.} & &  k_{t+1} \geq 0, c_t \geq 0 \,\, \forall t \geq 0  \\
+& & &  k_0 \text{ dado} \\
+\end{aligned}
+\end{equation}
+
+\subsection*{Item (ii)}
+
+Reescrevemos o problema sequencial na forma recursiva, transformando-o na equação funcional
+
+\begin{equation}
+\begin{aligned}
+V(k) = & \max_{k'} & & u(c) + \beta V(k') \\
+& \text{s.a.} & &  c + k' = f(k) + (1-\delta) k \\
+& & &  k' \geq 0, c \geq 0 \,\, \forall t \geq 0  \\
+\end{aligned}
+\end{equation}
+
+
+\end{document}
