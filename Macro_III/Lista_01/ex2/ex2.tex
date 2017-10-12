@@ -85,4 +85,21 @@ T(V)(k) = & \max_{k'} & & u(c) + \beta V(k') \\
 \end{aligned}
 \end{equation}
 
+\subsection*{Item (iv)}
+
+Vamos criar um grid para a variável de estado $k$ no intervalo $[0, 1.25 k_{ss}]$, em que $k_{ss}$ é o nível
+de capital de estado estacionário. 
+
+Resolvendo o lado direito da equação funcional $(3)$, já substituindo as funções dadas $u()$ e $f()$, 
+obtemos a equação de Euler
+
+$$ c^{-\gamma} = \beta c'^{-\gamma} [\alpha k'^{\alpha-1} + 1 - \delta].$$
+
+No estado estacionário temos que $c' = c$ e $k' = k$. Substituindo na equação anterior obtemos
+
+$$k_{ss} = \left( \frac{1 + \beta (\delta - 1)}{\alpha \beta} \right)^{\frac{1}{\alpha - 1}}.$$
+
+\begin{lstlisting}
+\end{lstlisting}
+
 \end{document}
