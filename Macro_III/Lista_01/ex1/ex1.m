@@ -23,7 +23,7 @@ err = 1;
 tol = 10^-5;
 itmax = 2000;
 iter = 1;
-h = w(2) - w(1);
+h = (wmax - wmin)/n;
 
 % algoritmo de iteracao
 while err > tol && iter < itmax
