@@ -39,6 +39,7 @@ disp(x0);
 E = [A b];
 [m, n] = size(E);
 
+% Transforma matriz A em triangular superior
 for i = 2:m
   for j = 1:i-1
       E(i,:) = E(i,:) - E(i,j) / E(j,j) * E(j,:);
@@ -59,3 +60,12 @@ end
 
 disp('x =');
 disp(x);
+
+% Forma alternativa de escrever o mesmo algoritmo (usar matriz já triangularizada)
+for i = m:-1:1
+  E(i,:) = (E(i,:) - (E(i,i+1:m) * E(i+1:m,:))) / E(i,i)
+end
+
+x = E(:,n);
+disp('x=')
+x

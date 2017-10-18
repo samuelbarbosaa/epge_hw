@@ -83,11 +83,11 @@ end
 disp('x =');
 disp(x);
 
-% Forma alternativa de escrever o mesmo algoritmo (usa matriz já triangular)
+% Forma alternativa de escrever o mesmo algoritmo (usar matriz já triangularizada)
 for i = m:-1:1
   E(i,:) = (E(i,:) - (E(i,i+1:m) * E(i+1:m,:))) / E(i,i)
 end
 
 x = E(:,n);
-disp("x=")
+disp('x=')
 x
