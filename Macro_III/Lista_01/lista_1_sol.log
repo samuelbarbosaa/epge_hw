@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.1.3)  16 OCT 2017 20:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.1.3)  19 OCT 2017 20:27
 entering extended mode
 **./lista_1_sol.tex
 (lista_1_sol.tex
@@ -838,33 +838,53 @@ File: ex3/ex3_1.png Graphic file (type png)
  <use ex3/ex3_1.png>
 Package pdftex.def Info: ex3/ex3_1.png used on input line 409.
 (pdftex.def)             Requested size: 252.94695pt x 189.63794pt.
- [10 <./ex3/ex3_1.png (PNG copy)>] (lista_1_sol.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 433--434
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--452
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--452
+
+ []
+
+[10 <./ex3/ex3_1.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 474--475
+
+ []
+
+[11] (lista_1_sol.aux) ) 
 Here is how much of TeX's memory you used:
- 5776 strings out of 493335
- 74461 string characters out of 3139261
+ 5780 strings out of 493335
+ 74499 string characters out of 3139261
  172564 words of memory out of 3000000
- 9202 multiletter control sequences out of 15000+200000
- 8537 words of font info for 33 fonts, out of 3000000 for 9000
+ 9204 multiletter control sequences out of 15000+200000
+ 9156 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,9n,42p,239b,1619s stack positions out of 5000i,500n,10000p,200000b,50000s
-{E:/Program Files/MiKTeX 
-2.9/fonts/enc/dvips/fontname/8r.enc}<E:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmbx10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmex10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.
-pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><E:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><E:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr5.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy5.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><E
-:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on lista_1_sol.pdf (10 pages, 307723 bytes).
+{E:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8
+r.enc}<E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><E
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><E:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi8.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r5.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><E:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb><E:/Program Files/MiKTeX 2.9/fon
+ts/type1/urw/courier/ucrr8a.pfb>
+Output written on lista_1_sol.pdf (11 pages, 312681 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
+ 105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

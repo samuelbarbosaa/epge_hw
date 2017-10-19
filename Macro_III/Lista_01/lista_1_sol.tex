@@ -409,5 +409,82 @@ Executando o código acima obtemos as seguintes funções valor e polítca:
   \includegraphics[scale=0.6]{ex3/ex3_1.png}
 \end{figure}
 
+\section*{Exercício 04}
+
+Entrega facultativa.
+
+\section*{Exercício 05}
+
+Neste exercício vamos buscar a solucão do sistema de equações $A \mathbf{x} = \mathbf{b}$ para 
+
+\[
+A = \begin{pmatrix}
+    5 & -2 & 3 \\
+    -3 & 9 & 1 \\
+    2 & -1 & - 7
+\end{pmatrix}
+, \,
+\mathbf{b} = 
+\begin{pmatrix}
+	-1 \\
+	 2 \\
+	 3
+\end{pmatrix}.
+\] \\
+
+\subsection*{(a)}
+
+No item (a) utilizamos o método de Jacobi. 
+A tabela a seguir apresenta cada passo das iterações e a solução final.
+
+\begin{tabular}{ c c c c }
+Iteração & $\mathbf{x}_1$ & $\mathbf{x}_2$ & $\mathbf{x}_3$ \\ \hline
+1 & -0.20000 & 0.22222 & -0.42857 \\
+2 &  0.14603 & 0.20317 & -0.51746 \\
+3 &  0.19175 & 0.32840 & -0.41587 \\
+4 &  0.18088 & 0.33235 & -0.42070 \\
+5 &  0.18536 & 0.32926 & -0.42437 \\
+6 &  0.18633 & 0.33116 & -0.42265 \\
+7 &  0.18605 & 0.33129 & -0.42264 \\
+8 &  0.18610 & 0.33120 & -0.42274 \\
+9 &  0.18612 & 0.33123 & -0.42271
+\end{tabular} \\ \\
+
+A solução final obtida é, portanto, $\mathbf{x} = (0.18612, 0.33123, -0.42271)'$.
+
+\subsection*{(b)}
+
+Resolvendo o sistema pelo método de Gauss obtemos a mesma solução.
+
+\section*{Exercício 06}
+
+Neste exercício vamos buscar a solução para o sistema de equações dado por $A \mathbf{x} = \mathbf{b}$ para 
+
+\[
+A = \begin{pmatrix}
+    1 & -5 \\
+    7 & -1
+\end{pmatrix}
+, \,
+\mathbf{b} = 
+\begin{pmatrix}
+	-4 \\
+	 6
+\end{pmatrix}.
+\] \\
+
+\subsection*{(a)}
+
+Aplicando o método de Jacobi escolhendo o chute inicial $\mathbf{x}_0 = (0, 0)$ não obtemos convergência. 
+
+\subsection*{(b)}
+
+Escolhendo ainda outros valores iniciais para $\mathbf{x}$ como $(1/2, 1/2)$, ainda não obtemos convergência.
+
+\subsection*{(c)}
+
+Utilizando a eliminação de Gauss, com chute inicial $\mathbf{x}_0 = (0, 0)$, obtemos a convergência desejada, 
+com solução final dada por $\mathbf{x} = (1, 1)$.
 
 \end{document}
+

@@ -17,7 +17,7 @@ x0 = zeros(length(b), 1); % Chute inicial
 
 m = length(b);
 err = 1;
-tol = 10^-5;
+tol = 10^-4;
 it = 1;
 itmax = 1000;
 
@@ -25,12 +25,13 @@ while err > tol && it < itmax
     for i = 1:m
       x(i) = (1/A(i,i))*(b(i) - A(i,[1:i-1, i+1:m]) * x0([1:i-1, i+1:m]));
     end
-err = norm(x' - x0, 1);
-x0 = x';
-it = it + 1;
+    disp(x)
+    err = norm(x' - x0, 1);
+    x0 = x';
+    it = it + 1;
 end   
 
-disp('x =');
+disp('Solucao:"x =');
 disp(x0);
 
 %%%%%%%%%%%%%%%%%%%%%%%%
