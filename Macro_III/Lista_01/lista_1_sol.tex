@@ -486,5 +486,34 @@ Escolhendo ainda outros valores iniciais para $\mathbf{x}$ como $(1/2, 1/2)$, ai
 Utilizando a eliminação de Gauss, com chute inicial $\mathbf{x}_0 = (0, 0)$, obtemos a convergência desejada, 
 com solução final dada por $\mathbf{x} = (1, 1)$.
 
+\section*{Exercício 07}
+
+Neste exercício calibramos o modelo de Mehra e Prescott (1985) utilizando dados anuais da economia 
+brasileira entre 1996 e 2013\footnote{A partir de 2014, o IBGE passou a adotar uma nova metodologia 
+o sistema de Contas Nacionais. Portanto, para preservar a consistência da série, utilizamos os dados 
+de consumo somente até 2013. Além disso, de 1994 para 1995 a variação do consumo destoa do restante da série.
+Devido à baixa quantidade de observações (19), este \texit{outlier} altera significativamente a média do período.
+Acreditamos que com o restante da série (1995 a 2013) obtemos uma média mais representativa.}. 
+Obtemos os seguintes valores na calibração:
+
+\begin{tabular}{ c c c c }
+Parâmetro & Valor \\ \hline 
+$\mu$ & 0.15538 \\
+$\delta$ & 0.24132 \\
+$\phi$ & 0.54950
+\end{tabular} 
+
+Para analisar os resultados do modelo, utilizamos como referência o retorno médio real da 
+taxa Selic (ativo livre de risco) e do Ibovespa (ativo de risco) no período 
+de referência (1994 a 2013). No caso da Selic, o retorno observado foi de 7,08\% ao ano. 
+Já o retorno médio real observado do Ibovespa foi de 10,73\% ao ano. Desta forma, o
+prêmio de risco observado na comparação entre estes ativos foi de 3,66\% ao ano.
+
+Para obter estimativas no modelo e compará-las com os dados observados,
+criamos um \textit{grid} de $n=1000$ pontos para $\beta \in [0.7, 0.99]$ e $\sigma \in [0, 10]$.
+Aos valores de $\beta  = 0.9767$ e $\sigma = 0.72$, o modelo retorna o prêmio de risco
+mais próximo do observado nos dados, com uma diferença em valor absoluto na 
+ordem de $e^{-007}$.
+
 \end{document}
 
