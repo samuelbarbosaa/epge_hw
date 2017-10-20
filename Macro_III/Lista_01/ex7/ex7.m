@@ -17,7 +17,7 @@ plot(retorno_selic)
 
 
 %% Calibracao
-mu = median(var_cons_real_pc)
+mu = mean(var_cons_real_pc)
 delta = std(var_cons_real_pc)
 % ac = 0.042; % acf todas as observacoes %%%%%%%%%%%%%%% ALTERAR NO MATLAB
 ac = 0.175; % acf 1995-2013

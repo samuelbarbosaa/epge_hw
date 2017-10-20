@@ -490,10 +490,10 @@ com solução final dada por $\mathbf{x} = (1, 1)$.
 
 Neste exercício calibramos o modelo de Mehra e Prescott (1985) utilizando dados anuais da economia 
 brasileira entre 1996 e 2013\footnote{A partir de 2014, o IBGE passou a adotar uma nova metodologia 
-o sistema de Contas Nacionais. Portanto, para preservar a consistência da série, utilizamos os dados 
+no sistema de Contas Nacionais. Portanto, para preservar a consistência da série, utilizamos os dados 
 de consumo somente até 2013. Além disso, em 1994 e 1995 a variação do consumo e o IGP-M 
 destoam do restante das observações. Devido à baixa quantidade de observações (19), 
-este \textit{outlier} altera significativamente a média do período.
+estes \textit{outliers} alteram significativamente as médias do período.
 Acreditamos que com o restante da série (1995 a 2013) obtemos uma média mais representativa.}. 
 Obtemos os seguintes valores na calibração: \\ 
 
@@ -514,7 +514,10 @@ Para obter estimativas no modelo e compará-las com os dados observados,
 criamos um \textit{grid} de 1000 pontos para $\beta \in [0.7, 0.99]$ e $\sigma \in [0, 10]$.
 Aos valores de $\beta  = 0.9331$ e $\sigma = 4.96$, o modelo retorna o prêmio de risco
 mais próximo do observado nos dados, com uma diferença em valor absoluto na 
-ordem de $10^{-7}$. Enviamos o código em anexo.
+ordem de $10^{-7}$\footnote{Enviamos o código em anexo.}. Neste caso, não podemos afirmar que exista um 
+\textit{equity premium puzzle} no Brasil. Uma calibragem com uma série mais longa de observações,
+tal como a utilizada no artigo de Mehra e Presscot (n = 90), poderá trazer evidências 
+mais robustas sobre o assunto.
 
 \end{document}
 
