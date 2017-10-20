@@ -3,8 +3,8 @@ pkg load io; %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALTERAR NO MATLAB
 pkg load signal; %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALTERAR NO MATLAB
 
 dados = xlsread('dados.xlsx');
-dados = dados(2:end,:); % 1995-2013
-% dados = dados(4:end,:); % 1996-2013
+% dados = dados(2:end,:); % 1994-2013
+dados = dados(4:end,:); % 1996-2013
 
 var_cons_real_pc = dados(:,7);
 plot(var_cons_real_pc)
@@ -19,8 +19,8 @@ plot(retorno_selic)
 %% Calibracao
 mu = median(var_cons_real_pc)
 delta = std(var_cons_real_pc)
-ac = 0.042; % acf todas as observacoes %%%%%%%%%%%%%%% ALTERAR NO MATLAB
-% ac = 0.175; % acf 1995-2013
+% ac = 0.042; % acf todas as observacoes %%%%%%%%%%%%%%% ALTERAR NO MATLAB
+ac = 0.175; % acf 1995-2013
 phi = 0.5 * (1 + ac)
 
 x = [1 + mu + delta, 1 + mu - delta]
@@ -39,7 +39,7 @@ P = eigvec(:, col) / sum(eigvec(:, col));
 % Grid
 n = 1000;
 beta = linspace(0.7, 0.99, n)';
-sigma = linspace(1, 10, n);
+sigma = linspace(0, 10, n);
 
 beta_m = repmat(beta, 1, n);
 sigma_m = repmat(sigma, n, 1);

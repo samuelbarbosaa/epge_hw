@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.1.3)  19 OCT 2017 20:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2017.1.3)  20 OCT 2017 13:06
 entering extended mode
 **./lista_1_sol.tex
 (lista_1_sol.tex
@@ -858,13 +858,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 474--475
 
  []
 
-[11] (lista_1_sol.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 491--499
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 500--506
+
+ []
+
+[12] (lista_1_sol.aux) ) 
 Here is how much of TeX's memory you used:
- 5780 strings out of 493335
- 74499 string characters out of 3139261
+ 5803 strings out of 493335
+ 74728 string characters out of 3139261
  172564 words of memory out of 3000000
- 9204 multiletter control sequences out of 15000+200000
- 9156 words of font info for 35 fonts, out of 3000000 for 9000
+ 9218 multiletter control sequences out of 15000+200000
+ 12919 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,9n,42p,239b,1619s stack positions out of 5000i,500n,10000p,200000b,50000s
 {E:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8
@@ -876,15 +886,18 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/Program Files/MiKTeX 2
 type1/public/amsfonts/cm/cmmi7.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmmi8.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmr10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r5.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><E:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb><E:/Program Files/MiKTeX 2.9/fon
-ts/type1/urw/courier/ucrr8a.pfb>
-Output written on lista_1_sol.pdf (11 pages, 312681 bytes).
+r5.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><E:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy5.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy7.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmti10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmti8.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb><E:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on lista_1_sol.pdf (12 pages, 358284 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
+ 124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
