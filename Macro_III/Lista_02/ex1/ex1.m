@@ -11,6 +11,7 @@ f = @(x) 3 * x.^2 .* exp(-x.^2) - 2 * x.^4 .* exp(-x.^2);
 a = -10;
 b = 10;
 
+% Grafico
 x = linspace(a, b, 500);
 y = F(x);
 plot(x, y);
