@@ -1,9 +1,5 @@
 clc;clear all;
-pkg load io; %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALTERAR NO MATLAB
-pkg load signal; %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALTERAR NO MATLAB
-
 dados = xlsread('dados.xlsx');
-% dados = dados(2:end,:); % 1994-2013
 dados = dados(4:end,:); % 1996-2013
 
 var_cons_real_pc = dados(:,7);
@@ -19,8 +15,8 @@ plot(retorno_selic)
 %% Calibracao
 mu = mean(var_cons_real_pc)
 delta = std(var_cons_real_pc)
-% ac = 0.042; % acf todas as observacoes %%%%%%%%%%%%%%% ALTERAR NO MATLAB
-ac = 0.175; % acf 1995-2013
+acf = autocorr(var_cons_real_pc);
+ac = acf(1);
 phi = 0.5 * (1 + ac)
 
 x = [1 + mu + delta, 1 + mu - delta]
