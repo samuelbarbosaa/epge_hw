@@ -11,24 +11,33 @@ v = linspace(-10, 10, 100);
 surf(F(U,V), U, V);
 
 % Newton-Rhapson
-x(1) = 0.7;
-y(1) = 0.2;
+a = [-5 -5];
+b = [5 5];
+x = 0;
+y = 0;
 k = 1;
-kmax = 1000;
+kmax = 2000;
 err = 1;
 
+tic
 while err > 10^-5 && k < kmax
     A = J(x(k), y(k));
     s = linsolve(A, -f(x(k), y(k)));
     x(k+1) = s(1) + x(k);
     y(k+1) = s(2) + y(k);
+    if x(k+1) < a(1) || x(k+1) > b(1)
+      x(k+1) = a(1) + (b(1)-a(1)) *rand;
+    endif
+    if y(k+1) < a(2) || y(k+1) > b(2)
+      y(k+1) = a(2) + (b(2)-a(2)) *rand;
+    endif
     z = [x(k) y(k)]';
     zprime = [x(k+1) y(k+1)]';
     err = norm(z-zprime);
     k = k + 1;
 end
+toc
 
-
-
-
-
+fprintf('%i iteracoes\n', k);
+fprintf("Solucao:\nx = %d \n", round(x(k) * 100 / 100));
+fprintf("y = %d \n", round(y(k) * 100 / 100));
