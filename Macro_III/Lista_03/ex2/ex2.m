@@ -29,9 +29,10 @@ avg_income = [];
 sd_income = [];
 avg_utility = [];
 
-PI = [0.0125 0.0063 0];
+PI = [0.0125 0.0062 0];
 
 for pi = PI
+    fprintf('pi = %5.4f ------------------------------------ \n', pi);
     excesso = tol_excesso+1;
     it_excesso = 0;
     
@@ -71,7 +72,6 @@ for pi = PI
         lambda = invdist_numeric(MT);
 
         excesso = lambda'*G-M;
-        disp([num2str(Ml) ' ' num2str(M) ' ' num2str(Mh) ' | ' num2str(excesso)]);
         if excesso > 0
             Ml = M;
             M = (1-alpha)*Mh + alpha*Ml;
@@ -85,12 +85,18 @@ for pi = PI
     
     c = 1/(1+pi)*m(:) + s(:) + pi/(1-pi)*M - G;
         
-        avg_real_cash_balances = [avg_real_cash_balances lambda'*G];
-        sd_real_cash_balances = [sd_real_cash_balances sqrt(lambda'*(G-avg_real_cash_balances(end)).^2)];
-        avg_consumption = [avg_consumption lambda'*c];
-        sd_consumption = [sd_consumption sqrt(lambda'*(c-avg_consumption(end)).^2)];
-        avg_income = [avg_income lambda'*s(:)];
-        sd_income = [sd_income sqrt(lambda'*(s(:)-avg_income(end)).^2)];
-        avg_utility = [avg_utility lambda'*u(c)];
+        avg_real_cash_balances = [lambda'*G];
+        sd_real_cash_balances = [sqrt(lambda'*(G-avg_real_cash_balances(end)).^2)];
+        avg_consumption = [lambda'*c];
+        sd_consumption = [sqrt(lambda'*(c-avg_consumption(end)).^2)];
+        avg_income = [lambda'*s(:)];
+        sd_income = [sqrt(lambda'*(s(:)-avg_income(end)).^2)];
+        avg_utility = [lambda'*u(c)];
+        
+        fprintf('real cash bal: %5.4f (%5.4f) \n', avg_real_cash_balances, sd_real_cash_balances);
+        fprintf('consumption: %5.4f (%5.4f) \n', avg_consumption, sd_consumption);
+        fprintf('income: %5.4f (%5.4f) \n', avg_income, sd_income);
+        fprintf('avg utility: %5.4f \n', avg_utility);
+        
 
 end
