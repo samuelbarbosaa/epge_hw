@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+
+MicroEmpirica/data_raw/pnad/*.dta
+MicroEmpirica/data_raw/pnad/*.rds
+MicroEmpirica/data_raw/pnad/DOM2015.txt
+MicroEmpirica/data_raw/pnad/PES2015.txt
