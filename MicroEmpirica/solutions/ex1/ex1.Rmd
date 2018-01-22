@@ -1,0 +1,211 @@
+---
+title: "Micro Empírica - Trabalho 01"
+author: "Samuel Barbosa"
+date: "19 de janeiro de 2018"
+header-includes:
+   - \usepackage{booktabs}
+   - \usepackage{colortbl}
+   - \usepackage{tabu}  
+   - \usepackage[brazil]{babel}
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_knit$set(root.dir = "../../")
+options(scipen = 10) # previne exibição numéros na forma científica
+library(tidyverse)
+library(stargazer)
+library(knitr)
+library(kableExtra)
+```
+
+# Introdução
+
+Neste exercício vamos estimar os retornos à educação usando a equação de Mincer
+
+$$ log(y_i) = \beta_0 + \beta_1 S_i + \beta_2 E_i + \beta_3 E_i^2 + u_i$$
+
+e dados da PNAD 2015. Usaremos o software **R** para completar este exercício.
+Os dados da PNAD podem ser obtidos no R através do pacote [**lodown**](http://asdfree.com/pesquisa-nacional-por-amostra-de-domicilios-pnad.html),
+por contribuição do pesquisador Djalma Pessoa (IBGE). 
+
+# Download dos dados
+```{r, eval=FALSE}
+install.packages("lodown") 
+library(lodown)
+pnad_cat = get_catalog("pnad", output_dir = "data_raw/pnad/")
+pnad_cat = subset(pnad_cat, year == 2015)
+lodown("pnad", pnad_cat)
+```
+
+# Leitura e tratamento
+
+Os dados disponibilizados através do pacote `lodown` já combinam as variáveis
+de pessoas e domicílios. Vamos selecionar as variáveis de interesse e realizar
+as alterações necessárias.
+
+```
+    VARIÁVEL      DESCRIÇÃO
+    ------------  --------------------------------------------------------------  
+      V4718       Rendimento mensal do trabalho principal para pessoas de 10 
+                  anos ou mais de idade
+      V4803       Anos de estudo (todas as pessoas)
+      V8005       Idade do morador na data de referência
+
+
+      V0302       Sexo
+      V0404       Cor ou raça
+
+      V0504	      Morou em outra Unidade da Federação ou país estrangeiro
+
+      V4729       Peso na amostra
+      v4617       Identificação de estrato
+      v4618       PSU - Unidade primária de amostragem
+    ----------------------------------------------------------------------------
+```
+
+```{r, echo=FALSE, results='asis'}
+cat("\\newpage")
+```
+
+
+    
+O código a seguir realiza este procedimento.
+
+```{r, eval=FALSE}
+pnad_df = readRDS("data_raw/pnad/2015 main.rds")
+
+pnad_df = pnad_df %>% select(v4718, v4803, v8005,              # principais
+                         v0302, v0404,                         # demograficas
+                         v0504,                                # subpop. interesse
+                         v4729, v4617, v4618)  # amostra
+
+save(pnad_df, file = "data/pnad/pnad2015_ex1.Rdata")
+rm(pnad_df)
+```
+
+Vamos renomear as variáveis selecionadas, recodificar a variável anos de estudo
+(ver dicionário), incluir os rótulos das variáveis sexo, cor/raça e migração,
+e incluir idade ao quadrado e log da renda. Vamos também descartar
+observações em que a renda é nula (zero) ou não informada.
+
+
+
+
+```{r}
+load("data/pnad/pnad2015_ex1.Rdata")
+
+pnad_df = rename(pnad_df,
+             renda = v4718, anos_estudo = v4803, idade = v8005,
+             sexo = v0302, cor_raca = v0404,
+             migrou = v0504,
+             peso = v4729, estrato = v4617, psu = v4618)
+
+pnad_df = 
+  mutate(pnad_df, anos_estudo = as.integer(anos_estudo)) %>% 
+  mutate(anos_estudo = ifelse(anos_estudo == 17, NA, anos_estudo)) %>% 
+  mutate(anos_estudo = anos_estudo - 1)
+
+pnad_df = 
+  mutate_at(pnad_df, vars(sexo, cor_raca, migrou), as.factor)
+
+levels(pnad_df$sexo) = c("Masc", "Fem")
+levels(pnad_df$cor_raca)  = c("Indigena", "Branca", "Preta", "Amarela", "Parda", "SemDecl")
+levels(pnad_df$migrou) = c("Sim", "Nao")
+
+pnad_df = mutate(pnad_df, 
+             idade2 = idade^2, 
+             log_renda = log(renda)) 
+
+pnad_df = filter(pnad_df, renda > 0, !is.na(renda))
+```
+
+# Desenho da amostra e estatísticas descritivas
+
+Para trabalhar com amostras complexas, usaremos os pacote `survey` e `srvyr`.
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+library(srvyr);library(survey)
+
+pnad_design = as_survey_design(pnad_df,         # define desenho amostral
+                              ids = psu, 
+                              strata = estrato, 
+                              weights = peso,
+                              nest = TRUE)
+
+options(survey.lonely.psu="remove")             # remove estratos com PSU unico
+```
+
+```{r, eval=FALSE}
+pnad_design %>%                                 
+  group_by(anos_estudo) %>%                     # renda média por anos de estudo
+  summarise(renda_media = survey_mean(renda))
+```
+
+As tabelas a seguir apresentam estatísticas descritivas da renda (média e erro padrão).
+Observe que temos uma relação crescente entre renda média e anos de estudo.
+
+```{r, echo=FALSE}
+kable(pnad_design %>%                                 
+        summarise(renda_media = survey_mean(renda)),
+      format = "latex", booktabs = T, caption = "Renda média") %>% 
+  kable_styling(position = "center", latex_options = "hold_position")
+
+kable(pnad_design %>%                                 
+        group_by(anos_estudo) %>%                     # renda média por anos de estudo
+        summarise(renda_media = survey_mean(renda)),
+      format = "latex", booktabs = T, caption = "Renda média por anos de estudo") %>% 
+  kable_styling(position = "center", latex_options = "hold_position")
+```
+
+
+# Estimação da Equação de Mincer
+
+Vamos agora retornar à equaçao de Mincer, que desejamos estimar:
+
+$$ log(y_i) = \beta_0 + \beta_1 S_i + \beta_2 E_i + \beta_3 E_i^2 + u_i$$
+
+```{r}
+short_fit = svyglm(log_renda ~ anos_estudo + idade + idade2, pnad_design)
+long_fit = svyglm(log_renda ~ anos_estudo + idade + idade2 + sexo + cor_raca, pnad_design)
+```
+
+```{r, echo=FALSE, results='asis'}
+stargazer(list(short_fit, long_fit),
+          type = "latex", 
+          header = FALSE, 
+          title = "Equação de Mincer", style = "aer")
+```
+
+
+Obtemos $\beta_1 \approx 0.106$ ao estimar a primeira equação. Conforme a 
+especificação acima, interpretamos que um ano adicional de estudo está 
+associado a um aumento na renda, em média, de aproximadamente 10,6%.
+
+A inclusão dos controles demográficos pouco altera os resultados. Observamos,
+neste caso, $\beta_1 \approx 0.108$. Destaca-se também o valor do coeficiente
+relacionado à variável `sexo`, indicando renda média menor entre mulheres 
+(aproximadamente 43,7%).
+
+Por fim vamos estimar a equação de Mincer para pessoas que migraram entre Unidades 
+da Federação. 
+
+```{r}
+sub_pnad_design <- subset(pnad_design, migrou == "Sim")
+fit_mig = svyglm(log_renda ~ anos_estudo + idade + idade2 + sexo + cor_raca, sub_pnad_design)
+```
+
+```{r, results='asis', echo=FALSE}
+stargazer(fit_mig,
+          type = "latex", 
+          header = FALSE,
+          title = "Equação de Mincer (subgrupo Migração)")
+```
+
+
+Observamos que, no caso dos migrantes, um ano adicional de escolaridade está
+associado a uma renda mais alta, em média, de aproximadamente 12,6%, indicando
+que o efeito da escolaridade sobre a renda é mais acentuado neste grupo.
+

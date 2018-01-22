@@ -1,0 +1,7 @@
+Warning: 116 parsing failures.
+row # A tibble: 5 x 5 col     row   col   expected       actual                   file expected   <int> <chr>      <chr>        <chr>                  <chr> actual 1  4504 V9202 an integer  99999999999 'data_raw/PES2015.txt' file 2 10433 V9202 an integer  99999999999 'data_raw/PES2015.txt' row 3 10739 V9982 an integer 999999999999 'data_raw/PES2015.txt' col 4 24567 V9982 an integer 999999999999 'data_raw/PES2015.txt' expected 5 25540 V9982 an integer 999999999999 'data_raw/PES2015.txt'
+... ................. ... ............................................................ ........ ............................................................ ...... ............................................................ .... ............................................................ ... ............................................................ ... ............................................................ ........ ......................................................... [... truncated]
+Warning messages:
+1: closing unused connection 3 (all.Rout) 
+2: In rbind(names(probs), probs_f) :
+  number of columns of result is not a multiple of vector length (arg 1)

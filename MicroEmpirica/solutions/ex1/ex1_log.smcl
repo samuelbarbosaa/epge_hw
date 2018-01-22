@@ -1,0 +1,1523 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\Samue\Desktop\EPGE_github\MicroEmpirica\solutions\ex1\ex1_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}19 Jan 2018, 18:31:51
+{txt}
+{com}. 
+. * Leitura e tratamento dos dados
+. infile using "PES2015.dct", using(PES2015.TXT)  
+
+{txt}dictionary {c -(}
+_column(1) int v0101 %4f "Ano de referência"
+_column(5) str2 uf %2f "Unidade da Federação"
+_column(5) long v0102 %8f "Número de controle"
+_column(13) int v0103 %3f "Número de série"
+_column(16) int v0301 %2f "Número de ordem"
+_column(18) byte v0302 %1f "Sexo"
+_column(19) int v3031 %2f "Dia de nascimento"
+_column(21) int v3032 %2f "Mês de nascimento"
+_column(23) int v3033 %4f "Ano de nascimento"
+_column(27) int v8005 %3f "Idade do morador na data de referência"
+_column(30) byte v0401 %1f "Condição na unidade domiciliar"
+_column(31) byte v0402 %1f "Condição na família"
+_column(32) byte v0403 %1f "Número da família"
+_column(33) byte v0404 %1f "Cor ou raça"
+_column(34) byte v0405 %1f "Tem mãe viva"
+_column(35) byte v0406 %1f "Mãe mora no domicílio"
+_column(36) int v0407 %2f "Número de ordem da mãe "
+_column(38) byte v0408 %1f "Tem registro de nascimento"
+_column(39) byte v4111 %1f "Vive em companhia de cônjuge ou companheiro(a)"
+_column(40) byte v4112 %1f "Natureza da união"
+_column(41) byte v4011 %1f "Estado civil"
+_column(42) byte v0412 %1f "O informante desta parte foi"
+_column(43) byte v0501 %1f "Nasceu no município de residência"
+_column(44) byte v0502 %1f "Nasceu na Unidade da Federação de residência"
+_column(45) int v5030 %2f "Lugar de nascimento"
+_column(47) byte v0504 %1f "Morou em outra Unidade da Federação ou país estrangeiro"
+_column(48) byte v0505 %1f "Morava na Unidade da Federação na data de referência "
+_column(49) byte v5061 %1f "Tinha até 4 anos ininterruptos de residência na Unidade da Federação"
+_column(50) byte v5062 %1f "Tempo de residência na Unidade da Federação (até 4 anos)"
+_column(51) byte v5063 %1f "Tinha de 5 a 9 anos ininterruptos de residência na Unidade da Federação"
+_column(52) byte v5064 %1f "Tempo de residência na Unidade da Federação (de 5 a 9 anos)"
+_column(53) byte v5065 %1f "Tinha 10 anos ou mais de residência na Unidade da Federação"
+_column(54) byte v0507 %1f "Morava na Unidade da Federação há 5 anos da data de referência"
+_column(55) int v5080 %2f "Lugar de residência há 5 anos da data de referência"
+_column(57) int v5090 %2f "Lugar de residência anterior"
+_column(59) byte v0510 %1f "Morava no município na data de referência"
+_column(60) byte v0511 %1f "Morou em outro município na Unidade da Federação"
+_column(61) byte v5121 %1f "Tinha até 4 anos ininterruptos de residência no município"
+_column(62) byte v5122 %1f "Tempo de residência no município (até 4 anos)"
+_column(63) byte v5123 %1f "Tinha de 5 a 9 anos ininterruptos de residência no município"
+_column(64) byte v5124 %1f "Tempo de residência no município (de 5 a 9 anos)"
+_column(65) byte v5125 %1f "Tinha 10 anos ou mais de residência no município"
+_column(66) byte v5126 %1f "O informante desta parte foi"
+_column(67) byte v0601 %1f "Sabe ler e escrever"
+_column(68) byte v0602 %1f "Frequenta escola ou creche"
+_column(69) byte v6002 %1f "Rede de ensino"
+_column(70) byte v6020 %1f "Área da rede pública de ensino"
+_column(71) int v6003 %2f "Curso que frequenta"
+_column(73) byte v6030 %1f "Duração do ensino fundamental"
+_column(74) byte v0604 %1f "O curso que frequenta é seriado"
+_column(75) byte v0605 %1f "Série que frequenta"
+_column(76) byte v0606 %1f "Anteriormente frequentou escola ou creche"
+_column(77) int v6007 %2f "Curso mais elevado que frequentou anteriormente"
+_column(79) byte v6070 %1f "Duração do ensino fundamental que frequentou anteriormente"
+_column(80) byte v0608 %1f "Este curso que frequentou anteriormente era seriado"
+_column(81) byte v0609 %1f "Concluiu, com aprovação, pelo menos a 1ª série deste curso que frequentou anteriormente"
+_column(82) byte v0610 %1f "Última série concluída com aprovação, neste curso que frequentou anteriormente"
+_column(83) byte v0611 %1f "Concluiu este curso que frequentou anteriormente"
+_column(84) byte v06111 %1f "Nos últimos três meses, utilizou a Internet em algum local"
+_column(85) byte v061111 %1f "Nos últimos doze meses, utilizou a Internet em algum local"
+_column(86) byte v061112 %1f "O acesso à Internet foi feito através de microcomputador"
+_column(87) byte v061113 %1f "O acesso à Internet foi feito através de telefone celular"
+_column(88) byte v061114 %1f "O acesso à Internet foi feito através de tablet"
+_column(89) byte v061115 %1f "O acesso à Internet foi feito através de tv"
+_column(90) byte v061116 %1f "O acesso à Internet foi feito através de outro equipamento eletrônico"
+_column(91) byte v06112 %1f "Tem telefone móvel celular para uso pessoal"
+_column(92) byte v0612 %1f "O informante desta parte foi"
+_column(93) byte v0701 %1f "Teve algum trabalho no período de referência de 365 dias"
+_column(94) byte v0702 %1f "Exerceu tarefas em cultivo, pesca ou criação de animais, destinados à própria alimentação das pessoas moradoras no domic"
+_column(95) byte v0703 %1f "Exerceu tarefas em construção de prédio, cômodo, poço ou outras obras de construção, destinadas ao próprio uso das pesso"
+_column(96) byte v0704 %1f "Trabalhou na semana de referência"
+_column(97) byte v0705 %1f "Esteve afastado temporariamente do trabalho remunerado que tinha na semana de referência"
+_column(98) int v7060 %4f "Código da ocupação no trabalho do período de captação de 358 dias"
+_column(102) long v7070 %5f "Código da atividade principal do empreendimento no trabalho do período de captação de 358 dias"
+_column(107) byte v0708 %1f "Posição na ocupação no trabalho do período de captação de 358 dias"
+_column(108) int v7090 %4f "Código da ocupação no trabalho da semana de referência"
+_column(112) long v7100 %5f "Código da atividade principal do empreendimento no trabalho da semana de referência"
+_column(117) byte v0711 %1f "Posição na ocupação no trabalho da semana de referência"
+_column(118) byte v7121 %1f "Código 2 - recebia normalmente rendimento mensal em dinheiro no mês de referência no(s) trabalho(s) da semana de referên"
+_column(119) float v7122 %12f "Rendimento mensal em dinheiro que recebia normalmente no mês de referência no(s) trabalho(s) da semana de referência"
+_column(131) byte v7124 %1f "Código 4 - recebia normalmente rendimento mensal em produtos ou mercadorias no mês de referência no(s) trabalho(s) da se"
+_column(132) float v7125 %12f "Rendimento mensal em valor dos produtos ou mercadorias que recebia normalmente no mês de referência no(s) trabalho(s) da"
+_column(144) byte v7127 %1f "Código 6 - recebia normalmente rendimento mensal somente em benefícios no mês de referência no(s) trabalho(s) da semana"
+_column(145) byte v7128 %1f "Código 8 - era trabalhador não remunerado no(s) trabalho(s) da semana de referência"
+_column(146) int v0713 %2f "Número de horas habitualmente trabalhadas por semana no(s) trabalho(s) da semana de referência"
+_column(148) byte v0714 %1f "Cuidava dos afazeres domésticos na semana de referência"
+_column(149) int v0715 %2f "Número de horas que dedicava normalmente por semana aos afazeres domésticos"
+_column(151) byte v0716 %1f "O informante desta parte foi"
+_column(152) byte v9001 %1f "Trabalhou na semana de referência"
+_column(153) byte v9002 %1f "Esteve afastado temporariamente do trabalho remunerado que tinha na semana de referência"
+_column(154) byte v9003 %1f "Exerceu tarefas em cultivo, pesca ou criação de animais, destinados à própria alimentação das pessoas moradoras no domic"
+_column(155) byte v9004 %1f "Exerceu tarefas em construção de prédio, cômodo, poço ou outras obras de construção, destinadas ao próprio uso das pesso"
+_column(156) byte v9005 %1f "Número de trabalhos que tinha na semana de referência"
+_column(157) int v9906 %4f "Código da ocupação no trabalho principal da semana de referência"
+_column(161) long v9907 %5f "Código da atividade principal do empreendimento no trabalho principal da semana de referência"
+_column(166) int v9008 %2f "Posição na ocupação no trabalho principal da semana de referência"
+_column(168) byte v9009 %1f "Recebia do empregador alguma área para produção particular"
+_column(169) byte v9010 %1f "Tinha parceria com o empregador"
+_column(170) byte v90101 %1f "Foi contratado somente por pessoa responsável pelo estabelecimento"
+_column(171) byte v9011 %1f "Foi contratado somente por pessoa(s) responsável(véis) pelo(s) estabelecimento(s) em que trabalhou como empregado tempor"
+_column(172) byte v9012 %1f "Foi contratado como empregado temporário, somente por intermediário (empresa empreiteira, empreiteiro, “gato”, etc.) no"
+_column(173) byte v90121 %1f "Foi contratado por intemédio de"
+_column(174) byte v9013 %1f "Teve ajuda de trabalhador não remunerado membro da unidade domiciliar no mês de referência"
+_column(175) byte v9014 %1f "Número de trabalhadores não remunerados membros da unidade domiciliar, independentemente da idade, que ajudaram à pessoa"
+_column(176) byte v9151 %1f "Código 1 - referente à 1ª parcela ou parcela única do empreendimento"
+_column(177) float v9152 %11f "Área informada na 1ª parcela ou parcela única do empreendimento"
+_column(188) long v9154 %7f "Equivalência em m², referente à unidade de medida de superfície em V9152"
+_column(195) byte v9156 %1f "Código 3 - referente à 2ª parcela do empreendimento"
+_column(196) float v9157 %11f "Área informada na 2ª parcela do empreendimento"
+_column(207) long v9159 %7f "Equivalência em m², referente à unidade de medida de superfície em V9157"
+_column(214) byte v9161 %1f "Código 5 - referente à 3ª parcela do empreendimento"
+_column(215) float v9162 %11f "Área informada na 3ª parcela do empreendimento"
+_column(226) long v9164 %7f "Equivalência em m², referente à unidade de medida de superfície em V9162"
+_column(233) byte v9016 %1f "Tinha pelo menos um empregado temporário, no mês de referência, no trabalho principal da semana de referência"
+_column(234) byte v9017 %1f "Número de empregados temporários, no mês de referência, no trabalho principal da semana de referência"
+_column(235) byte v9018 %1f "Tinha pelo menos um empregado permanente, no mês de referência, no trabalho principal da semana de referência"
+_column(236) byte v9019 %1f "Número de empregados permanentes, no mês de referência, no trabalho principal da semana de referência"
+_column(237) byte v9201 %1f "Código 2 - referente à 1ª parcela ou parcela única do empreendimento"
+_column(238) float v9202 %11f "Área informada na 1ª parcela ou parcela única do empreendimento"
+_column(249) long v9204 %7f "Equivalência em m², referente à unidade de medida de superfície em V9202"
+_column(256) byte v9206 %1f "Código 4 - referente à 2ª parcela do empreendimento"
+_column(257) float v9207 %11f "Área informada na 2ª parcela do empreendimento"
+_column(268) long v9209 %7f "Equivalência em m², referente à unidade de medida de superfície em V9207"
+_column(275) byte v9211 %1f "Código 6 - referente à 3ª parcela do empreendimento"
+_column(276) float v9212 %11f "Área informada na 3ª parcela do empreendimento"
+_column(287) long v9214 %7f "Equivalência em m², referente à unidade de medida de superfície em V9212"
+_column(294) byte v9021 %1f "Condição em relação ao empreendimento do grupamento agrícola"
+_column(295) byte v9022 %1f "Parceria contratada neste trabalho"
+_column(296) byte v9023 %1f "Forma contratada de pagamento pelo uso do bem, móvel ou imóvel, arrendado para o empreendimento"
+_column(297) byte v9024 %1f "Assumiu, previamente, o compromisso de vender uma parte da produção principal do empreendimento no período de referência"
+_column(298) byte v9025 %1f "Vendeu alguma parte da produção principal do empreendimento no período de referência de 365 dias"
+_column(299) byte v9026 %1f "Comprador que adquiriu a totalidade, ou a maior parte, da produção principal do empreendimento que foi vendida no períod"
+_column(300) byte v9027 %1f "Algum tipo de produção desenvolvida no empreendimento foi consumida como alimentação pelos membros da unidade domiciliar"
+_column(301) byte v9028 %1f "Parcela da alimentação consumida pelos membros da unidade domiciliar, no mês de referência, que foi retirada de produção"
+_column(302) byte v9029 %1f "Posição na ocupação no trabalho principal da semana de referência"
+_column(303) byte v9030 %1f "A jornada normal desse trabalho estava totalmente compreendida no período de 5 horas da manhã às 10 horas da noite"
+_column(304) byte v9031 %1f "A jornada normal desse trabalho estava totalmente compreendida no período noturno de 10 horas da noite às 5 horas da man"
+_column(305) byte v9032 %1f "Setor do emprego no trabalho principal da semana de referência"
+_column(306) byte v9033 %1f "Área do emprego no trabalho principal da semana de referência"
+_column(307) byte v9034 %1f "Era militar do Exército, Marinha de Guerra ou Aeronáutica no trabalho principal da semana de referência"
+_column(308) byte v9035 %1f "Era funcionário público estatutário no trabalho principal da semana de referência"
+_column(309) byte v9036 %1f "Prestava serviço doméstico remunerado em mais de um domicílio, no mês de referência"
+_column(310) byte v9037 %1f "Exercia habitualmente esse trabalho pelo menos uma vez por semana"
+_column(311) byte v9038 %1f "Número de dias por semana que, habitualmente, prestava serviço doméstico remunerado"
+_column(312) byte v9039 %1f "Número de dias por mês que, habitualmente, prestava serviço doméstico remunerado"
+_column(313) byte v9040 %1f "Número de pessoas ocupadas, no mês de referência, no empreendimento do trabalho principal da semana de referência"
+_column(314) byte v9041 %1f "Forma contratada, verbalmente ou por escrito, para o cálculo da remuneração no trabalho principal da semana de referênci"
+_column(315) byte v9042 %1f "Tinha carteira de trabalho assinada no trabalho principal da semana de referência "
+_column(316) byte v9043 %1f "Recebeu auxílio para moradia no mês de referência"
+_column(317) byte v9044 %1f "Recebeu auxílio para alimentação no mês de referência"
+_column(318) byte v9045 %1f "Recebeu auxílio para transporte no mês de referência"
+_column(319) byte v9046 %1f "Recebeu auxílio para educação ou creche no mês de referência"
+_column(320) byte v9047 %1f "Recebeu auxílio para saúde ou reabilitação no mês de referência"
+_column(321) byte v9048 %1f "Número de empregados, no mês de referência, no empreendimento do trabalho principal da semana de referência"
+_column(322) byte v9049 %1f "Tinha pelo menos um sócio ocupado, no mês de referência, no empreendimento do trabalho principal da semana de referência"
+_column(323) byte v9050 %1f "Número de sócios ocupados, no mês de referência, no empreendimento do trabalho principal da semana de referência"
+_column(324) byte v9051 %1f "Tinha pelo menos um trabalhador não remunerado, no mês de referência, no trabalho principal da semana de referência"
+_column(325) byte v9052 %1f "Número de trabalhadores não remunerados ocupados, no mês de referência, no trabalho principal da semana de referência"
+_column(326) byte v9531 %1f "Código 1 - recebia normalmente rendimento mensal em dinheiro, no mês de referência, no trabalho principal da semana de r"
+_column(327) float v9532 %12f "Rendimento mensal em dinheiro que recebia normalmente, no mês de referência, no trabalho principal da semana de referênc"
+_column(339) byte v9534 %1f "Código 3 - recebia normalmente rendimento mensal em produtos ou mercadorias, no mês de referência, no trabalho principal"
+_column(340) float v9535 %12f "Rendimento mensal em valor dos produtos ou mercadorias que recebia normalmente, no mês de referência, no trabalho princi"
+_column(352) byte v9537 %1f "Código 5 - recebia normalmente rendimento mensal somente em benefícios, no mês de referência, no trabalho principal da s"
+_column(353) byte v90531 %1f "O empreendimento tem registro no Cadastro Nacional de Pessoa Jurídica - CNPJ"
+_column(354) byte v90532 %1f "Esse empreendimento possuía fatura ou nota fiscal para emitir aos clientes"
+_column(355) byte v90533 %1f "Esse empreendimento entregava contracheque a seus funcionários"
+_column(356) byte v9054 %1f "Tipo de estabelecimento ou onde era exercido o trabalho principal da semana de referência"
+_column(357) byte v9055 %1f "Morava em domicílio que estava no mesmo terreno ou área do estabelecimento em que tinha trabalho"
+_column(358) byte v9056 %1f "Ia direto do domicílio em que morava para o trabalho"
+_column(359) byte v9057 %1f "Tempo de percurso diário de ida da residência para o local de trabalho"
+_column(360) int v9058 %2f "Número de horas habitualmente trabalhadas por semana no trabalho principal da semana de referência"
+_column(362) byte v9059 %1f "Era contribuinte para instituto de previdência no trabalho principal da semana de referência"
+_column(363) byte v9060 %1f "Instituto de previdência para o qual contribuía no trabalho principal da semana de referência"
+_column(364) int v9611 %2f "Número de anos no trabalho principal da semana de referência, contados até a data de referência"
+_column(366) int v9612 %2f "Número de meses no trabalho principal da semana de referência, contados até a data de referência"
+_column(368) byte v9062 %1f "Saiu de algum trabalho no período de captação de 358 dias"
+_column(369) byte v9063 %1f "De quantos trabalhos saiu no período de captação de 358 dias"
+_column(370) int v9064 %2f "Número de meses que permaneceu nesse trabalho anterior no período de captação de 358 dias"
+_column(372) byte v9065 %1f "Era empregado com carteira de trabalho assinada nesse trabalho anterior"
+_column(373) byte v9066 %1f "Recebeu seguro-desemprego depois que saiu desse emprego anterior"
+_column(374) byte v9067 %1f "Teve algum trabalho no período de captação de 358 dias"
+_column(375) byte v9068 %1f "Exerceu tarefas em cultivo, pesca ou criação de animais, destinados à própria alimentação das pessoas moradoras no domicílio, no período de captação de 358 dias"
+_column(376) byte v9069 %1f "Exerceu tarefas em construção de prédio, cômodo, poço ou outras obras de construção, destinadas ao próprio uso das pessoas moradoras no domicílio, no período de captação de 358 dias"
+_column(377) byte v9070 %1f "De quantos trabalhos saiu no período de captação de 358 dias"
+_column(378) int v9971 %4f "Código da ocupação no trabalho anterior do período de captação de 358 dias "
+_column(382) long v9972 %5f "Código da atividade principal do empreendimento no trabalho anterior do período de captação de 358 dias"
+_column(387) int v9073 %2f "Posição na ocupação no trabalho anterior do período de captação de 358 dias"
+_column(389) byte v9074 %1f "Nesse emprego anterior recebia do empregador alguma área para produção particular"
+_column(390) byte v9075 %1f "Nesse emprego anterior tinha parceria com o empregador"
+_column(391) byte v9076 %1f "Condição em relação ao empreendimento agrícola nesse trabalho anterior"
+_column(392) byte v9077 %1f "Posição na ocupação nesse trabalho anterior"
+_column(393) byte v9078 %1f "Setor do emprego nesse trabalho anterior"
+_column(394) byte v9079 %1f "Área do emprego nesse trabalho anterior"
+_column(395) byte v9080 %1f "Era militar do Exército, Marinha de Guerra ou Aeronáutica nesse trabalho anterior"
+_column(396) byte v9081 %1f "Era funcionário público estatutário nesse trabalho anterior"
+_column(397) byte v9082 %1f "Prestava serviço doméstico remunerado em mais de um domicílio nos últimos 30 dias em que esteve nesse trabalho anterior"
+_column(398) byte v9083 %1f "Tinha carteira de trabalho assinada nesse trabalho anterior"
+_column(399) byte v9084 %1f "Após sair desse emprego anterior, recebeu seguro-desemprego"
+_column(400) byte v9085 %1f "Era contribuinte de instituto de previdência por esse trabalho anterior"
+_column(401) int v9861 %2f "Número de anos nesse trabalho anterior"
+_column(403) int v9862 %2f "Número de meses nesse trabalho anterior"
+_column(405) byte v9087 %1f "Era associado a algum sindicato no mês de referência"
+_column(406) byte v90871 %1f "Embora não fosse associado, costumava participar de alguma atividade promovida por sindicato ligado a algum trabalho que teve no período de referência de 365 dias"
+_column(407) byte v908721 %1f "Costumava participar de assembleias "
+_column(408) byte v908722 %1f "Costumava participar de manifestações "
+_column(409) byte v908723 %1f "Costumava participar de palestras, cursos ou debates "
+_column(410) byte v908724 %1f "Costumava participar de eventos comemorativos"
+_column(411) byte v908725 %1f "Costumava participar de atividades de lazer ou esportivas "
+_column(412) byte v908726 %1f "Costumava participar de outra atividade"
+_column(413) byte v90873 %1f "Já foi associado a algum sindicato anteriormente"
+_column(414) byte v90874 %1f "Motivo pelo qual não era associado a algum sindicato no mês de referência"
+_column(415) byte v9088 %1f "Tipo de sindicato"
+_column(416) byte v90881 %1f " Motivo pelo qual se associou a esse sindicato"
+_column(417) byte v90882 %1f " Costuma utilizar algum serviço oferecido por esse sindicato"
+_column(418) byte v908831 %1f " Costuma utilizar atendimento jurídico"
+_column(419) byte v908832 %1f " Costuma utilizar convênio médico ou odontológico"
+_column(420) byte v908833 %1f " Costuma utilizar atendimento médico ou odontológico"
+_column(421) byte v908834 %1f " Costuma utilizar convênio com instituição de ensino, curso ou creche"
+_column(422) byte v908835 %1f " Costuma utilizar convênio com estabelecimento comercial ou de serviço (ótica, farmácia, restaurante, academia de ginástica etc)"
+_column(423) byte v908836 %1f " Costuma utilizar seguro de vida"
+_column(424) byte v908837 %1f " Costuma utilizar outro serviço"
+_column(425) byte v90884 %1f " Costumava participar de alguma atividade promovida por esse sindicato"
+_column(426) byte v908851 %1f " Costumava participar de assembleias"
+_column(427) byte v908852 %1f " Costumava participar de manifestações"
+_column(428) byte v908853 %1f " Costumava participar de palestras, cursos ou debates"
+_column(429) byte v908854 %1f " Costumava participar de eventos comemorativos"
+_column(430) byte v908855 %1f " Costumava participar de atividades de lazer ou esportivas"
+_column(431) byte v908856 %1f " Costumava participar de outra atividade"
+_column(432) byte v90886 %1f " No mês de referência, tinha algum cargo de representação dos trabalhadores na organização desse sindicato"
+_column(433) byte v90887 %1f " No período de 365 dias, houve participação desse sindicato em negociação ou dissídio coletivo no trabalho principal que tinha na semana de referência"
+_column(434) byte v908881 %1f " Aspectos tratados em negociações referem-se a rendimentos monetários"
+_column(435) byte v908882 %1f " Aspectos tratados em negociações referem-se a benefícios"
+_column(436) byte v908883 %1f " Aspectos tratados em negociações referem-se a jornada de trabalho"
+_column(437) byte v908884 %1f " Aspectos tratados em negociações referem-se a condições de saúde e segurança no trabalho"
+_column(438) byte v908885 %1f " Aspectos tratados em negociações referem-se a treinamento ou capacitação para o trabalho"
+_column(439) byte v908886 %1f " Aspectos tratados em negociações referem-se a igualdade de oportunidades e de tratamento"
+_column(440) byte v908887 %1f " Aspectos tratados em negociações referem-se a outro "
+_column(441) byte v9891 %1f "Faixa de idade em que começou a trabalhar"
+_column(442) int v9892 %2f "Idade com que começou a trabalhar"
+_column(444) int v9990 %4f "Código da ocupação no trabalho secundário da semana de referência"
+_column(448) long v9991 %5f "Código da atividade principal do empreendimento no trabalho secundário da semana de referência"
+_column(453) byte v9092 %1f "Posição na ocupação no trabalho secundário da semana de referência"
+_column(454) byte v9093 %1f "Setor do emprego nesse trabalho secundário"
+_column(455) byte v9094 %1f "Área do emprego nesse trabalho secundário"
+_column(456) byte v9095 %1f "Era militar do Exército, Marinha de Guerra ou Aeronáutica nesse trabalho secundário"
+_column(457) byte v9096 %1f "Era funcionário público estatutário nesse trabalho secundário"
+_column(458) byte v9097 %1f "Tinha carteira de trabalho assinada nesse trabalho secundário "
+_column(459) byte v9981 %1f "Código 2 - recebia normalmente rendimento mensal em dinheiro, no mês de referência, nesse trabalho secundário"
+_column(460) float v9982 %12f "Rendimento mensal em dinheiro que recebia normalmente, no mês de referência, nesse trabalho secundário"
+_column(472) byte v9984 %1f "Código 4 - recebia normalmente rendimento mensal em produtos ou mercadorias, no mês de referência, nesse trabalho secundário"
+_column(473) float v9985 %12f "Rendimento mensal em valor dos produtos ou mercadorias que recebia normalmente, no mês de referência, nesse trabalho secundário"
+_column(485) byte v9987 %1f "Código 6 - recebia normalmente rendimento mensal somente em benefícios, no mês de referência, nesse trabalho secundário"
+_column(486) byte v9099 %1f "Era contribuinte de instituto de previdência nesse trabalho secundário"
+_column(487) byte v9100 %1f "Instituto de previdência para o qual contribuía nesse emprego secundário"
+_column(488) int v9101 %2f "Número de horas habitualmente trabalhadas por semana nesse trabalho secundário"
+_column(490) byte v1021 %1f "Código 2 - recebia normalmente rendimento mensal em dinheiro, no mês de referência, no(s) outro(s) trabalho(s) da semana de referência"
+_column(491) float v1022 %12f "Rendimento mensal em dinheiro que recebia normalmente, no mês de referência, no(s) outro(s) trabalho(s) da semana de referência"
+_column(503) byte v1024 %1f "Código 4 - recebia normalmente rendimento mensal em produtos ou mercadorias, no mês de referência, no(s) outro(s) trabalho(s) da semana de referência"
+_column(504) float v1025 %12f "Rendimento mensal em valor dos produtos ou mercadorias que recebia normalmente, no mês de referência, no(s) outro(s) trabalho(s) da semana de referência"
+_column(516) byte v1027 %1f "Código 6 - recebia normalmente rendimento mensal somente em benefícios no mês de referência, no(s) outro(s) trabalho(s) da semana de referência"
+_column(517) byte v1028 %1f "Código 8 - era trabalhador não remunerado, no mês de referência, no(s) outro(s) trabalho(s) da semana de referência"
+_column(518) byte v9103 %1f "Era contribuinte de instituto de previdência, por esse(s) outro(s) trabalho(s) da semana de referência"
+_column(519) byte v9104 %1f "Instituto de previdência para o qual contribuía nesse(s) outro(s) trabalho(s) da semana de referência"
+_column(520) int v9105 %2f "Número de horas habitualmente trabalhadas por semana nesse(s) outro(s) trabalho(s) da semana de referência"
+_column(522) byte v9106 %1f "Teve algum trabalho antes do período de referência de 365 dias"
+_column(523) byte v9107 %1f "Exerceu tarefas em cultivo, pesca ou criação de animais, destinados à própria alimentação das pessoas moradoras no domicílio, antes do período de referência de 365 dias"
+_column(524) byte v9108 %1f "Exerceu tarefas em construção de prédio, cômodo, poço ou outras obras de construção, destinadas ao próprio uso das pessoas moradoras no domicílio,  antes do período de referência de 365 dias"
+_column(525) int v1091 %2f "Número de anos, contados até a data de referência, desde que saiu do último trabalho"
+_column(527) int v1092 %2f "Número de meses, contados até a data de referência, desde que saiu do último trabalho"
+_column(529) int v9910 %4f "Código da ocupação no útimo trabalho que teve no período de referência de menos de 4 anos"
+_column(533) long v9911 %5f "Código da atividade principal do empreendimento nesse último trabalho que teve no período de referência de menos de 4 anos"
+_column(538) byte v9112 %1f "Posição na ocupação no último trabalho no período de referência de menos de 4 anos"
+_column(539) byte v9113 %1f "Era militar ou funcionário público estatutário nesse último trabalho "
+_column(540) byte v9114 %1f "Tinha carteira de trabalho assinada nesse último trabalho "
+_column(541) byte v9115 %1f "Tomou alguma providência para conseguir trabalho na semana de referência"
+_column(542) byte v9116 %1f "Tomou alguma providência para conseguir trabalho no período de captação de 23 dias"
+_column(543) byte v9117 %1f "Tomou alguma providência para conseguir trabalho no período de captação de 30 dias"
+_column(544) byte v9118 %1f "Tomou alguma providência para conseguir trabalho no período de captação de 305 dias"
+_column(545) byte v9119 %1f "Última providência que tomou para conseguir trabalho no período de referência de 365 dias"
+_column(546) byte v9120 %1f "Era contribuinte de alguma entidade de previdência privada, no mês de referência"
+_column(547) byte v9121 %1f "Cuidava dos afazeres domésticos na semana de referência"
+_column(548) int v9921 %2f "Número de horas que dedicava normalmente por semana aos afazeres domésticos"
+_column(550) byte v9122 %1f "Era aposentado de instituto de previdência federal (INSS), estadual ou municipal ou do governo federal na semana de referência"
+_column(551) byte v9123 %1f "Era pensionista de instituto de previdência federal (INSS), estadual ou municipal ou do governo federal na semana de referência"
+_column(552) byte v9124 %1f "Recebia normalmente rendimento que não era proveniente de trabalho (pensão alimentícia ou de fundo de pensão, abono de permanência, aluguel, doação, juros de caderneta de poupança, dividendos ou outro qualquer "
+_column(553) int v1251 %2f "Código 01 - recebia normalmente rendimento de aposentadoria de instituto de previdência ou do governo federal, no mês de referência"
+_column(555) float v1252 %12f "Rendimento de aposentadoria de instituto de previdência ou do governo federal que recebia, normalmente, no mês de referência"
+_column(567) int v1254 %2f "Código 02 - recebia normalmente rendimento de pensão de instituto de previdência ou do governo federal, no mês de referência"
+_column(569) float v1255 %12f "Rendimento de pensão de instituto de previdência ou do governo federal que recebia, normalmente, no mês de referência"
+_column(581) int v1257 %2f "Código 03 - recebia normalmente rendimento de outro tipo de aposentadoria, no mês de referência"
+_column(583) float v1258 %12f "Rendimento de outro tipo de aposentadoria que recebia, normalmente, no mês de referência"
+_column(595) int v1260 %2f "Código 04 - recebia normalmente rendimento de outro tipo de pensão, no mês de referência"
+_column(597) float v1261 %12f "Rendimento de outro tipo de pensão que recebia, normalmente, no mês de referência"
+_column(609) int v1263 %2f "Código 05 - recebia normalmente rendimento de abono de permanência, no mês de referência"
+_column(611) float v1264 %12f "Rendimento de abono de permanência que recebia, normalmente, no mês de referência"
+_column(623) int v1266 %2f "Código 06 - recebia normalmente rendimento de aluguel, no mês de referência"
+_column(625) float v1267 %12f "Rendimento de aluguel que recebia, normalmente, no mês de referência"
+_column(637) int v1269 %2f "Código 07 - recebia normalmente rendimento de doação de não morador, no mês de referência"
+_column(639) float v1270 %12f "Rendimento de doação de não morador que recebia, normalmente, no mês de referência"
+_column(651) int v1272 %2f "Código 08 - recebia normalmente juros de caderneta de poupança ou de outras aplicações financeiras, dividendos, programas sociais ou outros rendimentos, no mês de referência"
+_column(653) float v1273 %12f "Juros de caderneta de poupança e de outras aplicações financeiras, dividendos, programas sociais e outros rendimentos que recebia, normalmente, no mês de referência"
+_column(665) byte v9126 %1f "O informante desta parte foi"
+_column(666) byte v1101 %1f "Teve algum filho nascido vivo até a data de referência"
+_column(667) int v1141 %2f "Número de filhos tidos, do sexo masculino, que moravam no domicílio"
+_column(669) int v1142 %2f "Número de filhos tidos, do sexo feminino, que moravam no domicílio"
+_column(671) int v1151 %2f "Número de filhos tidos, do sexo masculino, ainda vivos que moravam em outro local qualquer"
+_column(673) int v1152 %2f "Número de filhos tidos, do sexo feminino, ainda vivos que moravam em outro local qualquer"
+_column(675) byte v1153 %1f "Código 5 - Não sabe o número de filhos tidos, do sexo masculino, que moravam em outro local qualquer"
+_column(676) byte v1154 %1f "Código 7 - Não sabe o número de filhos tidos, do sexo feminino, que moravam em outro local qualquer"
+_column(677) int v1161 %2f "Número de filhos tidos, do sexo masculino, que morreram"
+_column(679) int v1162 %2f "Número de filhos tidos, do sexo feminino, que morreram"
+_column(681) byte v1163 %1f "Código 6 - Não sabe o número de filhos tidos, do sexo masculino, que já morreram"
+_column(682) byte v1164 %1f "Código 8 - Não sabe o número de filhos tidos, do sexo feminino, que já morreram"
+_column(683) byte v1107 %1f "Sexo do último filho tido nascido vivo até a data de referência"
+_column(684) int v1181 %2f "Mês de nascimento do último filho tido nascido vivo"
+_column(686) int v1182 %4f "Ano de nascimento do último filho tido nascido vivo"
+_column(690) byte v1109 %1f "O último filho tido nascido vivo ainda estava vivo na data de referência"
+_column(691) byte v1110 %1f "Teve algum filho, com 7 meses ou mais de gestação, que nasceu morto até a data de referência"
+_column(692) int v1111 %2f "Número de filhos tidos nascidos mortos, do sexo masculino, até a data de referência"
+_column(694) int v1112 %2f "Número de filhos tidos nascidos mortos, do sexo feminino, até a data de referência"
+_column(696) byte v1113 %1f "Código 5 - Não sabe o número de filhos tidos nascidos mortos, do sexo masculino, até a data de referência"
+_column(697) byte v1114 %1f "Código 7 - Não sabe o número de filhos tidos nascidos mortos, do sexo feminino, até a data de referência"
+_column(698) byte v1115 %1f "O informante desta parte foi"
+_column(699) int v4801 %2f "Nível de ensino, duração do ensino fundamental e série que frequentavam (todos os estudantes)"
+_column(701) int v4802 %2f "Nível de ensino e grupos de séries do ensino fundamental que frequentavam (todos os estudantes)"
+_column(703) int v4803 %2f "Anos de estudo (todas as pessoas)"
+_column(705) byte v4704 %1f "Condição de atividade"
+_column(706) byte v4805 %1f "Condição de ocupação no período de referência de 365 dias"
+_column(707) int v4706 %2f "Posição na ocupação no trabalho principal"
+_column(709) byte v4707 %1f "Horas habitualmente trabalhadas por semana em todos os trabalhos"
+_column(710) byte v4808 %1f "Atividade principal do empreendimento do trabalho principal "
+_column(711) int v4809 %2f "Grupamentos de atividade principal do empreendimento do trabalho principal "
+_column(713) int v4810 %2f "Grupamentos ocupacionais do trabalho principal"
+_column(715) byte v4711 %1f "Contribuição para instituto de previdência em qualquer trabalho "
+_column(716) byte v4812 %1f "Atividade principal do empreendimento no trabalho principal do período de referência de 365 dias"
+_column(717) byte v4713 %1f "Condição de atividade no trabalho principal do período de referência de 365 dias"
+_column(718) byte v4814 %1f "Condição de ocupação no período de referência de 365 dias"
+_column(719) int v4715 %2f "Posição na ocupação no trabalho principal do período de referência de 365 dias"
+_column(721) int v4816 %2f "Grupamentos de atividade no trabalho principal do período de referência de 365 dias"
+_column(723) int v4817 %2f "Grupamentos ocupacionais do trabalho principal do período de referência de 365 dias"
+_column(725) float v4718 %12f "Rendimento mensal do trabalho principal para pessoas de 10 anos ou mais de idade"
+_column(737) float v4719 %12f "Rendimento mensal de todos os trabalhos para pessoas de 10 anos ou mais de idade"
+_column(749) float v4720 %12f "Rendimento mensal de todas as fontes para pessoas de 10 anos ou mais de idade"
+_column(761) float v4721 %12f "Rendimento mensal domiciliar"
+_column(773) float v4722 %12f "Rendimento mensal familiar "
+_column(785) int v4723 %2f "Tipo de família"
+_column(787) int v4724 %2f "Número de componentes da família "
+_column(789) byte v4727 %1f "Código de área censitária"
+_column(790) byte v4728 %1f "Código de situação censitária"
+_column(791) long v4729 %5f "Peso da pessoa"
+_column(796) long v4732 %5f "Peso da família"
+_column(801) byte v4735 %1f "Controle da tabulação de fecundidade, para mulheres com 10 anos ou mais de idade"
+_column(802) byte v4838 %1f "Grupos de anos de estudo"
+_column(803) byte v6502 %1f "Criança de 5 a 17 anos de idade"
+_column(804) int v4741 %2f "Número de componentes do domícilio "
+_column(806) float v4742 %12f "Rendimento mensal domiciliar per capita "
+_column(818) int v4743 %2f "Faixa de rendimento mensal domiciliar per capita "
+_column(820) byte v4745 %1f "Nível de instrução mais elevado alcançado"
+_column(821) byte v4746 %1f "Situação de ocupação na semana de referência das pessoas de 5 anos ou mais de idade"
+_column(822) byte v4747 %1f "Atividade principal do empreendimento do trabalho principal "
+_column(823) byte v4748 %1f "Atividade principal do empreendimento do trabalho principal do período de referência de 365 dias"
+_column(824) byte v4749 %1f "Situação de ocupação no período de referência de 365 dias das pessoas de 5 anos ou mais de idade"
+_column(825) float v4750 %12f "Rendimento mensal familiar per capita "
+_column(837) int v38011 %2f "Primeiro responsável pela criança no domicílio"
+_column(839) int v38012 %2f "Segundo responsável pela criança no domicílio"
+_column(841) byte v3802 %1f "Nos últimos três meses normalmente, de segunda à sexta, onde a criança fica no período da manhã"
+_column(842) byte v3803 %1f "Qual o principal motivo para a criança ficar neste local"
+_column(843) byte v3804 %1f "A criança fica o período da tarde neste mesmo local e com a mesma pessoa?"
+_column(844) byte v3805 %1f "Nos últimos três meses normalmente, de segunda à sexta, onde a criança fica no período da tarde"
+_column(845) byte v3806 %1f "Qual o principal motivo para a criança ficar neste local"
+_column(846) byte v3807 %1f "Tem interesse em matricular a criança em creche ou escola"
+_column(847) byte v3808 %1f "Qual a principal ação que o responsável pela criança tomou para obter uma vaga em creche ou escola"
+_column(848) byte v3809 %1f "Informante desta parte"
+_column(849) byte v37001 %1f "Marca de seleção de pessoa para o Suplemento de Aspectos das Relações de Trabalho"
+_column(850) byte v37002 %1f "Tipo de entrevista"
+_column(851) byte v3701 %1f "Foi contratado por intermediário no trabalho único ou principal da semana de referência"
+_column(852) byte v3702 %1f "Foi contratado por "
+_column(853) byte v3703 %1f "Grau de satisfação quanto às condições prometidas e encontradas efetivamente"
+_column(854) byte v3704 %1f "Número de horas efetivamente trabalhadas estava"
+_column(855) byte v3705 %1f "Sobre a alteração do número de horas trabalhadas em relação ao que tinha sido acordado"
+_column(856) byte v3706 %1f "Rendimento efetivamente recebido no trabalho da semana de referência estava"
+_column(857) byte v37071 %1f "Possuía débito financeiro de aluguel que o impedia de sair do trabalho que tinha na semana de referência"
+_column(858) byte v37072 %1f "Possuía débito financeiro de alimentação que o impedia de sair do trabalho que tinha na semana de referência"
+_column(859) byte v37073 %1f "Possuía débito financeiro de instrumentos de trabalho que o impedia de sair do trabalho que tinha na semana de referência"
+_column(860) byte v37074 %1f "Possuía débito financeiro de transporte que o impedia de sair do trabalho que tinha na semana de referência"
+_column(861) byte v37075 %1f "Possuía outro débito financeiro que o impedia de sair do trabalho que tinha na semana de referência"
+_column(862) byte v37091 %1f "Grau de satisfação quanto ao salário e complementosgratificações salariais"
+_column(863) byte v37092 %1f "Grau de satisfação quanto ao valor do auxílio alimentação"
+_column(864) byte v37093 %1f "Grau de satisfação quanto à jornada de trabalho"
+_column(865) byte v37094 %1f "Grau de satisfação quanto à flexibilidade de horário"
+_column(866) byte v37095 %1f "Grau de satisfação quanto ao processo de capacitação profissional"
+_column(867) byte v37096 %1f "Grau de satisfação quanto à promoção de igualdade de oportunidades e de tratamento no trabalho"
+_column(868) byte v37097 %1f "Grau de satisfação quanto à salubridade e à segurança no ambiente de trabalho"
+_column(869) byte v37098 %1f "Grau de satisfação quanto aos benefícios sociais complementares"
+_column(870) long v3719 %5f "Peso do morador selecionado para o Suplemento de Aspectos das relações de trabalho SEM ajuste pela projeção de população"
+_column(875) long v3720 %5f "Peso do morador selecionado para o Suplemento de Aspectos das relações de trabalho COM ajuste pela projeção de população - usado no cálculo de indicadores de morador selecionado"
+_column(880) byte v36001 %1f "Marca de seleção de pessoa para o Suplemento de Práticas de Esporte e Atividade Física"
+_column(881) byte v36002 %1f "Tipo de entrevista"
+_column(882) byte v3601  %1f "No período de referência de 365 dias, praticou algum esporte no tempo livre (fora do horário de trabalho e de educação física na escola)"
+_column(883) byte v3602  %1f "Por que motivo praticou esporte no período de referência de 365 dias "
+_column(884) byte v3603  %1f "Frequência com que costumava praticar esporte no período de referência de 365 dias"
+_column(885) int v3604  %2f "Número de meses em que praticou esporte com essa frequência"
+_column(887) byte v3605  %1f "Em dia que costumava praticar esporte, o tempo que normalmente dedicava era de"
+_column(888) byte v3606  %1f "No período de referência de 365 dias, praticou mais de uma modalidade de esporte"
+_column(889) long v3607  %5f "Código do principal esporte que praticou no período de referência de 365 dias"
+_column(894) byte v3608  %1f "Costumava praticar esse esporte em"
+_column(895) byte v3609  %1f "Nesse período, praticou esse principal esporte com orientação de professor ou instrutor"
+_column(896) byte v3610  %1f "Nesse período, praticou esse principal esporte como representante ou filiado a alguma instituição"
+_column(897) byte v3611  %1f "Essa instituição era"
+_column(898) byte v3612  %1f "Nesse período, participou de alguma competição desse principal esporte "
+_column(899) byte v3613  %1f "O nível dessa competição foi"
+_column(900) byte v3614  %1f "No período de 365 dias, além de todas as atividades de esporte, praticou alguma outra que considerava como atividade física no seu tempo livre (fora do horário de trabalho e da educação física na escola)"
+_column(901) byte v3615  %1f "Por que motivo não praticou esporte no período de referência de 365 dias "
+_column(902) byte v3616  %1f "Já praticou algum esporte antes de 27 de setembro de 2014"
+_column(903) long v3617  %5f "Código do último esporte que praticou anteriormente"
+_column(908) int v3618  %2f "Idade com que deixou de praticar esporte"
+_column(910) byte v3619  %1f "Por que motivo parou de praticar esporte"
+_column(911) byte v3620  %1f "No período de referência de 365 dias, praticou alguma atividade física que não considera esporte, no seu tempo livre (fora do horário de trabalho ou da educação física na escola)"
+_column(912) byte v3621  %1f "Por que motivo praticou atividade física no período de referência de 365 dias "
+_column(913) byte v3622  %1f "Frequência com que costumava praticar atividade física no período de referência de 365 dias"
+_column(914) int v3623  %2f "Número de meses em que praticou atividade física com essa frequência"
+_column(916) byte v3624  %1f "Em dia que costumava praticar atividade física, o tempo que normalmente dedicava era de"
+_column(917) long v3625  %5f "Código da atividade física que praticou nesse período"
+_column(922) byte v3626  %1f "Costumava praticar essa atividade física em"
+_column(923) byte v3627  %1f "Nesse período, praticou essa principal atividade física com orientação de professor ou instrutor"
+_column(924) byte v3628  %1f "Nesse período, praticou essa principal atividade física como representante ou filiado a alguma instituição"
+_column(925) byte v3629  %1f "Essa instituição era"
+_column(926) byte v3630  %1f "Nesse período, participou de alguma competição dessa principal atividade física"
+_column(927) byte v3631  %1f "O nível dessa competição foi"
+_column(928) byte v3632  %1f "Em sua opinião, o poder público deveria investir no desenvolvimento de atividades físicas ou esportivas na vizinhança em que reside"
+_column(929) byte v3633  %1f "Em sua opinião, em que o poder público deveria investir primeiramente na vizinhança em que reside"
+_column(930) byte v3634  %1f "Esse investimento, na vizinhança em que reside, deveria ser primeiramente"
+_column(931) double v3637  %5f "Peso do morador selecionado para o Suplemento de Práticas de Esporte e Atividade Física SEM ajuste pela projeção de população"
+_column(936) double v3638  %5f "Peso do morador selecionado para o Suplemento de Práticas de Esporte e Atividade Física COM ajuste pela projeção de população - usado no cálculo de indicadores de morador selecionado"
+_column(941) long v9993  %8f "data de geração do arquivo de microdados"
+{c )-}
+
+(356904 observations read)
+
+{com}. sort uf v0102 v0103
+{txt}
+{com}. save PES2015.dta, replace       
+{txt}file PES2015.dta saved
+
+{com}. clear
+{txt}
+{com}. 
+. infile using "DOM2015.dct", using(DOM2015.TXT)  
+
+{txt}dictionary {c -(}
+_column(1) int v0101 %4f "Ano de referência"
+_column(5) str2 uf %2f "Unidade da Federação"
+_column(5) long v0102 %8f "Número de controle"
+_column(13) int v0103 %3f "Número de série"
+_column(16) int v0104 %2f "Tipo de entrevista"
+_column(18) int v0105 %2f "Total de moradores"
+_column(20) int v0106 %2f "Total de moradores de 10 anos ou mais"
+_column(22) byte v0201 %1f "Espécie do domicílio"
+_column(23) byte v0202 %1f "Tipo do domicílio"
+_column(24) byte v0203 %1f "Material predominante na construção das paredes externas do prédio"
+_column(25) byte v0204 %1f "Material predominante na cobertura (telhado) do domicílio "
+_column(26) int v0205 %2f "Número de cômodos do domicílio"
+_column(28) int v0206 %2f "Número de cômodos servindo de dormitório"
+_column(30) byte v0207 %1f "Condição de ocupação do domicílio"
+_column(31) float v0208 %12f "Aluguel mensal pago no mês de referência"
+_column(43) float v0209 %12f "Prestação mensal paga no mês de referência"
+_column(55) byte v0210 %1f "Terreno onde está localizado o domicílio é próprio"
+_column(56) byte v0211 %1f "Tem água canalizada em pelo menos um cômodo do domicílio "
+_column(57) byte v0212 %1f "Proveniência da água canalizada utilizada no domicílio"
+_column(58) byte v0213 %1f "Água utilizada no domicílio é canalizada de rede geral de distribuição para a propriedade"
+_column(59) byte v0214 %1f "Água utilizada no domicílio é de poço ou nascente localizado na propriedade"
+_column(60) byte v0215 %1f "Tem banheiro ou sanitário no domicílio ou na propriedade"
+_column(61) byte v0216 %1f "Uso do banheiro ou sanitário"
+_column(62) int v2016 %2f "Número de banheiros ou sanitários"
+_column(64) byte v0217 %1f "Forma de escoadouro do banheiro ou sanitário"
+_column(65) byte v0218 %1f "Destino do lixo domiciliar "
+_column(66) byte v0219 %1f "Forma de iluminação do domicílio"
+_column(67) byte v0220 %1f "Tem telefone móvel celular"
+_column(68) byte v2020 %1f "Tem telefone fixo convencional"
+_column(69) byte v0221 %1f "Tem fogão de duas ou mais bocas"
+_column(70) byte v0222 %1f "Tem fogão de uma boca"
+_column(71) byte v0223 %1f "Tipo de combustível utilizado no fogão "
+_column(72) byte v0224 %1f "Tem filtro d’água"
+_column(73) byte v0225 %1f "Tem rádio"
+_column(74) byte v0226 %1f "Tem televisão em cores"
+_column(75) byte v0227 %1f "Tem televisão em preto e branco"
+_column(76) int v02270 %2f "Número de televisões de tela fina"
+_column(78) int v02271 %2f "Número de televisões de tubo"
+_column(80) byte v02272 %1f "Tem televisão por assinatura"
+_column(81) byte v02273 %1f "Tem televisão com recepçao de sinal digital de tv aberta"
+_column(82) byte v02274 %1f "Tem televisão com antena parabólica"
+_column(83) byte v2027 %1f "Tem aparelho de DVD"
+_column(84) byte v0228 %1f "Tem geladeira"
+_column(85) byte v0229 %1f "Tem freezer"
+_column(86) byte v0230 %1f "Tem máquina de lavar roupa"
+_column(87) byte v0231 %1f "Tem microcomputador"
+_column(88) byte v0232 %1f "Microcomputador é utilizado para acessar a Internet"
+_column(89) byte v02321 %1f "Tem tablet"
+_column(90) byte v02322 %1f "Tem acesso à Internet no próprio domicilio"
+_column(91) byte v02323 %1f "Para acessar à Internet utiliza-se microcomputador"
+_column(92) byte v02324 %1f "Para acessar à Internet utiliza-se telefone celular"
+_column(93) byte v02325 %1f "Para acessar à Internet utiliza-se tablet"
+_column(94) byte v02326 %1f "Para acessar à Internet utiliza-se tv"
+_column(95) byte v02327 %1f "Para acessar à Internet utiliza-se outro equipamento eletrônico"
+_column(96) byte v02424 %1f "O acesso à Internet é feito através de sinal de rede celular 3G ou 4G"
+_column(97) byte v02425 %1f "O acesso à Internet é feito através de conexão discada por linha telefônica"
+_column(98) byte v02426 %1f "O acesso à Internet é feito por banda larga"
+_column(99) byte v2032 %1f "Tem carro ou motocicleta de uso pessoal"
+_column(100) byte v4105 %1f "Código de situação censitária"
+_column(101) byte v4107 %1f "Código de área censitária"
+_column(102) int v4600 %2f "Dia de referência"
+_column(104) int v4601 %2f "Mês de referência"
+_column(106) int v4602 %4f "Estrato"
+_column(110) int v4604 %2f "Número de municípios selecionados no estrato"
+_column(112) float v4605 %12.1f "Probabilidade do município"
+_column(124) int v4606 %3f "Número de setores selecionados no município"
+_column(127) float v4607 %12.1f "Probabilidade do setor"
+_column(139) long v4608 %6f "Intervalo de seleção do domicílio"
+_column(145) long v4609 %9f "Projeção de população "
+_column(154) int v4610 %3f "Inverso da fração"
+_column(157) double v4611 %5f "Peso do domicílio"
+_column(162) float v4614 %12f "Rendimento mensal domiciliar"
+_column(174) int UPA %4f "Delimitação do município"
+_column(178) long v4617 %7f "STRAT"
+_column(185) long v4618 %7f "PSU"
+_column(192) int v4620 %2f "Número de componentes do domícilio "
+_column(194) float v4621 %12f "Rendimento mensal domiciliar per capita "
+_column(206) int v4622 %2f "Faixa do rendimento mensal domiciliar per capita "
+_column(208) byte v4624 %1f "Forma de abastecimento de água"
+_column(209) byte v4628 %1f "Marca de seleção de domicílio para o Suplemento de Aspectos das Relações de Trabalho e"
+_column(210) long v4629 %7f "Projeção da população obtida com os dados dos moradores dos domicílios da pesquisa - Suplemento de Práticas de Esporte e Atividade Física "
+_column(217) long v4630 %5f "Domínio do pós-estrato do Suplemento de Práticas de Esporte e Atividade Física"
+_column(222) long v4632 %7f "Projeção da população obtida com os dados dos moradores dos domicílios da pesquisa - Suplemento de Aspectos das Relações de Trabalho"
+_column(229) long v4633 %5f "Domínio do pós-estrato do Suplemento de Aspectos das Relações de Trabalho"
+{c )-}
+
+(151189 observations read)
+
+{com}. sort uf v0102 v0103
+{txt}
+{com}. save DOM2015.dta, replace       
+{txt}file DOM2015.dta saved
+
+{com}. clear
+{txt}
+{com}. 
+. use PES2015.dta, clear
+{txt}
+{com}.  merge m:1 uf v0102 v0103 using DOM2015.dta
+{res}
+{txt}{col 5}Result{col 38}# of obs.
+{col 5}{hline 41}
+{col 5}not matched{col 30}{res}          33,250
+{txt}{col 9}from master{col 30}{res}               0{txt}  (_merge==1)
+{col 9}from using{col 30}{res}          33,250{txt}  (_merge==2)
+
+{col 5}matched{col 30}{res}         356,904{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}.  drop if _merge==2
+{txt}(33250 observations deleted)
+
+{com}.  drop _merge
+{txt}
+{com}. save pnad2015.dta, replace      
+{txt}file pnad2015.dta saved
+
+{com}. 
+. * Cria, altera e renomeia variáveis 
+. rename (v4718 v4803 v8005 v0404 v0302) (renda anos_estudo idade cor_raca sexo)
+{res}{txt}
+{com}. rename (v0504) (migrou)
+{res}{txt}
+{com}. rename (v4729 v4617 v4618) (peso estrato psu)
+{res}{txt}
+{com}. 
+. gen idade2 = idade^2
+{txt}
+{com}. gen log_renda = ln(renda) // renda = 0 é descartado.
+{txt}(202076 missing values generated)
+
+{com}. 
+. recode anos_estudo (17 = .)
+{txt}(anos_estudo: 849 changes made)
+
+{com}. recode renda (999999999999 = .)
+{txt}(renda: 2147 changes made)
+
+{com}. recode migrou (2=1) (4=0)
+{txt}(migrou: 302531 changes made)
+
+{com}. 
+. replace anos_estudo = anos_estudo - 1
+{txt}(356055 real changes made)
+
+{com}. 
+. label define sexo_labels 2 "Masc" 4 "Fem"
+{txt}
+{com}. label define cor_raca_labels 0 "Indigena" 2 "Branca" 4 "Preta" 6 "Amarela" 8 "Parda" 9 "SemDecl"
+{txt}
+{com}. 
+. label value sexo sexo_labels
+{txt}
+{com}. label value cor_raca cor_raca_labels
+{txt}
+{com}. 
+. * Organiza dados
+. order v0101 uf sexo idade idade2 sexo cor_raca anos_estudo migrou renda log_renda
+{txt}
+{com}. keep v0101 uf sexo idade idade2 sexo cor_raca anos_estudo migrou renda log_renda peso estrato psu
+{txt}
+{com}. 
+. keep if renda > 0
+{txt}(10365 observations deleted)
+
+{com}. drop if renda == .
+{txt}(193858 observations deleted)
+
+{com}. 
+. save "${c -(}data{c )-}/pnad2015_ex1.dta", replace
+{txt}file C:\Users\Samue\Desktop\EPGE_github\MicroEmpirica\data\pnad/pnad2015_ex1.dta saved
+
+{com}. 
+. /* EXERCÍCIO EMPÍRICO */
+.         use "${c -(}data{c )-}/pnad2015_ex1.dta", clear
+{txt}
+{com}. 
+.         * Define o Desenho Amostral
+.         svyset psu [pw = peso], strata(estrato) 
+
+      {txt}pweight:{col 16}{res}peso
+          {txt}VCE:{col 16}{res}linearized
+  {txt}Single unit:{col 16}{res}missing
+     {txt}Strata 1:{col 16}{res}estrato
+         {txt}SU 1:{col 16}{res}psu
+        {txt}FPC 1:{col 16}<zero>
+{p2colreset}{...}
+
+{com}. 
+.         * Identifica os estratos com psu unico 
+.         svydes, gen(single2)
+
+{txt}Survey: Describing stage 1 sampling units
+
+      pweight:{col 16}{res}peso
+          {txt}VCE:{col 16}{res}linearized
+  {txt}Single unit:{col 16}{res}missing
+     {txt}Strata 1:{col 16}{res}estrato
+         {txt}SU 1:{col 16}{res}psu
+        {txt}FPC 1:{col 16}<zero>
+{p2colreset}{...}
+
+{col 39}#Obs per Unit
+{col 31}{hline 28}
+Stratum    #Units     #Obs      min       mean      max   
+{hline 8}  {hline 8}  {hline 8}  {hline 8}  {hline 8}  {hline 8}
+{res}  110001         9{txt} {res}      200         8      22.2        42
+  110002         9{txt} {res}      139         4      15.4        28
+  110003         4{txt} {res}       61         9      15.3        24
+  110004         5{txt} {res}       93         6      18.6        34
+  110005        13{txt} {res}      217        10      16.7        33
+  110006         5{txt} {res}       75        11      15.0        18
+  110007        41{txt} {res}      723         5      17.6        35
+  110008         6{txt} {res}       99        11      16.5        22
+  110009         8{txt} {res}      157         9      19.6        54
+  110010         2{txt} {res}      133        62      66.5        71
+  110011         2{txt} {res}      156        76      78.0        80
+  110012         2{txt} {res}      159        75      79.5        84
+  110013         2{txt} {res}      130        63      65.0        67
+  110014         2{txt} {res}      137        53      68.5        84
+  110015         2{txt} {res}      163        64      81.5        99
+  110016         2{txt} {res}      112        50      56.0        62
+  120001         9{txt} {res}      112         5      12.4        22
+  120002         3{txt} {res}       42        13      14.0        16
+  120003        45{txt} {res}      867         7      19.3        46
+  120004         4{txt} {res}       67         4      16.8        27
+  120005         3{txt} {res}       72        11      24.0        40
+  120006         2{txt} {res}      103        40      51.5        63
+  120007         2{txt} {res}      152        69      76.0        83
+  120008         2{txt} {res}      166        66      83.0       100
+  130001         4{txt} {res}       88        17      22.0        28
+  130002         7{txt} {res}       99         4      14.1        26
+  130003         6{txt} {res}       77         4      12.8        18
+  130004       128{txt} {res}     2759         7      21.6        39
+  130005         5{txt} {res}      126        17      25.2        38
+  130006         2{txt} {res}      129        31      64.5        98
+  130007         2{txt} {res}       77        26      38.5        51
+  130008         2{txt} {res}       73        31      36.5        42
+  130009         2{txt} {res}      138        53      69.0        85
+  130010         2{txt} {res}      170        75      85.0        95
+  130011         2{txt} {res}      245        84     122.5       161
+  130012         2{txt} {res}      235       104     117.5       131
+  130013         2{txt} {res}      134        66      67.0        68
+  130014         2{txt} {res}      144        64      72.0        80
+  140001        37{txt} {res}      713         1      19.3        32
+  140002         2{txt} {res}      154        63      77.0        91
+  140003         2{txt} {res}      172        83      86.0        89
+  150001         6{txt} {res}       93         7      15.5        22
+  150002         5{txt} {res}      155        22      31.0        38
+  150003        58{txt} {res}     1189        10      20.5        62
+  150004         6{txt} {res}       79        10      13.2        20
+  150005       177{txt} {res}     2997         1      16.9        35
+  150006         7{txt} {res}      117        11      16.7        22
+  150007         5{txt} {res}       75        12      15.0        20
+  150008         3{txt} {res}       51        14      17.0        22
+  150009         5{txt} {res}       75         8      15.0        23
+  150010         9{txt} {res}      183        13      20.3        33
+  150011         6{txt} {res}       92        12      15.3        19
+  150012        13{txt} {res}      253        13      19.5        28
+  150013        12{txt} {res}      239        12      19.9        32
+  150014         5{txt} {res}       73         8      14.6        21
+  150015        10{txt} {res}      185         6      18.5        30
+  150016         3{txt} {res}       43        11      14.3        18
+  150017         7{txt} {res}      138         8      19.7        27
+  150018        15{txt} {res}      217         4      14.5        21
+  150019         4{txt} {res}       29         2       7.3        12
+  150020         3{txt} {res}       51        15      17.0        19
+  150021         4{txt} {res}       74         9      18.5        33
+  150022         2{txt} {res}      141        69      70.5        72
+  150023         2{txt} {res}      179        69      89.5       110
+  150024         2{txt} {res}       70        29      35.0        41
+  150025         2{txt} {res}       99        34      49.5        65
+  150026         2{txt} {res}       83        29      41.5        54
+  150027         2{txt} {res}      157        70      78.5        87
+  150028         2{txt} {res}      139        63      69.5        76
+  150029         2{txt} {res}      160        77      80.0        83
+  150030         2{txt} {res}      131        63      65.5        68
+  150031         2{txt} {res}      107        43      53.5        64
+  150032         2{txt} {res}       81        35      40.5        46
+  150033         2{txt} {res}      117        47      58.5        70
+  150034         2{txt} {res}      137        57      68.5        80
+  150035         2{txt} {res}      188        86      94.0       102
+  150036         2{txt} {res}       92        46      46.0        46
+  150037         2{txt} {res}      102        40      51.0        62
+  150038         2{txt} {res}       96        36      48.0        60
+  150039         2{txt} {res}      148        60      74.0        88
+  150040         2{txt} {res}      154        62      77.0        92
+  150041         2{txt} {res}       80        28      40.0        52
+  160001        33{txt} {res}      676         3      20.5        48
+  160002         7{txt} {res}      159        15      22.7        29
+  160003         2{txt} {res}      165        76      82.5        89
+  160004         2{txt} {res}      102        46      51.0        56
+  170001        15{txt} {res}      288         9      19.2        41
+  170002         9{txt} {res}      141        11      15.7        21
+  170003         5{txt} {res}       96        10      19.2        28
+  170004         5{txt} {res}       87         8      17.4        31
+  170005        24{txt} {res}      494        10      20.6        32
+  170006         2{txt} {res}      104        46      52.0        58
+  170007         2{txt} {res}      106        47      53.0        59
+  170008         2{txt} {res}      143        65      71.5        78
+  170009         2{txt} {res}      132        56      66.0        76
+  170010         2{txt} {res}      185        90      92.5        95
+  170011         2{txt} {res}      156        69      78.0        87
+  170012         2{txt} {res}      124        52      62.0        72
+  170013         2{txt} {res}      145        64      72.5        81
+  170014         2{txt} {res}      141        70      70.5        71
+  210001         5{txt} {res}       78         8      15.6        23
+  210002         8{txt} {res}      172        15      21.5        26
+  210003         5{txt} {res}       84        11      16.8        23
+  210004        32{txt} {res}      542         7      16.9        28
+  210005         5{txt} {res}      112         8      22.4        45
+  210006         2{txt} {res}      144        64      72.0        80
+  210007         2{txt} {res}      106        50      53.0        56
+  210008         2{txt} {res}      199        42      99.5       157
+  210009         2{txt} {res}      137        60      68.5        77
+  210010         2{txt} {res}      177        82      88.5        95
+  210011         2{txt} {res}      129        40      64.5        89
+  210012         2{txt} {res}      101        45      50.5        56
+  210013         2{txt} {res}      141        59      70.5        82
+  210014         2{txt} {res}      146        70      73.0        76
+  210015         2{txt} {res}      180        85      90.0        95
+  210016         2{txt} {res}      168        81      84.0        87
+  210017         2{txt} {res}      132        58      66.0        74
+  210018         2{txt} {res}      118        56      59.0        62
+  210019         2{txt} {res}      145        63      72.5        82
+  210020         2{txt} {res}      136        68      68.0        68
+  220001         5{txt} {res}       97         4      19.4        27
+  220002        32{txt} {res}      729        11      22.8        33
+  220003         2{txt} {res}      135        67      67.5        68
+  220004         2{txt} {res}      145        50      72.5        95
+  220005         2{txt} {res}      183        89      91.5        94
+  220006         2{txt} {res}      170        72      85.0        98
+  220007         2{txt} {res}      170        85      85.0        85
+  220008         2{txt} {res}      196        92      98.0       104
+  220009         2{txt} {res}      170        80      85.0        90
+  220010         2{txt} {res}      157        68      78.5        89
+  220011         2{txt} {res}      160        78      80.0        82
+  230001         8{txt} {res}      148         9      18.5        28
+  230002         6{txt} {res}      121        12      20.2        31
+  230003        25{txt} {res}      446         5      17.8        29
+  230004         4{txt} {res}       44         8      11.0        14
+  230005         4{txt} {res}       72        16      18.0        21
+  230006       194{txt} {res}     2889         2      14.9        34
+  230007         4{txt} {res}       88        18      22.0        27
+  230008         2{txt} {res}       58        26      29.0        32
+  230009         8{txt} {res}      123         9      15.4        22
+  230010        16{txt} {res}      324        11      20.3        33
+  230011         8{txt} {res}      156        14      19.5        27
+  230012         5{txt} {res}      164        16      32.8        65
+  230013         5{txt} {res}       82        10      16.4        22
+  230014         5{txt} {res}       64        10      12.8        18
+  230015         6{txt} {res}      126        14      21.0        27
+  230016         5{txt} {res}       88        13      17.6        27
+  230017         2{txt} {res}      128        60      64.0        68
+  230018         2{txt} {res}       88        34      44.0        54
+  230019         2{txt} {res}      116        38      58.0        78
+  230020         2{txt} {res}      109        54      54.5        55
+  230021         2{txt} {res}      127        61      63.5        66
+  230022         2{txt} {res}      132        42      66.0        90
+  230023         2{txt} {res}      125        54      62.5        71
+  230024         2{txt} {res}       76        29      38.0        47
+  230025         2{txt} {res}      126        55      63.0        71
+  230026         2{txt} {res}      108        52      54.0        56
+  230027         2{txt} {res}      152        76      76.0        76
+  230028         2{txt} {res}      140        70      70.0        70
+  230029         2{txt} {res}      117        51      58.5        66
+  230030         2{txt} {res}      109        54      54.5        55
+  230031         2{txt} {res}      103        31      51.5        72
+  240001         9{txt} {res}      187        11      20.8        34
+  240002        10{txt} {res}      162         8      16.2        24
+  240003        30{txt} {res}      508         8      16.9        26
+  240004         2{txt} {res}      117        57      58.5        60
+  240005         2{txt} {res}      133        61      66.5        72
+  240006         2{txt} {res}      105        52      52.5        53
+  240007         2{txt} {res}      122        55      61.0        67
+  240008         2{txt} {res}      104        49      52.0        55
+  240009         2{txt} {res}      166        76      83.0        90
+  240010         2{txt} {res}      162        70      81.0        92
+  240011         2{txt} {res}       84        42      42.0        42
+  250001        14{txt} {res}      301        16      21.5        33
+  250002        28{txt} {res}      559        12      20.0        37
+  250003         4{txt} {res}       77        16      19.3        24
+  250004         2{txt} {res}      128        59      64.0        69
+  250005         2{txt} {res}      179        85      89.5        94
+  250006         2{txt} {res}      130        65      65.0        65
+  250007         2{txt} {res}       94        42      47.0        52
+  250008         2{txt} {res}      172        84      86.0        88
+  250009         2{txt} {res}      139        68      69.5        71
+  250010         2{txt} {res}      118        55      59.0        63
+  250011         2{txt} {res}      167        82      83.5        85
+  250012         2{txt} {res}      171        73      85.5        98
+  250013         2{txt} {res}      159        71      79.5        88
+  260001        10{txt} {res}      152         6      15.2        25
+  260002        20{txt} {res}      296         3      14.8        38
+  260003        14{txt} {res}      212         9      15.1        25
+  260004        12{txt} {res}      207         5      17.3        40
+  260005         5{txt} {res}       63         6      12.6        23
+  260006        11{txt} {res}      129         4      11.7        20
+  260007         8{txt} {res}       92         3      11.5        22
+  260008         5{txt} {res}       13         1       2.6         5
+  260009        67{txt} {res}      914         2      13.6        24
+  260010         6{txt} {res}       74         9      12.3        16
+  260011        39{txt} {res}      574         3      14.7        25
+  260012        33{txt} {res}      401         1      12.2        23
+  260013         9{txt} {res}      189        17      21.0        28
+  260014       160{txt} {res}     2572         1      16.1        37
+  260015        11{txt} {res}      163        11      14.8        20
+  260016         5{txt} {res}       73        11      14.6        20
+  260017         3{txt} {res}       63        17      21.0        24
+  260018         2{txt} {res}      130        64      65.0        66
+  260019         2{txt} {res}      142        70      71.0        72
+  260020         2{txt} {res}      129        38      64.5        91
+  260021         2{txt} {res}       99        36      49.5        63
+  260022         2{txt} {res}      116        47      58.0        69
+  260023         2{txt} {res}      105        27      52.5        78
+  260024         2{txt} {res}      164        74      82.0        90
+  260025         2{txt} {res}       99        47      49.5        52
+  260026         2{txt} {res}      158        76      79.0        82
+  260027         2{txt} {res}       97        44      48.5        53
+  260028         2{txt} {res}      119        48      59.5        71
+  260029         2{txt} {res}      134        65      67.0        69
+  260030         2{txt} {res}      106        45      53.0        61
+  260031         2{txt} {res}       75        31      37.5        44
+  260032         2{txt} {res}       96        37      48.0        59
+  260033         2{txt} {res}       79        29      39.5        50
+  270001         9{txt} {res}      134        10      14.9        21
+  270002        39{txt} {res}      717         3      18.4        27
+  270003         2{txt} {res}      124        54      62.0        70
+  270004         2{txt} {res}      104        50      52.0        54
+  270005         2{txt} {res}       93        40      46.5        53
+  270006         2{txt} {res}      100        42      50.0        58
+  270007         2{txt} {res}       96        40      48.0        56
+  270008         2{txt} {res}      129        55      64.5        74
+  270009         2{txt} {res}      105        48      52.5        57
+  270010         2{txt} {res}       83        38      41.5        45
+  280001        41{txt} {res}      635         5      15.5        38
+  280002         5{txt} {res}       94        13      18.8        22
+  280003         6{txt} {res}      107        13      17.8        27
+  280004         7{txt} {res}      139        13      19.9        30
+  280005        11{txt} {res}      185        11      16.8        27
+  280006         5{txt} {res}      112        12      22.4        33
+  280007         2{txt} {res}      155        65      77.5        90
+  280008         2{txt} {res}      128        60      64.0        68
+  280009         2{txt} {res}      145        53      72.5        92
+  280010         2{txt} {res}      174        87      87.0        87
+  280011         2{txt} {res}      147        63      73.5        84
+  280012         2{txt} {res}      129        38      64.5        91
+  280013         2{txt} {res}      162        61      81.0       101
+  280014         2{txt} {res}      162        80      81.0        82
+  290001         5{txt} {res}       66         6      13.2        19
+  290002         5{txt} {res}       80        12      16.0        18
+  290003        26{txt} {res}      424         2      16.3        26
+  290004         7{txt} {res}       79         6      11.3        16
+  290005         6{txt} {res}       71         7      11.8        18
+  290006        19{txt} {res}      374         5      19.7        50
+  290007         7{txt} {res}      110         1      15.7        28
+  290008         8{txt} {res}      139        10      17.4        26
+  290009         6{txt} {res}       87        11      14.5        19
+  290010         6{txt} {res}      174        16      29.0        68
+  290011        15{txt} {res}      258         9      17.2        27
+  290012         4{txt} {res}       77        11      19.3        27
+  290013         4{txt} {res}       60        10      15.0        21
+  290014         2{txt} {res}       39        15      19.5        24
+  290015         6{txt} {res}       82         5      13.7        18
+  290016       238{txt} {res}     4256         1      17.9        67
+  290017         2{txt} {res}       36        14      18.0        22
+  290018         4{txt} {res}       48        11      12.0        13
+  290019        11{txt} {res}      160         3      14.5        30
+  290020         5{txt} {res}       63         6      12.6        16
+  290021         7{txt} {res}       41         2       5.9        17
+  290022        10{txt} {res}      149         8      14.9        22
+  290023         5{txt} {res}       53         7      10.6        13
+  290024         2{txt} {res}      111        46      55.5        65
+  290025         2{txt} {res}       68        31      34.0        37
+  290026         2{txt} {res}      105        46      52.5        59
+  290027         2{txt} {res}      133        65      66.5        68
+  290028         2{txt} {res}      141        63      70.5        78
+  290029         2{txt} {res}      132        59      66.0        73
+  290030         2{txt} {res}      114        47      57.0        67
+  290031         2{txt} {res}       97        47      48.5        50
+  290032         2{txt} {res}       91        44      45.5        47
+  290033         2{txt} {res}      151        64      75.5        87
+  290034         2{txt} {res}      104        37      52.0        67
+  290035         2{txt} {res}      138        58      69.0        80
+  290036         2{txt} {res}      133        60      66.5        73
+  290037         2{txt} {res}      127        47      63.5        80
+  290038         2{txt} {res}      148        73      74.0        75
+  290039         2{txt} {res}      129        56      64.5        73
+  290040         2{txt} {res}      166        74      83.0        92
+  290041         2{txt} {res}      130        54      65.0        76
+  290042         2{txt} {res}      147        63      73.5        84
+  290043         2{txt} {res}      101        42      50.5        59
+  290044         2{txt} {res}      111        53      55.5        58
+  290045         2{txt} {res}      124        56      62.0        68
+  290046         2{txt} {res}      137        62      68.5        75
+  290047         2{txt} {res}      127        59      63.5        68
+  290048         2{txt} {res}       97        30      48.5        67
+  290049         2{txt} {res}      125        56      62.5        69
+  290050         2{txt} {res}      123        53      61.5        70
+  290051         2{txt} {res}      118        56      59.0        62
+  290052         2{txt} {res}       93        42      46.5        51
+  290053         2{txt} {res}      151        66      75.5        85
+  290054         2{txt} {res}       89        44      44.5        45
+  290055         2{txt} {res}      133        63      66.5        70
+  310001         4{txt} {res}       73        12      18.3        23
+  310002       132{txt} {res}     2699         8      20.4        40
+  310003        20{txt} {res}      415         6      20.8        34
+  310004         2{txt} {res}       44         9      22.0        35
+  310005         2{txt} {res}       28        14      14.0        14
+  310006         4{txt} {res}       75        16      18.8        22
+  310007        31{txt} {res}      705        12      22.7        38
+  310008         7{txt} {res}      151        10      21.6        31
+  310009         5{txt} {res}       73         6      14.6        22
+  310010         9{txt} {res}      180        13      20.0        28
+  310011         8{txt} {res}      158         4      19.8        31
+  310012         2{txt} {res}       46        12      23.0        34
+  310013         7{txt} {res}      143        14      20.4        27
+  310014         2{txt} {res}       36        13      18.0        23
+  310015         5{txt} {res}      106        13      21.2        33
+  310016        19{txt} {res}      375         7      19.7        33
+  310017         4{txt} {res}       58         6      14.5        20
+  310018        12{txt} {res}      229         6      19.1        29
+  310019         5{txt} {res}      108         7      21.6        29
+  310020         5{txt} {res}       94        12      18.8        23
+  310021         5{txt} {res}      119        16      23.8        31
+  310022         4{txt} {res}       42         5      10.5        16
+  310023         5{txt} {res}      121        15      24.2        32
+  310024         5{txt} {res}       68         8      13.6        19
+  310025        15{txt} {res}      365        16      24.3        37
+  310026         6{txt} {res}      146        18      24.3        32
+  310027        10{txt} {res}      216        17      21.6        30
+  310028        11{txt} {res}      274        11      24.9        37
+  310029         4{txt} {res}       95        19      23.8        28
+  310030        11{txt} {res}      178         5      16.2        26
+  310031        21{txt} {res}      509         4      24.2        60
+  310032         4{txt} {res}       84        17      21.0        26
+  310033         6{txt} {res}      119        10      19.8        29
+  310034         2{txt} {res}       40        10      20.0        30
+  310035         2{txt} {res}       34        15      17.0        19
+  310036         2{txt} {res}       34        12      17.0        22
+  310037         2{txt} {res}       36         8      18.0        28
+  310038         2{txt} {res}       35        13      17.5        22
+  310039         2{txt} {res}       27        10      13.5        17
+  310040         2{txt} {res}       92        33      46.0        59
+  310041         2{txt} {res}       52        22      26.0        30
+  310042         3{txt} {res}       64        21      21.3        22
+  310043         3{txt} {res}       67        20      22.3        24
+  310044         2{txt} {res}      181        80      90.5       101
+  310045         2{txt} {res}      167        76      83.5        91
+  310046         2{txt} {res}      161        66      80.5        95
+  310047         2{txt} {res}      140        64      70.0        76
+  310048         2{txt} {res}      150        70      75.0        80
+  310049         2{txt} {res}      128        61      64.0        67
+  310050         2{txt} {res}       85        37      42.5        48
+  310051         2{txt} {res}       93        46      46.5        47
+  310052         2{txt} {res}      116        55      58.0        61
+  310053         2{txt} {res}      173        86      86.5        87
+  310054         2{txt} {res}      164        76      82.0        88
+  310055         2{txt} {res}      188        90      94.0        98
+  310056         2{txt} {res}      133        62      66.5        71
+  310057         2{txt} {res}      189        84      94.5       105
+  310058         2{txt} {res}      164        67      82.0        97
+  310059         2{txt} {res}      147        60      73.5        87
+  310060         2{txt} {res}      159        73      79.5        86
+  310061         2{txt} {res}      211        89     105.5       122
+  310062         2{txt} {res}      204        95     102.0       109
+  310063         2{txt} {res}      123        54      61.5        69
+  310064         2{txt} {res}      192        76      96.0       116
+  310065         2{txt} {res}      147        56      73.5        91
+  310066         2{txt} {res}      178        87      89.0        91
+  310067         2{txt} {res}      200        86     100.0       114
+  310068         2{txt} {res}      190        82      95.0       108
+  310069         2{txt} {res}      163        73      81.5        90
+  310070         2{txt} {res}      183        72      91.5       111
+  310071         2{txt} {res}      191        90      95.5       101
+  310072         2{txt} {res}      175        74      87.5       101
+  310073         2{txt} {res}      267       129     133.5       138
+  310074         2{txt} {res}      168        76      84.0        92
+  310075         2{txt} {res}      165        82      82.5        83
+  310076         2{txt} {res}      164        64      82.0       100
+  310077         2{txt} {res}      130        65      65.0        65
+  310078         2{txt} {res}      114        49      57.0        65
+  310079         2{txt} {res}      172        83      86.0        89
+  310080         2{txt} {res}      130        54      65.0        76
+  310081         2{txt} {res}      147        65      73.5        82
+  310082         2{txt} {res}      153        72      76.5        81
+  310083         2{txt} {res}      198        83      99.0       115
+  320001         4{txt} {res}       95        15      23.8        37
+  320002         9{txt} {res}      145         6      16.1        24
+  320003        17{txt} {res}      284         7      16.7        28
+  320004         6{txt} {res}      119        15      19.8        23
+  320005         7{txt} {res}       72         1      10.3        23
+  320006         7{txt} {res}      124        13      17.7        25
+  320007         6{txt} {res}       79         8      13.2        19
+  320008        21{txt} {res}      317         8      15.1        24
+  320009        21{txt} {res}      335         8      16.0        28
+  320010        17{txt} {res}      277         8      16.3        25
+  320011         2{txt} {res}      113        46      56.5        67
+  320012         2{txt} {res}      112        49      56.0        63
+  320013         2{txt} {res}      175        80      87.5        95
+  320014         2{txt} {res}      162        79      81.0        83
+  320015         2{txt} {res}      146        58      73.0        88
+  320016         2{txt} {res}      145        64      72.5        81
+  320017         2{txt} {res}      167        75      83.5        92
+  330001         8{txt} {res}      132         3      16.5        40
+  330002         7{txt} {res}       86         5      12.3        19
+  330003         4{txt} {res}       60        11      15.0        22
+  330004         8{txt} {res}      134        12      16.8        22
+  330005        18{txt} {res}      328         3      18.2        26
+  330006        10{txt} {res}      154         4      15.4        26
+  330007        19{txt} {res}      254         1      13.4        21
+  330008        34{txt} {res}      605         7      17.8        31
+  330009         2{txt} {res}       14         5       7.0         9
+  330010         9{txt} {res}      150         9      16.7        22
+  330011         5{txt} {res}       63         4      12.6        20
+  330012         4{txt} {res}       77        16      19.3        24
+  330013         3{txt} {res}       67        18      22.3        26
+  330014        10{txt} {res}      143         8      14.3        23
+  330015        10{txt} {res}      115         6      11.5        19
+  330016         7{txt} {res}       80         5      11.4        21
+  330017         7{txt} {res}      120         8      17.1        22
+  330018         7{txt} {res}      115        12      16.4        21
+  330019        21{txt} {res}      311         4      14.8        25
+  330020         9{txt} {res}       94         4      10.4        21
+  330021        31{txt} {res}      626        10      20.2        29
+  330022        13{txt} {res}      212         7      16.3        29
+  330023         5{txt} {res}      114        14      22.8        26
+  330024         5{txt} {res}      101        14      20.2        30
+  330025         6{txt} {res}       85         8      14.2        22
+  330026       273{txt} {res}     4758         3      17.4        36
+  330027        39{txt} {res}      586         5      15.0        26
+  330028        18{txt} {res}      318         8      17.7        28
+  330029         3{txt} {res}       61        19      20.3        22
+  330030         9{txt} {res}       92         1      10.2        21
+  330031        10{txt} {res}      196        15      19.6        26
+  330032         3{txt} {res}       48         7      16.0        25
+  330033         2{txt} {res}      141        63      70.5        78
+  330034         2{txt} {res}      144        70      72.0        74
+  330035         2{txt} {res}      114        57      57.0        57
+  330036         2{txt} {res}      120        59      60.0        61
+  330037         2{txt} {res}      188        62      94.0       126
+  330038         2{txt} {res}      132        62      66.0        70
+  330039         2{txt} {res}      136        59      68.0        77
+  350001         5{txt} {res}       70         7      14.0        25
+  350002         4{txt} {res}       74         9      18.5        26
+  350003         6{txt} {res}       88         8      14.7        21
+  350004         5{txt} {res}      171        25      34.2        48
+  350005         8{txt} {res}      179        17      22.4        27
+  350006         2{txt} {res}       58        26      29.0        32
+  350007        26{txt} {res}      432         5      16.6        41
+  350008         8{txt} {res}      169        17      21.1        27
+  350009         5{txt} {res}      113        16      22.6        27
+  350010         9{txt} {res}      176         7      19.6        31
+  350011         5{txt} {res}      124        20      24.8        31
+  350012         4{txt} {res}       73        16      18.3        21
+  350013         8{txt} {res}      145         6      18.1        31
+  350014         3{txt} {res}       70        17      23.3        36
+  350015         3{txt} {res}       50        13      16.7        20
+  350016         7{txt} {res}      119         5      17.0        25
+  350017        29{txt} {res}      463         7      16.0        26
+  350018         4{txt} {res}       76        17      19.0        22
+  350019         5{txt} {res}       96        12      19.2        27
+  350020         4{txt} {res}       75         9      18.8        28
+  350021         4{txt} {res}       77        12      19.3        24
+  350022         7{txt} {res}      113        12      16.1        23
+  350023         5{txt} {res}       73        10      14.6        21
+  350024         2{txt} {res}       50        24      25.0        26
+  350025         8{txt} {res}      135         5      16.9        37
+  350026         6{txt} {res}      119        11      19.8        25
+  350027         2{txt} {res}       30        13      15.0        17
+  350028         5{txt} {res}      102        14      20.4        29
+  350029         9{txt} {res}      215        16      23.9        34
+  350030        10{txt} {res}      157         7      15.7        28
+  350031        15{txt} {res}      311        14      20.7        42
+  350032         9{txt} {res}      165        10      18.3        27
+  350033         2{txt} {res}       48        21      24.0        27
+  350034        13{txt} {res}       82         1       6.3        20
+  350035         5{txt} {res}      109         9      21.8        40
+  350036         3{txt} {res}       48        15      16.0        17
+  350037        15{txt} {res}      316        14      21.1        59
+  350038         5{txt} {res}       74        10      14.8        25
+  350039         4{txt} {res}       58        13      14.5        16
+  350040         1{txt}*{res}       26        26      26.0        26
+  350041         2{txt} {res}       71        34      35.5        37
+  350042        18{txt} {res}      307        13      17.1        22
+  350043        12{txt} {res}      150         5      12.5        22
+  350044        20{txt} {res}      459        13      22.9        60
+  350045         5{txt} {res}       79        12      15.8        21
+  350046         6{txt} {res}      105         8      17.5        28
+  350047        10{txt} {res}      189        11      18.9        28
+  350048        14{txt} {res}      316        13      22.6        31
+  350049       286{txt} {res}     5104         4      17.8        51
+  350050         8{txt} {res}      160         8      20.0        34
+  350051        13{txt} {res}      291         6      22.4        32
+  350052         5{txt} {res}       81        11      16.2        21
+  350053         7{txt} {res}       91         5      13.0        25
+  350054         6{txt} {res}      129         9      21.5        31
+  350055         6{txt} {res}      118        15      19.7        24
+  350056         2{txt} {res}       49        23      24.5        26
+  350057         2{txt} {res}       31        12      15.5        19
+  350058         2{txt} {res}       36        13      18.0        23
+  350059         2{txt} {res}       26         3      13.0        23
+  350060         2{txt} {res}       30        13      15.0        17
+  350061         2{txt} {res}      216        98     108.0       118
+  350062         2{txt} {res}      142        66      71.0        76
+  350063         2{txt} {res}      137        62      68.5        75
+  350064         2{txt} {res}      194        88      97.0       106
+  350065         2{txt} {res}      171        63      85.5       108
+  350066         2{txt} {res}      166        66      83.0       100
+  350067         2{txt} {res}      167        72      83.5        95
+  350068         2{txt} {res}      186        90      93.0        96
+  350069         2{txt} {res}      151        57      75.5        94
+  350070         2{txt} {res}      199        99      99.5       100
+  350071         2{txt} {res}      182        82      91.0       100
+  350072         2{txt} {res}      176        78      88.0        98
+  350073         2{txt} {res}      163        70      81.5        93
+  350074         2{txt} {res}      172        75      86.0        97
+  350075         2{txt} {res}      219       105     109.5       114
+  350076         2{txt} {res}      163        58      81.5       105
+  350077         2{txt} {res}      212       101     106.0       111
+  350078         2{txt} {res}      136        57      68.0        79
+  350079         2{txt} {res}      160        68      80.0        92
+  350080         2{txt} {res}      163        80      81.5        83
+  350081         2{txt} {res}      168        60      84.0       108
+  350082         2{txt} {res}      187        90      93.5        97
+  350083         2{txt} {res}      180        76      90.0       104
+  350084         2{txt} {res}      160        71      80.0        89
+  350085         2{txt} {res}      150        66      75.0        84
+  350086         2{txt} {res}      104        41      52.0        63
+  350087         2{txt} {res}      192        62      96.0       130
+  350088         2{txt} {res}      174        86      87.0        88
+  350089         2{txt} {res}      178        83      89.0        95
+  350090         2{txt} {res}      125        62      62.5        63
+  350091         2{txt} {res}      243        93     121.5       150
+  410001         5{txt} {res}      110        14      22.0        27
+  410002         5{txt} {res}       89        14      17.8        22
+  410003         6{txt} {res}      157        17      26.2        37
+  410004         2{txt} {res}       34        12      17.0        22
+  410005         6{txt} {res}      147        22      24.5        26
+  410006        10{txt} {res}      205        13      20.5        26
+  410007        11{txt} {res}      198        11      18.0        25
+  410008        99{txt} {res}     1922         5      19.4        36
+  410009         4{txt} {res}      102        20      25.5        36
+  410010         9{txt} {res}      255        19      28.3        58
+  410011         6{txt} {res}      118        14      19.7        24
+  410012         3{txt} {res}       45        10      15.0        22
+  410013        19{txt} {res}      330         8      17.4        29
+  410014        14{txt} {res}      316        10      22.6        45
+  410015         5{txt} {res}       91        16      18.2        22
+  410016         6{txt} {res}      111        13      18.5        26
+  410017         5{txt} {res}       87        11      17.4        24
+  410018        11{txt} {res}      171         9      15.5        21
+  410019        14{txt} {res}      327        14      23.4        29
+  410020         4{txt} {res}      117        24      29.3        32
+  410021         2{txt} {res}       36        18      18.0        18
+  410022         2{txt} {res}       56        24      28.0        32
+  410023         2{txt} {res}       30        10      15.0        20
+  410024         7{txt} {res}      124        10      17.7        26
+  410025         2{txt} {res}      196        81      98.0       115
+  410026         2{txt} {res}      136        57      68.0        79
+  410027         2{txt} {res}      186        84      93.0       102
+  410028         2{txt} {res}      180        76      90.0       104
+  410029         2{txt} {res}      148        63      74.0        85
+  410030         2{txt} {res}      159        72      79.5        87
+  410031         2{txt} {res}      196        83      98.0       113
+  410032         2{txt} {res}      204        91     102.0       113
+  410033         2{txt} {res}      136        65      68.0        71
+  410034         2{txt} {res}      157        70      78.5        87
+  410035         2{txt} {res}      194        93      97.0       101
+  410036         2{txt} {res}      154        71      77.0        83
+  410037         2{txt} {res}      192        85      96.0       107
+  410038         2{txt} {res}      291       124     145.5       167
+  410039         2{txt} {res}      200        94     100.0       106
+  410040         2{txt} {res}      239        91     119.5       148
+  410041         2{txt} {res}      173        79      86.5        94
+  410042         2{txt} {res}      185        91      92.5        94
+  410043         2{txt} {res}      152        73      76.0        79
+  410044         2{txt} {res}      167        78      83.5        89
+  420001         6{txt} {res}       43         1       7.2        17
+  420002        12{txt} {res}      253        11      21.1        32
+  420003         4{txt} {res}       82        17      20.5        25
+  420004         8{txt} {res}      134        11      16.8        22
+  420005         7{txt} {res}      137        13      19.6        24
+  420006        21{txt} {res}      375         1      17.9        32
+  420007         8{txt} {res}      130         6      16.3        23
+  420008         6{txt} {res}      117        16      19.5        23
+  420009        20{txt} {res}      351         3      17.6        28
+  420010         6{txt} {res}      122        14      20.3        25
+  420011         7{txt} {res}      103         6      14.7        26
+  420012         9{txt} {res}      156        10      17.3        24
+  420013         4{txt} {res}       70        12      17.5        22
+  420014         2{txt} {res}      152        58      76.0        94
+  420015         2{txt} {res}      170        69      85.0       101
+  420016         2{txt} {res}      184        87      92.0        97
+  420017         2{txt} {res}      176        75      88.0       101
+  420018         2{txt} {res}      172        80      86.0        92
+  420019         2{txt} {res}      128        59      64.0        69
+  420020         2{txt} {res}      152        73      76.0        79
+  420021         2{txt} {res}      186        86      93.0       100
+  420022         2{txt} {res}      163        66      81.5        97
+  420023         2{txt} {res}      187        93      93.5        94
+  420024         2{txt} {res}      158        71      79.0        87
+  420025         2{txt} {res}      101        47      50.5        54
+  420026         2{txt} {res}      181        74      90.5       107
+  420027         2{txt} {res}      195        88      97.5       107
+  420028         2{txt} {res}       96        42      48.0        54
+  420029         2{txt} {res}      164        82      82.0        82
+  430001        21{txt} {res}      367         9      17.5        24
+  430002         4{txt} {res}       63        13      15.8        18
+  430003         4{txt} {res}       86        18      21.5        29
+  430004        13{txt} {res}      188        10      14.5        20
+  430005         7{txt} {res}      143        10      20.4        29
+  430006        36{txt} {res}      611         6      17.0        30
+  430007        17{txt} {res}      336        13      19.8        32
+  430008         4{txt} {res}       54         7      13.5        17
+  430009         3{txt} {res}       61        17      20.3        23
+  430010         4{txt} {res}       58        12      14.5        19
+  430011         5{txt} {res}       96        15      19.2        23
+  430012         9{txt} {res}      151         5      16.8        22
+  430013        28{txt} {res}      373         5      13.3        26
+  430014        11{txt} {res}      174        12      15.8        23
+  430015         2{txt} {res}       40        19      20.0        21
+  430016         7{txt} {res}       99         7      14.1        20
+  430017         2{txt} {res}       41        19      20.5        22
+  430018         3{txt} {res}       41        11      13.7        15
+  430019        28{txt} {res}      454         9      16.2        24
+  430020         6{txt} {res}      100        13      16.7        20
+  430021         7{txt} {res}      149        12      21.3        30
+  430022        14{txt} {res}      160         3      11.4        18
+  430023         3{txt} {res}       72        19      24.0        33
+  430024       179{txt} {res}     3148         1      17.6        58
+  430025         9{txt} {res}      131         5      14.6        26
+  430026         2{txt} {res}       64        31      32.0        33
+  430027         4{txt} {res}       85        12      21.3        28
+  430028        10{txt} {res}      169        10      16.9        26
+  430029         5{txt} {res}       91         9      18.2        27
+  430030         3{txt} {res}       33         6      11.0        15
+  430031        24{txt} {res}      438        10      18.3        30
+  430032         9{txt} {res}      162        10      18.0        28
+  430033        15{txt} {res}      229         6      15.3        25
+  430034         7{txt} {res}      114         8      16.3        25
+  430035         3{txt} {res}       53        16      17.7        21
+  430036         5{txt} {res}       72         9      14.4        19
+  430037        28{txt} {res}      470         8      16.8        29
+  430038         2{txt} {res}       35         5      17.5        30
+  430039         2{txt} {res}       34        14      17.0        20
+  430040         2{txt} {res}      142        70      71.0        72
+  430041         2{txt} {res}      149        62      74.5        87
+  430042         2{txt} {res}      120        50      60.0        70
+  430043         2{txt} {res}      143        70      71.5        73
+  430044         2{txt} {res}      143        66      71.5        77
+  430045         2{txt} {res}      216        99     108.0       117
+  430046         2{txt} {res}      138        63      69.0        75
+  430047         2{txt} {res}      198        88      99.0       110
+  430048         2{txt} {res}      132        30      66.0       102
+  430049         2{txt} {res}      152        38      76.0       114
+  430050         2{txt} {res}      164        80      82.0        84
+  430051         2{txt} {res}      147        62      73.5        85
+  430052         2{txt} {res}      211        96     105.5       115
+  430053         2{txt} {res}      167        80      83.5        87
+  430054         2{txt} {res}      172        83      86.0        89
+  430055         2{txt} {res}      127        53      63.5        74
+  430056         2{txt} {res}      192        63      96.0       129
+  430057         2{txt} {res}      140        68      70.0        72
+  430058         2{txt} {res}      144        53      72.0        91
+  430059         2{txt} {res}      143        62      71.5        81
+  430060         2{txt} {res}      114        53      57.0        61
+  500001        50{txt} {res}      945         8      18.9        31
+  500002         6{txt} {res}      105         6      17.5        22
+  500003        12{txt} {res}      254        10      21.2        33
+  500004         4{txt} {res}       84        12      21.0        29
+  500005         6{txt} {res}      130        19      21.7        25
+  500006         2{txt} {res}      148        71      74.0        77
+  500007         2{txt} {res}      168        79      84.0        89
+  500008         2{txt} {res}      204        80     102.0       124
+  500009         2{txt} {res}      186        80      93.0       106
+  500010         2{txt} {res}      145        68      72.5        77
+  500011         2{txt} {res}      183        72      91.5       111
+  500012         2{txt} {res}      180        84      90.0        96
+  500013         2{txt} {res}      180        69      90.0       111
+  510001         6{txt} {res}      116        13      19.3        26
+  510002        34{txt} {res}      670         5      19.7        31
+  510003        11{txt} {res}      216         4      19.6        32
+  510004         7{txt} {res}      137         8      19.6        30
+  510005         4{txt} {res}       84        18      21.0        27
+  510006         5{txt} {res}       51         7      10.2        14
+  510007        16{txt} {res}      287        10      17.9        24
+  510008         2{txt} {res}      159        61      79.5        98
+  510009         2{txt} {res}      181        88      90.5        93
+  510010         2{txt} {res}      153        76      76.5        77
+  510011         2{txt} {res}      138        52      69.0        86
+  510012         2{txt} {res}      230       108     115.0       122
+  510013         2{txt} {res}      138        65      69.0        73
+  510014         2{txt} {res}      155        67      77.5        88
+  510015         2{txt} {res}      167        80      83.5        87
+  510016         2{txt} {res}      102        49      51.0        53
+  510017         2{txt} {res}      137        60      68.5        77
+  510018         2{txt} {res}      173        80      86.5        93
+  510019         2{txt} {res}      109        52      54.5        57
+  520001         9{txt} {res}      204        16      22.7        37
+  520002        21{txt} {res}      445         8      21.2        33
+  520003        28{txt} {res}      561        10      20.0        32
+  520004         7{txt} {res}      104         1      14.9        25
+  520005         5{txt} {res}       87        13      17.4        19
+  520006         6{txt} {res}      115        15      19.2        25
+  520007        86{txt} {res}     1408         3      16.4        35
+  520008         6{txt} {res}       92         7      15.3        25
+  520009         6{txt} {res}       81         7      13.5        21
+  520010        10{txt} {res}      229        13      22.9        29
+  520011         5{txt} {res}      106        17      21.2        27
+  520012         4{txt} {res}      110        22      27.5        33
+  520013        11{txt} {res}      266        16      24.2        51
+  520014         4{txt} {res}       68        13      17.0        25
+  520015         5{txt} {res}      120        19      24.0        33
+  520016         6{txt} {res}      127        11      21.2        41
+  520017         8{txt} {res}      170        14      21.3        29
+  520018         2{txt} {res}      139        66      69.5        73
+  520019         2{txt} {res}      129        62      64.5        67
+  520020         2{txt} {res}      135        66      67.5        69
+  520021         2{txt} {res}      138        43      69.0        95
+  520022         2{txt} {res}      192        79      96.0       113
+  520023         2{txt} {res}      150        69      75.0        81
+  520024         2{txt} {res}      171        67      85.5       104
+  520025         2{txt} {res}      188        86      94.0       102
+  520026         2{txt} {res}      174        84      87.0        90
+  520027         2{txt} {res}      146        53      73.0        93
+  520028         2{txt} {res}      153        70      76.5        83
+  520029         2{txt} {res}      143        65      71.5        78
+  520030         2{txt} {res}      140        65      70.0        75
+  520031         2{txt} {res}      169        83      84.5        86
+  520032         2{txt} {res}      156        66      78.0        90
+  520033         2{txt} {res}      137        58      68.5        79
+  520034         2{txt} {res}      175        66      87.5       109
+  530001       213{txt} {res}     4287         1      20.1        57
+{txt}{hline 8}  {hline 8}  {hline 8}  {hline 8}  {hline 8}  {hline 8}
+{res}     728      6332    152681         1      24.1       167
+{txt}
+{com}.         drop if single2==1
+{txt}(26 observations deleted)
+
+{com}. 
+.         * A. Tabela Descritiva  
+.                 svy: mean renda
+{txt}(running mean on estimation sample)
+{res}
+{txt}Survey: Mean estimation
+
+{col 1}Number of strata{col 18}= {res}    727{txt}{col 35}Number of obs{col 52}= {res}   152655
+{txt}{col 1}Number of PSUs{col 18}= {res}   6331{txt}{col 35}Population size{col 52}={res}  87639071
+{txt}{col 35}Design df{col 52}= {res}     5604
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}{col 26}  Linearized
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 7}renda {c |}{col 14}{res}{space 2} 1799.541{col 26}{space 2} 16.50056{col 37}{space 5} 1767.193{col 51}{space 3} 1831.888
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+.         * B. Regressão OLS - Retornos a educação
+. 
+.         svy: reg log_renda anos_estudo idade idade2
+{txt}(running regress on estimation sample)
+{res}
+{txt}Survey: Linear regression
+
+{col 1}Number of strata{col 20}= {res}      727{txt}{col 49}Number of obs{col 68}= {res}   152213
+{txt}{col 1}Number of PSUs{col 20}= {res}     6331{txt}{col 49}Population size{col 68}={res}  87400337
+{txt}{col 49}Design df{col 68}= {res}     5604
+{txt}{col 49}F({res}   3{txt},{res}   5602{txt}){col 68}= {res}  3945.05
+{txt}{col 49}Prob > F{col 68}= {res}   0.0000
+{txt}{col 49}R-squared{col 68}= {res}   0.2839
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}  Linearized
+{col 1}   log_renda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}anos_estudo {c |}{col 14}{res}{space 2} .1060908{col 26}{space 2}   .00114{col 37}{space 1}   93.06{col 46}{space 3}0.000{col 54}{space 4}  .103856{col 67}{space 3} .1083256
+{txt}{space 7}idade {c |}{col 14}{res}{space 2} .0648636{col 26}{space 2} .0011099{col 37}{space 1}   58.44{col 46}{space 3}0.000{col 54}{space 4} .0626878{col 67}{space 3} .0670394
+{txt}{space 6}idade2 {c |}{col 14}{res}{space 2} -.000595{col 26}{space 2} .0000139{col 37}{space 1}  -42.96{col 46}{space 3}0.000{col 54}{space 4}-.0006222{col 67}{space 3}-.0005679
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 4.578149{col 26}{space 2} .0258325{col 37}{space 1}  177.22{col 46}{space 3}0.000{col 54}{space 4} 4.527507{col 67}{space 3} 4.628791
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.         svy: reg log_renda anos_estudo idade idade2 i.sexo i.cor_raca
+{txt}(running regress on estimation sample)
+{res}
+{txt}Survey: Linear regression
+
+{col 1}Number of strata{col 20}= {res}      727{txt}{col 49}Number of obs{col 68}= {res}   152213
+{txt}{col 1}Number of PSUs{col 20}= {res}     6331{txt}{col 49}Population size{col 68}={res}  87400337
+{txt}{col 49}Design df{col 68}= {res}     5604
+{txt}{col 49}F({res}   8{txt},{res}   5597{txt}){col 68}= {res}  2238.71
+{txt}{col 49}Prob > F{col 68}= {res}   0.0000
+{txt}{col 49}R-squared{col 68}= {res}   0.3596
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}  Linearized
+{col 1}   log_renda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}anos_estudo {c |}{col 14}{res}{space 2} .1077231{col 26}{space 2} .0010692{col 37}{space 1}  100.75{col 46}{space 3}0.000{col 54}{space 4} .1056269{col 67}{space 3} .1098192
+{txt}{space 7}idade {c |}{col 14}{res}{space 2} .0692679{col 26}{space 2} .0010815{col 37}{space 1}   64.05{col 46}{space 3}0.000{col 54}{space 4} .0671479{col 67}{space 3}  .071388
+{txt}{space 6}idade2 {c |}{col 14}{res}{space 2}-.0006571{col 26}{space 2} .0000135{col 37}{space 1}  -48.68{col 46}{space 3}0.000{col 54}{space 4}-.0006835{col 67}{space 3}-.0006306
+{txt}{space 12} {c |}
+{space 8}sexo {c |}
+{space 8}Fem  {c |}{col 14}{res}{space 2}-.4369712{col 26}{space 2} .0046689{col 37}{space 1}  -93.59{col 46}{space 3}0.000{col 54}{space 4} -.446124{col 67}{space 3}-.4278184
+{txt}{space 12} {c |}
+{space 4}cor_raca {c |}
+{space 5}Branca  {c |}{col 14}{res}{space 2} .2652714{col 26}{space 2} .0825714{col 37}{space 1}    3.21{col 46}{space 3}0.001{col 54}{space 4} .1033995{col 67}{space 3} .4271433
+{txt}{space 6}Preta  {c |}{col 14}{res}{space 2} .0244956{col 26}{space 2} .0828503{col 37}{space 1}    0.30{col 46}{space 3}0.767{col 54}{space 4}-.1379231{col 67}{space 3} .1869144
+{txt}{space 4}Amarela  {c |}{col 14}{res}{space 2} .5043158{col 26}{space 2} .0911182{col 37}{space 1}    5.53{col 46}{space 3}0.000{col 54}{space 4} .3256889{col 67}{space 3} .6829427
+{txt}{space 6}Parda  {c |}{col 14}{res}{space 2}  .015395{col 26}{space 2} .0821755{col 37}{space 1}    0.19{col 46}{space 3}0.851{col 54}{space 4}-.1457009{col 67}{space 3} .1764909
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 4.543838{col 26}{space 2} .0880902{col 37}{space 1}   51.58{col 46}{space 3}0.000{col 54}{space 4} 4.371147{col 67}{space 3} 4.716529
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.         
+.         * Exercício com uma subpopulação
+.         svy, subpop(migrou): reg log_renda anos_estudo idade idade2     i.sexo i.cor_raca
+{txt}(running regress on estimation sample)
+{res}
+{txt}Survey: Linear regression
+
+{col 1}Number of strata{col 20}= {res}      715{txt}{col 49}Number of obs{col 68}= {res}   123244
+{txt}{col 1}Number of PSUs{col 20}= {res}     6285{txt}{col 49}Population size{col 68}={res}  70621812
+{txt}{col 49}Subpop. no. of obs{col 68}={res}     12991
+{txt}{col 49}Subpop. size{col 68}={res}   7610796
+{txt}{col 49}Design df{col 68}= {res}     5570
+{txt}{col 49}F({res}   8{txt},{res}   5563{txt}){col 68}= {res}   484.64
+{txt}{col 49}Prob > F{col 68}= {res}   0.0000
+{txt}{col 49}R-squared{col 68}= {res}   0.3837
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}  Linearized
+{col 1}   log_renda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}anos_estudo {c |}{col 14}{res}{space 2} .1265419{col 26}{space 2} .0025096{col 37}{space 1}   50.42{col 46}{space 3}0.000{col 54}{space 4} .1216221{col 67}{space 3} .1314616
+{txt}{space 7}idade {c |}{col 14}{res}{space 2} .0653325{col 26}{space 2} .0036826{col 37}{space 1}   17.74{col 46}{space 3}0.000{col 54}{space 4} .0581131{col 67}{space 3}  .072552
+{txt}{space 6}idade2 {c |}{col 14}{res}{space 2}-.0006189{col 26}{space 2}  .000044{col 37}{space 1}  -14.07{col 46}{space 3}0.000{col 54}{space 4}-.0007051{col 67}{space 3}-.0005327
+{txt}{space 12} {c |}
+{space 8}sexo {c |}
+{space 8}Fem  {c |}{col 14}{res}{space 2}-.5239867{col 26}{space 2} .0160384{col 37}{space 1}  -32.67{col 46}{space 3}0.000{col 54}{space 4}-.5554282{col 67}{space 3}-.4925452
+{txt}{space 12} {c |}
+{space 4}cor_raca {c |}
+{space 5}Branca  {c |}{col 14}{res}{space 2} .0459772{col 26}{space 2} .0943687{col 37}{space 1}    0.49{col 46}{space 3}0.626{col 54}{space 4}-.1390222{col 67}{space 3} .2309766
+{txt}{space 6}Preta  {c |}{col 14}{res}{space 2} -.206453{col 26}{space 2} .0983404{col 37}{space 1}   -2.10{col 46}{space 3}0.036{col 54}{space 4}-.3992385{col 67}{space 3}-.0136676
+{txt}{space 4}Amarela  {c |}{col 14}{res}{space 2} .2440486{col 26}{space 2} .1208346{col 37}{space 1}    2.02{col 46}{space 3}0.043{col 54}{space 4} .0071657{col 67}{space 3} .4809314
+{txt}{space 6}Parda  {c |}{col 14}{res}{space 2}-.2120982{col 26}{space 2} .0934005{col 37}{space 1}   -2.27{col 46}{space 3}0.023{col 54}{space 4}-.3951997{col 67}{space 3}-.0289968
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 4.710497{col 26}{space 2} .1229177{col 37}{space 1}   38.32{col 46}{space 3}0.000{col 54}{space 4} 4.469531{col 67}{space 3} 4.951464
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: 12 strata omitted because they contain no subpopulation members.{p_end}
+
+{com}. 
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\Samue\Desktop\EPGE_github\MicroEmpirica\solutions\ex1\ex1_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}19 Jan 2018, 18:32:17
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
