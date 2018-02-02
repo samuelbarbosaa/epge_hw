@@ -1,0 +1,182 @@
+---
+title: "Micro Empírica - Trabalho 02"
+author: "Samuel Barbosa"
+header-includes:
+   - \usepackage{booktabs}
+   - \usepackage{colortbl}
+   - \usepackage{tabu}  
+   - \usepackage[brazil]{babel}
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_knit$set(root.dir = "../../")
+options(scipen = 10) # previne exibição numéros na forma científica
+library(tidyverse)
+library(stargazer)
+library(knitr)
+library(kableExtra)
+```
+
+# Introdução
+
+Neste exercício vamos estimar a equação de salários (Mincer, 1974) com a
+correção do viés de seleção das informações dos salários através do procedimento
+de Heckman (1979). Vamos utilizar os dados da PNAD 2015, considerando somente a
+subpopulação de indivíduos de 18 a 65 anos de idade.
+
+# Preparação dos dados
+
+```{r, eval=FALSE}
+pnad_df = readRDS("data_raw/pnad/2015 main.rds")
+
+pnad_df = 
+  pnad_df %>% 
+  select(v0101, v0102, v0103, v0402, v0403, 
+         v4718, v4803, v8005, v0302, v0404, 
+         v4011, v4729, v4617, v4618)
+
+pnad_df = 
+  rename(pnad_df,
+     cond_familia = v0402,
+     renda = v4718, anos_estudo = v4803, idade = v8005,
+     sexo = v0302, cor_raca = v0404, estado_civil = v4011,
+     peso = v4729, estrato = v4617, psu = v4618)
+
+pnad_df = 
+  pnad_df %>% 
+  mutate(id_familia = paste0(v0101, v0102, v0103, v0403))
+
+pnad_df = 
+  pnad_df %>% 
+  group_by(id_familia) %>% 
+  mutate(n_filhos = sum(cond_familia == 3 & idade < 18)) %>% 
+  ungroup()
+
+pnad_df = 
+  pnad_df %>% 
+  mutate(n_filhos = replace(n_filhos, cond_familia >= 3, 0))
+
+pnad_df = 
+  mutate(pnad_df, anos_estudo = as.integer(anos_estudo)) %>% 
+  mutate(anos_estudo = ifelse(anos_estudo == 17, NA, anos_estudo)) %>% 
+  mutate(anos_estudo = anos_estudo - 1)
+
+pnad_df = 
+  pnad_df %>% 
+  mutate(casado = ifelse(estado_civil == 1, 1, 0),
+         PIA = ifelse(idade >= 18 & idade <=65, 1, 0),
+         idade2 = idade^2, 
+         log_renda = log(renda),
+         ind_renda = as.integer(ifelse(renda > 0, 1, 0)))
+
+pnad_df = 
+  mutate_at(pnad_df, vars(sexo, cor_raca, casado), as.factor)
+
+levels(pnad_df$sexo) = c("Masc", "Fem")
+levels(pnad_df$cor_raca)  = c("Indigena", "Branca", "Preta", "Amarela", "Parda", "SemDecl")
+levels(pnad_df$casado) = c("Nao", "Sim")
+
+save(pnad_df, file = "data/pnad/pnad2015_ex2.Rdata")
+write_csv(pnad_df, "data/pnad/pnad2015_ex2.csv")
+haven::write_dta(pnad_df, "data/pnad/pnad2015_ex2.dta", version = 13)
+rm(pnad_df)
+```
+
+# Desenho da amostra
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+load("data/pnad/pnad2015_ex2.Rdata")
+library(srvyr);library(survey)
+
+pnad_design = as_survey_design(pnad_df,         # define desenho amostral
+                              ids = psu, 
+                              strata = estrato, 
+                              weights = peso,
+                              nest = TRUE)
+
+pnad_design = subset(pnad_design, PIA == 1 & !is.na(renda))
+options(survey.lonely.psu="remove") # remove estratos com PSU unico
+```
+
+# Estimação da Equação de Mincer (dessconsiderando o problema de seleção)
+
+Vamos, inicialmente, estimar equaçao de Mincer sem considerar o problema de 
+seleção e analisar os resultados:
+
+
+$$ log(y_i) = \beta_0 + \beta_1 S_i + \beta_2 E_i + \beta_3 E_i^2 + u_i$$
+
+```{r}
+subdesign = subset(pnad_design, renda != 0 & !is.na(renda))
+fit = svyglm(log_renda ~ anos_estudo + sexo + idade + idade2, subdesign)
+```
+
+```{r, echo=FALSE, results='asis'}
+stargazer(
+  fit,
+  type = "latex", 
+  header = FALSE, 
+  title = "Equação de Mincer", 
+  style = "aer"
+  )
+```
+
+
+Obtemos $\beta_2 \approx -0.43$. Conforme a especificação acima, este valor
+indicaria uma renda média menor entre as mulheres, de aproximadamente 43,7%.
+
+# 1º Estágio (Probit)
+
+Para lidar com o problema de seleção, vamos criar, primeiramente, um modelo de previsão 
+de ocupação no mercado de trabalho, onde a variável dependente assume o 
+valor um se a pessoa tem trabalho remunerado (com salário positivo) e zero
+caso contrário. Estimamos o seguinte modelo usando Probit:
+
+$$ \mathbb{I}(w > 0) = 
+      \gamma_0 + \gamma_1 \text{anos_estudo} + 
+      \gamma_2 \text{casado} + \gamma_3 \text{mulher} +
+      \gamma_4 \text{casado} \times \text{mulher} +
+      \gamma_5 \text{filhos} + \gamma_6 \text{n_filhos} \times \text{mulher}+
+      u_2$$ 
+
+
+```{r}
+s1 = svyglm(
+  ind_renda ~ anos_estudo + casado*sexo + n_filhos*sexo,
+  design = pnad_design,
+  family = binomial(link = "probit")
+)
+```
+
+```{r, echo=FALSE, results='asis'}
+stargazer(
+  s1,
+  type = "latex", 
+  header = FALSE, 
+  title = "Participação no mercado de trabalho - Modelo Probit", 
+  style = "aer"
+  )
+```
+
+Observamos que, conforme o modelo especificado,  a propensão a participar no 
+mercado de trabalho é menor entre as mulheres ($\gamma_3 = -0.1358$), 
+especialmente se casadas ($\gamma_4 = -0.1755$) e com maior número de filhos 
+($\gamma_6 = -0.2473$). A participação no mercado de trabalho é crescente
+na escolaridade (anos de estudo).
+
+# Heckit
+
+```{r}
+library(sampleSelection)
+heckit = selection(ind_renda ~ anos_estudo + casado*sexo + n_filhos*sexo,
+          log_renda ~ anos_estudo + sexo + idade + idade2,
+          data = pnad_design$variables,
+          weights = pnad_design$variables$peso,
+          method = "2step")
+summary(heckit)
+```
+
+
