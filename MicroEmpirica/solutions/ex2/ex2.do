@@ -8,7 +8,7 @@ de Heckman (1979). Vamos utilizar os dados da PNAD 2015, considerando somente a
 subpopulação de indivíduos de 18 a 65 anos de idade. */
 
 * Configuração do ambiente de trabalho
-global root  "E:\Projetos\EPGE_github\MicroEmpirica" 
+global root  "D:\Projetos\epge_hw\MicroEmpirica" 
 global data "${root}/data/pnad"
 cd "${data}"
 clear all
@@ -30,5 +30,8 @@ svy: reg log_renda anos_estudo i.sexo idade idade2
 
 * (b) Regressão OLS - Retornos a educação
 svy: probit ind_renda anos_estudo casado##sexo c.n_filhos##sexo
+
+* (c) Heckit
+svy: heckman log_renda anos_estudo i.sexo idade idade2, select(ind_renda anos_estudo casado##sexo c.n_filhos##sexo)
 
 log close

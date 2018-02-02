@@ -1,9 +1,9 @@
 {smcl}
-{txt}{sf}{ul off}{.-}
+{com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}E:\Projetos\EPGE_github\MicroEmpirica\solutions\ex2\ex2_log.smcl
+       {txt}log:  {res}D:\Projetos\epge_hw\MicroEmpirica\solutions\ex2\ex2_log.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 2 Feb 2018, 11:40:29
+ {txt}opened on:  {res} 2 Feb 2018, 16:28:35
 {txt}
 {com}. 
 . /* EXERCÍCIO EMPÍRICO */
@@ -14,7 +14,8 @@
 
 {com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
 {txt}
-{com}. * Define o Desenho Amostral
+{com}. 
+. * Define o Desenho Amostral
 . svyset psu [pw = peso], strata(estrato)
 
       {txt}pweight:{col 16}{res}peso
@@ -809,143 +810,6 @@ Stratum    #Units     #Obs      min       mean      max
 
 {com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
 {txt}
-{com}. svy, subpop(ind_renda): reg log_renda anos_estudo idade idade2  i.sexo
-{txt}(running regress on estimation sample)
-{res}
-{txt}Survey: Linear regression
-
-{col 1}Number of strata{col 20}= {res}      727{txt}{col 49}Number of obs{col 68}= {res}   162573
-{txt}{col 1}Number of PSUs{col 20}= {res}     6332{txt}{col 49}Population size{col 68}={res}  93622429
-{txt}{col 49}Subpop. no. of obs{col 68}={res}    152213
-{txt}{col 49}Subpop. size{col 68}={res}  87400337
-{txt}{col 49}Design df{col 68}= {res}     5605
-{txt}{col 49}F({res}   4{txt},{res}   5602{txt}){col 68}= {res}  4105.54
-{txt}{col 49}Prob > F{col 68}= {res}   0.0000
-{txt}{col 49}R-squared{col 68}= {res}   0.3405
-
-{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{col 14}{c |}{col 26}  Linearized
-{col 1}   log_renda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
-{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 1}anos_estudo {c |}{col 14}{res}{space 2} .1149745{col 26}{space 2} .0011408{col 37}{space 1}  100.78{col 46}{space 3}0.000{col 54}{space 4}  .112738{col 67}{space 3} .1172109
-{txt}{space 7}idade {c |}{col 14}{res}{space 2} .0685232{col 26}{space 2} .0010921{col 37}{space 1}   62.74{col 46}{space 3}0.000{col 54}{space 4} .0663823{col 67}{space 3} .0706642
-{txt}{space 6}idade2 {c |}{col 14}{res}{space 2}-.0006347{col 26}{space 2} .0000136{col 37}{space 1}  -46.69{col 46}{space 3}0.000{col 54}{space 4}-.0006613{col 67}{space 3} -.000608
-{txt}{space 12} {c |}
-{space 8}sexo {c |}
-{space 8}Fem  {c |}{col 14}{res}{space 2}-.4359373{col 26}{space 2} .0047154{col 37}{space 1}  -92.45{col 46}{space 3}0.000{col 54}{space 4}-.4451814{col 67}{space 3}-.4266932
-{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 4.602448{col 26}{space 2} .0252185{col 37}{space 1}  182.50{col 46}{space 3}0.000{col 54}{space 4}  4.55301{col 67}{space 3} 4.651886
-{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-
-{com}. 
-{txt}end of do-file
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: probit ind_renda anos_estudo casado##sexo n_filhos#sexo
-{txt}(running probit on estimation sample)
-{res}
-{txt}note: 8bn.n_filhos#1b.sexo != 0 predicts success perfectly
-      8bn.n_filhos#1b.sexo dropped and 3 obs not used
-note: 9.n_filhos#1b.sexo != 0 predicts success perfectly
-      9.n_filhos#1b.sexo dropped and 3 obs not used
-note: 9.n_filhos#2.sexo != 0 predicts success perfectly
-      9.n_filhos#2.sexo dropped and 1 obs not used
-note: 14.n_filhos#1b.sexo != 0 predicts failure perfectly
-      14.n_filhos#1b.sexo dropped and 1 obs not used
-note: 14.n_filhos#2.sexo != 0 predicts success perfectly
-      14.n_filhos#2.sexo dropped and 1 obs not used
-
-Survey: Probit regression
-
-{col 1}Number of strata{col 20}= {res}      727{txt}{col 49}Number of obs{col 68}= {res}   104843
-{txt}{col 1}Number of PSUs{col 20}= {res}     6317{txt}{col 49}Population size{col 68}={res}  58736696
-{txt}{col 49}Design df{col 68}= {res}     5590
-{txt}{col 49}F({res}  19{txt},{res}   5572{txt}){col 68}= {res}   156.89
-{txt}{col 49}Prob > F{col 68}= {res}   0.0000
-
-{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{col 15}{c |}{col 27}  Linearized
-{col 1}    ind_renda{col 15}{c |}      Coef.{col 27}   Std. Err.{col 39}      t{col 47}   P>|t|{col 55}     [95% Con{col 68}f. Interval]
-{hline 14}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 2}anos_estudo {c |}{col 15}{res}{space 2} .1008162{col 27}{space 2} .0020982{col 38}{space 1}   48.05{col 47}{space 3}0.000{col 55}{space 4} .0967029{col 68}{space 3} .1049296
-{txt}{space 13} {c |}
-{space 7}casado {c |}
-{space 9}Sim  {c |}{col 15}{res}{space 2} .2195171{col 27}{space 2} .0462441{col 38}{space 1}    4.75{col 47}{space 3}0.000{col 55}{space 4} .1288606{col 68}{space 3} .3101735
-{txt}{space 13} {c |}
-{space 9}sexo {c |}
-{space 9}Fem  {c |}{col 15}{res}{space 2}-.0684402{col 27}{space 2} .0195954{col 38}{space 1}   -3.49{col 47}{space 3}0.000{col 55}{space 4}-.1068548{col 68}{space 3}-.0300256
-{txt}{space 13} {c |}
-{space 2}casado#sexo {c |}
-{space 5}Sim#Fem  {c |}{col 15}{res}{space 2} -.151112{col 27}{space 2} .0638573{col 38}{space 1}   -2.37{col 47}{space 3}0.018{col 55}{space 4}-.2762972{col 68}{space 3}-.0259268
-{txt}{space 13} {c |}
-n_filhos#sexo {c |}
-{space 5} 1#Masc  {c |}{col 15}{res}{space 2} .6438914{col 27}{space 2} .0366248{col 38}{space 1}   17.58{col 47}{space 3}0.000{col 55}{space 4} .5720926{col 68}{space 3} .7156902
-{txt}{space 6} 1#Fem  {c |}{col 15}{res}{space 2} .0910681{col 27}{space 2} .0298365{col 38}{space 1}    3.05{col 47}{space 3}0.002{col 55}{space 4} .0325771{col 68}{space 3} .1495592
-{txt}{space 5} 2#Masc  {c |}{col 15}{res}{space 2} .6341522{col 27}{space 2} .0466348{col 38}{space 1}   13.60{col 47}{space 3}0.000{col 55}{space 4} .5427299{col 68}{space 3} .7255745
-{txt}{space 6} 2#Fem  {c |}{col 15}{res}{space 2}-.0996568{col 27}{space 2} .0338559{col 38}{space 1}   -2.94{col 47}{space 3}0.003{col 55}{space 4}-.1660274{col 68}{space 3}-.0332862
-{txt}{space 5} 3#Masc  {c |}{col 15}{res}{space 2} .5957215{col 27}{space 2} .0667624{col 38}{space 1}    8.92{col 47}{space 3}0.000{col 55}{space 4} .4648412{col 68}{space 3} .7266018
-{txt}{space 6} 3#Fem  {c |}{col 15}{res}{space 2}-.1357067{col 27}{space 2}  .048818{col 38}{space 1}   -2.78{col 47}{space 3}0.005{col 55}{space 4}-.2314088{col 68}{space 3}-.0400045
-{txt}{space 5} 4#Masc  {c |}{col 15}{res}{space 2} .5409442{col 27}{space 2} .1032943{col 38}{space 1}    5.24{col 47}{space 3}0.000{col 55}{space 4} .3384472{col 68}{space 3} .7434413
-{txt}{space 6} 4#Fem  {c |}{col 15}{res}{space 2}-.3655288{col 27}{space 2} .0764034{col 38}{space 1}   -4.78{col 47}{space 3}0.000{col 55}{space 4}-.5153092{col 68}{space 3}-.2157484
-{txt}{space 5} 5#Masc  {c |}{col 15}{res}{space 2} .2121096{col 27}{space 2}  .134115{col 38}{space 1}    1.58{col 47}{space 3}0.114{col 55}{space 4}-.0508079{col 68}{space 3} .4750271
-{txt}{space 6} 5#Fem  {c |}{col 15}{res}{space 2}-.5013392{col 27}{space 2}   .10761{col 38}{space 1}   -4.66{col 47}{space 3}0.000{col 55}{space 4}-.7122966{col 68}{space 3}-.2903818
-{txt}{space 5} 6#Masc  {c |}{col 15}{res}{space 2} .2915088{col 27}{space 2} .2512564{col 38}{space 1}    1.16{col 47}{space 3}0.246{col 55}{space 4}-.2010513{col 68}{space 3} .7840689
-{txt}{space 6} 6#Fem  {c |}{col 15}{res}{space 2}-.9098911{col 27}{space 2} .1939822{col 38}{space 1}   -4.69{col 47}{space 3}0.000{col 55}{space 4}-1.290172{col 68}{space 3}-.5296106
-{txt}{space 5} 7#Masc  {c |}{col 15}{res}{space 2} .1740804{col 27}{space 2} .2237183{col 38}{space 1}    0.78{col 47}{space 3}0.437{col 55}{space 4}-.2644943{col 68}{space 3} .6126551
-{txt}{space 6} 7#Fem  {c |}{col 15}{res}{space 2}-.8056064{col 27}{space 2} .2650384{col 38}{space 1}   -3.04{col 47}{space 3}0.002{col 55}{space 4}-1.325185{col 68}{space 3}-.2860281
-{txt}{space 5} 8#Masc  {c |}{col 15}{res}{space 2}        0{col 27}{txt}  (empty)
-{space 6} 8#Fem  {c |}{col 15}{res}{space 2}-1.337649{col 27}{space 2} .7340045{col 38}{space 1}   -1.82{col 47}{space 3}0.068{col 55}{space 4}-2.776583{col 68}{space 3} .1012851
-{txt}{space 5} 9#Masc  {c |}{col 15}{res}{space 2}        0{col 27}{txt}  (empty)
-{space 6} 9#Fem  {c |}{col 15}{res}{space 2}        0{col 27}{txt}  (empty)
-{space 5}14#Masc  {c |}{col 15}{res}{space 2}        0{col 27}{txt}  (empty)
-{space 6}14#Fem  {c |}{col 15}{res}{space 2}        0{col 27}{txt}  (empty)
-{space 13} {c |}
-{space 8}_cons {c |}{col 15}{res}{space 2} .7093261{col 27}{space 2} .0237462{col 38}{space 1}   29.87{col 47}{space 3}0.000{col 55}{space 4} .6627744{col 68}{space 3} .7558779
-{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-
-{com}. 
-{txt}end of do-file
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: probit ind_renda anos_estudo casado##sexo c.n_filhos#sexo
-{txt}(running probit on estimation sample)
-{res}
-{txt}Survey: Probit regression
-
-{col 1}Number of strata{col 20}= {res}      727{txt}{col 49}Number of obs{col 68}= {res}   104852
-{txt}{col 1}Number of PSUs{col 20}= {res}     6317{txt}{col 49}Population size{col 68}={res}  58741962
-{txt}{col 49}Design df{col 68}= {res}     5590
-{txt}{col 49}F({res}   6{txt},{res}   5585{txt}){col 68}= {res}   428.05
-{txt}{col 49}Prob > F{col 68}= {res}   0.0000
-
-{txt}{hline 16}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{col 17}{c |}{col 29}  Linearized
-{col 1}      ind_renda{col 17}{c |}      Coef.{col 29}   Std. Err.{col 41}      t{col 49}   P>|t|{col 57}     [95% Con{col 70}f. Interval]
-{hline 16}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 4}anos_estudo {c |}{col 17}{res}{space 2} .1010664{col 29}{space 2} .0021012{col 40}{space 1}   48.10{col 49}{space 3}0.000{col 57}{space 4} .0969472{col 70}{space 3} .1051856
-{txt}{space 15} {c |}
-{space 9}casado {c |}
-{space 11}Sim  {c |}{col 17}{res}{space 2}   .24135{col 29}{space 2} .0449323{col 40}{space 1}    5.37{col 49}{space 3}0.000{col 57}{space 4} .1532651{col 70}{space 3} .3294348
-{txt}{space 15} {c |}
-{space 11}sexo {c |}
-{space 11}Fem  {c |}{col 17}{res}{space 2}-.0792509{col 29}{space 2} .0191822{col 40}{space 1}   -4.13{col 49}{space 3}0.000{col 57}{space 4}-.1168554{col 70}{space 3}-.0416465
-{txt}{space 15} {c |}
-{space 4}casado#sexo {c |}
-{space 7}Sim#Fem  {c |}{col 17}{res}{space 2}-.1664885{col 29}{space 2} .0626716{col 40}{space 1}   -2.66{col 49}{space 3}0.008{col 57}{space 4}-.2893493{col 70}{space 3}-.0436278
-{txt}{space 15} {c |}
-sexo#c.n_filhos {c |}
-{space 10}Masc  {c |}{col 17}{res}{space 2}  .221326{col 29}{space 2}  .020242{col 40}{space 1}   10.93{col 49}{space 3}0.000{col 57}{space 4} .1816439{col 70}{space 3} .2610081
-{txt}{space 11}Fem  {c |}{col 17}{res}{space 2}-.0645888{col 29}{space 2} .0111104{col 40}{space 1}   -5.81{col 49}{space 3}0.000{col 57}{space 4}-.0863695{col 70}{space 3} -.042808
-{txt}{space 15} {c |}
-{space 10}_cons {c |}{col 17}{res}{space 2} .7483339{col 29}{space 2} .0232452{col 40}{space 1}   32.19{col 49}{space 3}0.000{col 57}{space 4} .7027643{col 70}{space 3} .7939034
-{txt}{hline 16}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-
-{com}. 
-{txt}end of do-file
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
 {com}. svy: probit ind_renda anos_estudo casado##sexo c.n_filhos##sexo
 {txt}(running probit on estimation sample)
 {res}
@@ -983,4 +847,113 @@ sexo#c.n_filhos {c |}
 {com}. 
 {txt}end of do-file
 
-{com}. exit, clear
+{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
+{txt}
+{com}. svy: log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo) twostep
+{err}log_renda command not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
+{txt}
+{com}. svy: heckit log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo) twostep
+{err}heckit command not found
+{txt}{search r(111):r(111);}
+
+end of do-file
+
+{search r(111):r(111);}
+
+{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
+{txt}
+{com}. svy: heckman log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo) twostep
+{err}option twostep not allowed with the svy prefix
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
+{txt}
+{com}. svy: heckman log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo)
+{txt}(running heckman on estimation sample)
+{err}option select() required
+an error occurred when svy executed heckman
+{txt}{search r(198):r(198);}
+
+end of do-file
+
+{search r(198):r(198);}
+
+{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
+{txt}
+{com}. svy: heckman log_renda anos_estudo i.sexo idade idade2, select(ind_renda anos_estudo casado##sexo c.n_filhos##sexo)
+{txt}(running heckman on estimation sample)
+{res}
+{txt}Survey: Heckman selection model
+(regression model with sample selection)
+
+{col 1}Number of strata{col 20}= {res}      727{txt}{col 49}Number of obs{col 68}= {res}   104852
+{txt}{col 1}Number of PSUs{col 20}= {res}     6317{txt}{col 49}Population size{col 68}={res}  58741962
+{txt}{col 49}Design df{col 68}= {res}     5590
+{txt}{col 49}F({res}   4{txt},{res}   5587{txt}){col 68}= {res}  2974.75
+{txt}{col 49}Prob > F{col 68}= {res}   0.0000
+
+{txt}{hline 16}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 17}{c |}{col 29}  Linearized
+{col 1}      log_renda{col 17}{c |}      Coef.{col 29}   Std. Err.{col 41}      t{col 49}   P>|t|{col 57}     [95% Con{col 70}f. Interval]
+{hline 16}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}log_renda       {txt}{c |}
+{space 4}anos_estudo {c |}{col 17}{res}{space 2} .1084523{col 29}{space 2} .0012039{col 40}{space 1}   90.08{col 49}{space 3}0.000{col 57}{space 4} .1060922{col 70}{space 3} .1108124
+{txt}{space 15} {c |}
+{space 11}sexo {c |}
+{space 11}Fem  {c |}{col 17}{res}{space 2}-.3698792{col 29}{space 2} .0055853{col 40}{space 1}  -66.22{col 49}{space 3}0.000{col 57}{space 4}-.3808284{col 70}{space 3}-.3589299
+{txt}{space 10}idade {c |}{col 17}{res}{space 2} .0681502{col 29}{space 2} .0013371{col 40}{space 1}   50.97{col 49}{space 3}0.000{col 57}{space 4} .0655289{col 70}{space 3} .0707714
+{txt}{space 9}idade2 {c |}{col 17}{res}{space 2}-.0006608{col 29}{space 2} .0000174{col 40}{space 1}  -38.06{col 49}{space 3}0.000{col 57}{space 4}-.0006949{col 70}{space 3}-.0006268
+{txt}{space 10}_cons {c |}{col 17}{res}{space 2} 4.638651{col 29}{space 2} .0279372{col 40}{space 1}  166.04{col 49}{space 3}0.000{col 57}{space 4} 4.583883{col 70}{space 3} 4.693419
+{txt}{hline 16}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}select          {txt}{c |}
+{space 6}ind_renda {c |}{col 17}{res}{space 2}  17.5973{col 29}{space 2} .0035696{col 40}{space 1} 4929.79{col 49}{space 3}0.000{col 57}{space 4}  17.5903{col 70}{space 3}  17.6043
+{txt}{space 4}anos_estudo {c |}{col 17}{res}{space 2}-1.69e-08{col 29}{space 2} .0001452{col 40}{space 1}   -0.00{col 49}{space 3}1.000{col 57}{space 4}-.0002846{col 70}{space 3} .0002846
+{txt}{space 15} {c |}
+{space 9}casado {c |}
+{space 11}Sim  {c |}{col 17}{res}{space 2} .0000147{col 29}{space 2} .0030794{col 40}{space 1}    0.00{col 49}{space 3}0.996{col 57}{space 4}-.0060222{col 70}{space 3} .0060515
+{txt}{space 15} {c |}
+{space 11}sexo {c |}
+{space 11}Fem  {c |}{col 17}{res}{space 2} 9.24e-06{col 29}{space 2}  .000956{col 40}{space 1}    0.01{col 49}{space 3}0.992{col 57}{space 4}-.0018648{col 70}{space 3} .0018833
+{txt}{space 15} {c |}
+{space 4}casado#sexo {c |}
+{space 7}Sim#Fem  {c |}{col 17}{res}{space 2}-.0000257{col 29}{space 2} .0031025{col 40}{space 1}   -0.01{col 49}{space 3}0.993{col 57}{space 4}-.0061078{col 70}{space 3} .0060565
+{txt}{space 15} {c |}
+{space 7}n_filhos {c |}{col 17}{res}{space 2} 4.05e-07{col 29}{space 2} .0006039{col 40}{space 1}    0.00{col 49}{space 3}0.999{col 57}{space 4}-.0011835{col 70}{space 3} .0011843
+{txt}{space 15} {c |}
+sexo#c.n_filhos {c |}
+{space 11}Fem  {c |}{col 17}{res}{space 2}-.0000109{col 29}{space 2} .0008434{col 40}{space 1}   -0.01{col 49}{space 3}0.990{col 57}{space 4}-.0016642{col 70}{space 3} .0016425
+{txt}{space 15} {c |}
+{space 10}_cons {c |}{col 17}{res}{space 2}-8.784798{col 29}{space 2} .0034778{col 40}{space 1}-2525.98{col 49}{space 3}0.000{col 57}{space 4}-8.791616{col 70}{space 3} -8.77798
+{txt}{hline 16}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+        /athrho {c |}{col 17}{res}{space 2} .0043762{col 29}{space 2} .0014772{col 40}{space 1}    2.96{col 49}{space 3}0.003{col 57}{space 4} .0014802{col 70}{space 3} .0072721
+{txt}       /lnsigma {c |}{col 17}{res}{space 2}-.3512026{col 29}{space 2} .0062742{col 40}{space 1}  -55.98{col 49}{space 3}0.000{col 57}{space 4}-.3635024{col 70}{space 3}-.3389028
+{txt}{hline 16}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}            rho{col 17}{c |}{res}{space 2} .0043762{col 29}{space 2} .0014772{col 57}{space 4} .0014802{col 70}{space 3}  .007272
+{col 1}{txt}          sigma{col 17}{c |}{res}{space 2} .7038411{col 29}{space 2}  .004416{col 57}{space 4}  .695237{col 70}{space 3} .7125517
+{col 1}{txt}         lambda{col 17}{c |}{res}{space 2} .0030801{col 29}{space 2}   .00104{col 57}{space 4} .0010414{col 70}{space 3} .0051189
+{txt}{hline 16}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
+{txt}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}D:\Projetos\epge_hw\MicroEmpirica\solutions\ex2\ex2_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 2 Feb 2018, 17:02:31
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
