@@ -27,11 +27,14 @@ drop if single2==1
 
 * (a) Regressão OLS - Retornos a educação
 svy: reg log_renda anos_estudo i.sexo idade idade2
+esttab A using table1.tex
 
 * (b) Regressão OLS - Retornos a educação
 svy: probit ind_renda anos_estudo casado##sexo c.n_filhos##sexo
 
-* (c) Heckit
+* (c) Heckman Correction
 svy: heckman log_renda anos_estudo i.sexo idade idade2, select(ind_renda anos_estudo casado##sexo c.n_filhos##sexo)
+
+* (d) Two step Correction
 
 log close

@@ -3,16 +3,11 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Projetos\epge_hw\MicroEmpirica\solutions\ex2\ex2_log.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 2 Feb 2018, 16:28:35
+ {txt}opened on:  {res} 5 Feb 2018, 13:28:09
 {txt}
 {com}. 
 . /* EXERCÍCIO EMPÍRICO */
 . use "${c -(}data{c )-}/pnad2015_ex2.dta", clear
-{txt}
-{com}. 
-{txt}end of do-file
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
 {txt}
 {com}. 
 . * Define o Desenho Amostral
@@ -806,11 +801,8 @@ Stratum    #Units     #Obs      min       mean      max
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {com}. 
-{txt}end of do-file
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: probit ind_renda anos_estudo casado##sexo c.n_filhos##sexo
+. * (b) Regressão OLS - Retornos a educação
+. svy: probit ind_renda anos_estudo casado##sexo c.n_filhos##sexo
 {txt}(running probit on estimation sample)
 {res}
 {txt}Survey: Probit regression
@@ -845,53 +837,8 @@ sexo#c.n_filhos {c |}
 {txt}{hline 16}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {com}. 
-{txt}end of do-file
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo) twostep
-{err}log_renda command not found
-{txt}{search r(111):r(111);}
-
-end of do-file
-
-{search r(111):r(111);}
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: heckit log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo) twostep
-{err}heckit command not found
-{txt}{search r(111):r(111);}
-
-end of do-file
-
-{search r(111):r(111);}
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: heckman log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo) twostep
-{err}option twostep not allowed with the svy prefix
-{txt}{search r(198):r(198);}
-
-end of do-file
-
-{search r(198):r(198);}
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: heckman log_renda anos_estudo i.sexo idade idade2, selection(ind_renda anos_estudo casado##sexo c.n_filhos##sexo)
-{txt}(running heckman on estimation sample)
-{err}option select() required
-an error occurred when svy executed heckman
-{txt}{search r(198):r(198);}
-
-end of do-file
-
-{search r(198):r(198);}
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. svy: heckman log_renda anos_estudo i.sexo idade idade2, select(ind_renda anos_estudo casado##sexo c.n_filhos##sexo)
+. * (c) Heckman Correction
+. svy: heckman log_renda anos_estudo i.sexo idade idade2, select(ind_renda anos_estudo casado##sexo c.n_filhos##sexo)
 {txt}(running heckman on estimation sample)
 {res}
 {txt}Survey: Heckman selection model
@@ -945,15 +892,13 @@ sexo#c.n_filhos {c |}
 {txt}{hline 16}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {com}. 
-{txt}end of do-file
-
-{com}. do "C:\Users\Samue\AppData\Local\Temp\STD00000000.tmp"
-{txt}
-{com}. log close
+. * (d) Two step Correction
+. 
+. log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Projetos\epge_hw\MicroEmpirica\solutions\ex2\ex2_log.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 2 Feb 2018, 17:02:31
+ {txt}closed on:  {res} 5 Feb 2018, 16:04:38
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
