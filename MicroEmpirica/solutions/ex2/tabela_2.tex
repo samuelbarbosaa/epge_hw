@@ -1,0 +1,54 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Equação de seleçao - Modelo Probit}
+\begin{tabular}{l*{1}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}\\
+            &\multicolumn{1}{c}{ind\_renda}\\
+\midrule
+ind\_renda   &                     \\
+anos\_estudo &       0.103\sym{***}\\
+            &     (50.22)         \\
+\addlinespace
+0.casal     &           0         \\
+            &         (.)         \\
+\addlinespace
+1.casal     &       0.341\sym{***}\\
+            &     (14.11)         \\
+\addlinespace
+2.mulher    &           0         \\
+            &         (.)         \\
+\addlinespace
+4.mulher    &       0.199\sym{***}\\
+            &      (7.10)         \\
+\addlinespace
+0.casal#2.mulher&           0         \\
+            &         (.)         \\
+\addlinespace
+0.casal#4.mulher&           0         \\
+            &         (.)         \\
+\addlinespace
+1.casal#2.mulher&           0         \\
+            &         (.)         \\
+\addlinespace
+1.casal#4.mulher&      -0.920\sym{***}\\
+            &    (-28.41)         \\
+\addlinespace
+n\_filhos    &      0.0173\sym{***}\\
+            &      (9.61)         \\
+\addlinespace
+2.mulher#c.n\_filhos&           0         \\
+            &         (.)         \\
+\addlinespace
+4.mulher#c.n\_filhos&     -0.0178\sym{***}\\
+            &     (-8.99)         \\
+\addlinespace
+\_cons      &       0.778\sym{***}\\
+            &     (28.49)         \\
+\midrule
+\(N\)       &      162570         \\
+\bottomrule
+\multicolumn{2}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{2}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

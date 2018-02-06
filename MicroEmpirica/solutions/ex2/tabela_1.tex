@@ -1,0 +1,32 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Equação de Mincer desconsiderando viés de seleção}
+\begin{tabular}{l*{1}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}\\
+            &\multicolumn{1}{c}{log\_renda}\\
+\midrule
+anos\_estudo &       0.112\sym{***}\\
+            &     (98.98)         \\
+\addlinespace
+2.mulher    &           0         \\
+            &         (.)         \\
+\addlinespace
+4.mulher    &      -0.430\sym{***}\\
+            &    (-91.49)         \\
+\addlinespace
+idade       &      0.0618\sym{***}\\
+            &     (50.91)         \\
+\addlinespace
+idade2      &   -0.000570\sym{***}\\
+            &    (-37.03)         \\
+\addlinespace
+\_cons      &       4.781\sym{***}\\
+            &    (177.69)         \\
+\midrule
+\(N\)       &      155026         \\
+\bottomrule
+\multicolumn{2}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{2}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

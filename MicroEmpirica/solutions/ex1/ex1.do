@@ -33,7 +33,7 @@ use PES2015.dta, clear
 save pnad2015.dta, replace	
 
 * Cria, altera e renomeia variáveis 
-rename (v4718 v4803 v8005 v0404 v0302) (renda anos_estudo idade cor_raca sexo)
+rename (v4718 v4803 v8005 v0404 v0302) (renda anos_estudo idade cor_raca mulher)
 rename (v0504) (migrou)
 rename (v4729 v4617 v4618) (peso estrato psu)
 
