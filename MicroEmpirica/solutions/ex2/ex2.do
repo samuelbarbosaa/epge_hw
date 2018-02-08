@@ -14,31 +14,46 @@ cd "${data_raw}"
 
 clear all
 
+* Leitura e tratamento dos dados
+
+/* infile using "PES2015.dct", using(PES2015.TXT)	
+sort uf v0102 v0103
+save PES2015.dta, replace	
+clear
+
+infile using "DOM2015.dct", using(DOM2015.TXT)	
+sort uf v0102 v0103
+save DOM2015.dta, replace	
+clear
+
+use PES2015.dta, clear
+ merge m:1 uf v0102 v0103 using DOM2015.dta
+ drop if _merge==2
+ drop _merge
+save pnad2015.dta, replace */
+
 use pnad2015.dta
 
 * Cria, altera e renomeia variáveis 
 rename (v4718 v4803 v8005 v0404 v0302) (renda anos_estudo idade cor_raca mulher)
+rename (v0402) (cond_dom)
 rename (v4729 v4617 v4618) (peso estrato psu)
 
 gen idade2 = idade^2
-gen log_renda = ln(renda) // renda = 0 é descartado.
+gen log_renda = ln(renda) // renda = 0 se torna missing.
 
 recode anos_estudo (17 = .)
-recode renda (999999999999 = .)
-
 replace anos_estudo = anos_estudo - 1
 
-keep v0101 v0102 v0103 mulher idade idade2 v0401 v4111 cor_raca anos_estudo ///
-     renda log_renda peso estrato psu
-
+recode renda (999999999999 = .)
 drop if renda == .
+
 gen ind_renda = 0
 replace ind_renda = 1 if renda > 0
 
-
 egen id_dom = concat(v0101 v0102 v0103)
-bysort id_dom: egen n_filhos = total(v0401==3 & idade<18)
-replace n_filhos = 0 if v0401>2	
+bysort id_dom: egen n_filhos = total(cond_dom==3 & idade<18)
+replace n_filhos = 0 if cond_dom>2	
 
 gen pia = 0
 replace pia = 1 if idade >= 18 & idade <= 65
@@ -60,6 +75,10 @@ label define cor_raca_labels 0 ///
 
 label value mulher mulher_labels
 label value cor_raca cor_raca_labels
+
+keep v0101 v0102 v0103 mulher idade idade2 cond_dom casal anos_estudo ///
+     pia mulher_casal n_filhos n_filhos_mulher ind_renda log_renda  ///
+	 peso estrato psu
 
 /* EXERCÍCIO EMPÍRICO */
 
