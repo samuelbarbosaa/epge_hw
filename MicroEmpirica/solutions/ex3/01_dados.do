@@ -35,12 +35,44 @@ rename v4618 psu
 rename v4617 strata
 rename v4729 weights
 
+label var arthritis			"Arthritis or Rheumatism"
+label var bronchitis		"Bronchitis or Asthma"
+label var cancer			"Cancer"
+label var chronic_renal		"Chronic Renal Disease"
+label var cirrhosis			"Cirrhosis"
+label var depression		"Depression"
+label var diabetes			"Diabetes"
+label var heart_disease		"Heart Disease"
+label var hypertension		"Hypertension"
+label var lumbar_pain		"Lumbar Pain"
+label var tendinitis		"Tendonitis"
+label var tuberculosis		"Tuberculosis"
+
+recode arthritis 		(2=1) (4=0) (9=.)
+recode bronchitis 		  	  (3=0) (9=.)
+recode cancer 				  (3=0) (9=.)
+recode chronic_renal	(2=1) (4=0) (9=.)
+recode cirrhosis		(2=1) (4=0) (9=.)
+recode depression			  (3=0) (9=.)
+recode diabetes			(2=1) (4=0) (9=.) 
+recode heart_disease		  (3=0) (9=.)
+recode hypertension		(2=1) (4=0) (9=.) 
+recode lumbar_pain			  (3=0) (9=.)
+recode tendinitis			  (3=0) (9=.) 
+recode tuberculosis		(2=1) (4=0) (9=.) 
+
+order arthritis bronchitis cancer chronic_renal cirrhosis depression ///
+	  diabetes heart_disease hypertension lumbar_pain tendinitis tuberculosis 
+
 * Plano de saude
 recode insured (5=0) (9=.) (3=1)
 
 gen employer = 4 if insured == 1 
-replace employer = 2 if payment >= 4 & payment <= 7
+replace employer = 2 if payment >= 4 & payment <= 6
 recode employer (.=6)
+
+label define insurance_type 2 "Individual Coverage" 4 "Employer-Contracted Plan" 6 "Not Insured"
+label values employer insurance_type
 
 gen emp_dummy = 0
 replace emp_dummy = 1 if employer == 4
@@ -58,6 +90,9 @@ replace age_cat = 4 if age < 50
 replace age_cat = 3 if age < 40
 replace age_cat = 2 if age < 30
 replace age_cat = 1 if age < 18
+
+label define age_categories 1 "0-17" 2 "18-29" 3 "30-39" 4 "40-49" 5 "50-59" 6 "60-69" 7 ">=70"
+label values age_cat age_categories
 
 * Area metropolitana de Sao Paulo
 gen sp = 0

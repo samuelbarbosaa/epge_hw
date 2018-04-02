@@ -1,0 +1,317 @@
+\documentclass{article}
+
+%\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage[section]{placeins}
+
+\usepackage{graphicx}
+
+\usepackage[tableposition=top, bf]{caption}
+
+\usepackage{hanging}
+\usepackage{ragged2e}
+
+\usepackage{geometry}
+ \geometry{a4paper,  margin=0.5in}
+
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} %lor values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage{colortbl}
+
+\begin{document}
+
+
+
+%%%% TABELA 1
+
+\begin{table*}\centering
+\caption{\textbf{Fraction of Insured Agents per Age Group}}
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l*{7}{c}}
+
+		\hline \hline
+		& & & & \textbf{Age Group} & & & \\
+
+                    & \multicolumn{1}{c}{\textbf{0-17}} & \multicolumn{1}{c}{\textbf{18-29}} & \multicolumn{1}{c}{\textbf{30-39}} & 
+		  \multicolumn{1}{c}{\textbf{40-49}} & \multicolumn{1}{c}{\textbf{50-59}} & \multicolumn{1}{c}{\textbf{60-69}} & \multicolumn{1}{c}{{$\mathbf{\geq 70}$}}\\
+
+\midrule
+
+\textbf{\textit{São Paulo} Metropolitan Area} & & & & & & & \\
+
+Individual Coverage 	 	&   3,16\% &   5,24\% &   8,89\% & 10,63\% & 16,24\% & 22,28\% & 27,11\% \\
+Employer-Contracted Plan 	& 33,49\% & 33,30\% & 37,84\% & 32,42\% & 31,07\% & 26,11\% & 24,75\% \\
+
+\midrule
+
+\textit{Subpopulation Observations}      & 6.620 & 4.889 & 3.454 & 2.973 & 1.976 & 1.149 & 889         \\
+\textit{Expanded Subpop. Size} 		& 5.711.489 &  4.218.065 &  2.979.983 &  2.565.029 &  1.704.844  &   991.318   &  766.988          \\
+
+\specialrule{1.5pt}{1pt}{1pt}
+
+\textbf{\textit{Rio de Janeiro} Metropolitan Area}  & & & & & & & \\
+
+Individual Coverage		& 2,12\% &   3,83\% &   6,60\% &   7,30\% &   9,80\% & 11,92\% & 14,48\% \\
+Employer-Contracted Plan 	& 6,13\% & 26,40\% & 25,28\% & 26,90\% & 24,72\% & 22,38\% & 24,57\% \\
+
+\midrule
+
+\textit{Subpopulation Observations} 	&   4.393         & 3.292        & 2.409        & 2.494         & 1.909       & 1.175      & 1.050         \\
+\textit{Expanded Subpop. Size} 		&   2.966.586 & 2.223.110 & 1.626.803 & 1.684.211 & 1.289.167 & 793.486 & 709.069      \\
+
+
+\hline \hline
+
+\end{tabular}}
+
+\justify \small \hangindent1cm \textbf{Note:} Estimated subpopulation means from the 2003 PNAD survey (with 384.154 observations representing 177.038.067
+individuals). Survey design incorporated.
+
+\end{table*}
+
+
+
+
+%%%%% SAO PAULO
+\newpage
+
+\begin{table*}\centering
+\caption{\textbf{Morbidity Incidence and Insurance Coverage in \textit{São Paulo} Metropolitan Area}}
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l*{7}{c}}
+
+		\hline \hline
+		& & & & \textbf{Age Group} & & & \\
+
+                    & \multicolumn{1}{c}{\textbf{0-17}} & \multicolumn{1}{c}{\textbf{18-29}} & \multicolumn{1}{c}{\textbf{30-39}} & 
+		  \multicolumn{1}{c}{\textbf{40-49}} & \multicolumn{1}{c}{\textbf{50-59}} & \multicolumn{1}{c}{\textbf{60-69}} & \multicolumn{1}{c}{{$\mathbf{\geq 70}$}}\\
+
+\midrule
+\textbf{Arthritis or Rheumatism} & & & & & & & \\
+
+Individual Coverage & 0,72\%  & 0,24\%  &     -0,71\%  & 0,76\%  &     -2,45\%  &     -0,45\%  &     \cellcolor[gray]{0.9} 7,94\%\sym{*}  \\
+Employer-Contracted Plan&     -0,06\%  &     -0,26\%  &     -1,06\%\sym{*}  &     -0,59\%  & 0,93\%  & 1,98\%  & 3,68\% \\
+Constant            & 0,24\%\sym{**} & 0,93\%\sym{***}& 2,66\%\sym{***}& 5,26\%\sym{***}& 12,10\%\sym{***}& 15,68\%\sym{***}& 23,60\%\sym{***}\\
+
+\midrule
+\textbf{Bronchitis or Asthma} & & & & & & & \\
+
+Individual Coverage & \cellcolor[gray]{0.9}  4,64\%  &   1,20\%  &   0,81\%  &   0,22\%  &  -0,13\%  &  -3,34\%\sym{*}  &  -1,98\% \\
+Employer-Contracted Plan&  -0,01\%  &   0,87\%  &   0,57\%  &   0,46\%  &  -0,08\%  &  -0,92\%  &  -0,18\% \\
+Constant            &   7,32\%\sym{***}&   4,66\%\sym{***}&   3,10\%\sym{***}&   3,90\%\sym{***}&   4,80\%\sym{***}&   7,25\%\sym{***}&   6,54\%\sym{***}\\
+
+\midrule
+\textbf{Cancer} & & & & & & & \\
+
+Individual Coverage &   0,00\%  &   0,26\%  &  -0,00\%  &   0,85\%  &   1,44\%  &    \cellcolor[gray]{0.9} 2,89\%\sym{*}  &   0,46\% \\
+Employer-Contracted Plan&   0,14\%  &  -0,01\%  &  -0,17\%  &   0,31\%  &  -0,24\%  &   1,99\%  &  -0,54\% \\
+Constant            &  -0,00\%  &   0,13\%\sym{*}  &   0,33\%\sym{*}  &   0,41\%\sym{**} &   1,06\%\sym{***}&   1,01\%\sym{*}  &   3,27\%\sym{***}\\
+
+\midrule
+\textbf{Chronic Renal Disease} & & & & & & & \\
+
+Individual Coverage &  -0,24\%\sym{**} &   0,25\%  &   0,49\%  &   1,51\%  &  -0,34\%  &  -0,42\%  &   1,06\% \\
+Employer-Contracted Plan&  -0,19\%\sym{*}  &  -0,35\%  &  -0,15\%  &  -0,20\%  &  -1,07\%  &  -2,21\%\sym{*}  &  -0,32\% \\
+Constant            &   0,24\%\sym{**} &   0,53\%\sym{***}&   1,14\%\sym{***}&   1,65\%\sym{***}&   2,21\%\sym{***}&   3,54\%\sym{***}&   3,50\%\sym{***}\\
+
+\midrule
+\textbf{Cirrhosis} & & & & & & & \\
+
+Individual Coverage &  -0,00\%  &   0,00\%  &  -0,11\%  &   0,26\%  &   0,05\%  &  -0,12\%  &  -0,29\% \\
+Employer-Contracted Plan&   0,05\%  &   0,12\%  &  -0,03\%  &  -0,06\%  &  -0,25\%  &  -0,51\%  &  -0,70\% \\
+Constant            &   0,00\%  &  -0,00\%  &   0,11\%  &   0,06\%  &   0,58\%\sym{*}  &   0,51\%  &   0,70\% \\
+
+
+\midrule
+\textbf{Depression} & & & & & & & \\
+
+Individual Coverage &   0,14\%  &  -0,03\%  &   1,35\%  &   1,18\%  &  -1,27\%  &   0,11\%  &   4,58\% \\
+Employer-Contracted Plan&  -0,06\%  &  -0,18\%  &  -0,44\%  &  -1,97\%\sym{*}  &  -0,27\%  &  -0,09\%  &  -0,48\% \\
+Constant            &   0,33\%\sym{***}&   2,76\%\sym{***}&   4,19\%\sym{***}&   7,68\%\sym{***}&   8,74\%\sym{***}&   8,09\%\sym{***}&   9,11\%\sym{***}\\
+
+\midrule
+\textbf{Diabetes} & & & & & & & \\
+
+Individual Coverage &   0,36\%  &  -0,24\%  &  -1,47\%\sym{*}  &   0,12\%  &  -1,75\%  &  -3,74\%  &  -0,30\% \\
+Employer-Contracted Plan&  -0,07\%  &  -0,08\%  &  -1,12\%\sym{*}  &  -1,61\%\sym{*}  &  -0,26\%  &  -5,18\%\sym{*}  &   0,26\% \\
+Constant            &   0,12\%\sym{*}  &   0,63\%\sym{***}&   2,12\%\sym{***}&   4,31\%\sym{***}&   9,22\%\sym{***}&  15,85\%\sym{***}&  15,65\%\sym{***}\\
+
+\midrule
+\textbf{Heart Disease} & & & & & & & \\
+
+Individual Coverage &   0,03\%  &   0,60\%  &  -0,27\%  &   1,66\%  &  -0,02\%  &  -7,50\%\sym{**} &   1,87\% \\
+Employer-Contracted Plan&   0,02\%  &   0,02\%  &  -0,39\%  &  -0,93\%  &  -1,90\%  &  -9,05\%\sym{***}&   0,53\% \\
+Constant            &   0,93\%\sym{***}&   0,97\%\sym{***}&   2,23\%\sym{***}&   4,67\%\sym{***}&   8,74\%\sym{***}&  18,05\%\sym{***}&  22,20\%\sym{***}\\
+
+\midrule
+\textbf{Hypertension} & & & & & & & \\
+
+Individual Coverage &  -0,36\%\sym{***}&   2,24\%  &  -1,59\%  &   0,08\%  &  -6,87\%\sym{*}  &  -9,46\%\sym{**} &   1,01\% \\
+Employer-Contracted Plan&  -0,04\%  &  -0,89\%  &  -2,46\%\sym{*}  &  -2,98\%  &  -4,12\%  &  -7,75\%\sym{*}  &  -0,74\% \\
+Constant            &   0,36\%\sym{***}&   3,23\%\sym{***}&   9,73\%\sym{***}&  21,44\%\sym{***}&  38,33\%\sym{***}&  50,08\%\sym{***}&  52,10\%\sym{***}\\
+
+\midrule
+\textbf{Lumbar Pain} & & & & & & & \\
+Individual Coverage &   0,34\%  &    \cellcolor[gray]{0.9} 6,32\%\sym{**} &  \cellcolor[gray]{0.9} 5,63\%\sym{*}  &  \cellcolor[gray]{0.9} 7,05\%\sym{**} &    -0,69\%  &  -0,45\%  &   7,36\% \\
+Employer-Contracted Plan&   0,21\%  &    \cellcolor[gray]{0.9}    2,44\%\sym{**} &   0,17\%  &   2,04\%  &   2,66\%  &  -0,37\%  &   3,43\% \\
+Constant            &   1,10\%\sym{***}&   5,79\%\sym{***}&  13,91\%\sym{***}&  19,85\%\sym{***}&  27,47\%\sym{***}&  31,70\%\sym{***}&  32,48\%\sym{***}\\
+
+\midrule
+\textbf{Tendonitis} & & & & & & & \\
+
+Individual Coverage &   0,39\%  &     \cellcolor[gray]{0.9}   3,68\%\sym{*}  &   \cellcolor[gray]{0.9}     6,13\%\sym{***}&   2,10\%  &   3,15\%  &   3,69\%  &   0,02\% \\
+Employer-Contracted Plan&   0,47\%  &   \cellcolor[gray]{0.9}     3,79\%\sym{***}&   \cellcolor[gray]{0.9}     4,07\%\sym{***}&    \cellcolor[gray]{0.9}    6,23\%\sym{***}&  \cellcolor[gray]{0.9} 4,91\%\sym{***}&   1,60\%  &  -0,37\% \\
+Constant            &   0,57\%\sym{***}&   2,96\%\sym{***}&   3,97\%\sym{***}&   5,49\%\sym{***}&   6,82\%\sym{***}&   6,07\%\sym{***}&   5,37\%\sym{***}\\
+
+\midrule
+\textbf{Tuberculosis} & & & & & & & \\
+
+Individual Coverage &  -0,07\%  &  -0,17\%\sym{*}  &  -0,16\%  &  -0,10\%  &  -0,19\%  &  -0,51\%  &   0,18\% \\
+Employer-Contracted Plan&  -0,03\%  &  -0,04\%  &  -0,01\%  &   0,00\%  &   0,62\%  &  -0,51\%  &   0,68\% \\
+Constant            &   0,07\%  &   0,17\%\sym{*}  &   0,16\%  &   0,41\%\sym{**} &   0,19\%  &   0,51\%  &   0,23\% \\
+
+\midrule
+
+\textit{Subpopulation Observations} 	&    6.620 & 4.889 & 3.454 & 2.973 & 1.976 & 1.149 & 889         \\
+\textit{Expanded Subpop. Size} 		&   5.711.489 &  4.218.065 &  2.979.983 &  2.565.029 &  1.704.844  &   991.318   &  766.988          \\
+
+	\hline \hline
+
+\end{tabular}}
+\justify \small \hangindent1cm \textbf{Note:} Survey-adjusted OLS regressions; full sample used in all regressions (384.154 observations representing 177.038.067
+individuals). Dependent variable: each of the 12 types of health problems; independent variables: individual and Employer-
+Contracted plan dummies and a constant term. Robust (linearized) standard errors, which incorporate the survey design, were
+used in the significance tests; * indicates significance at the 5\% level; statistically positive dummy coefficients are shadowed.
+\end{table*}
+
+
+%%%%%%% RIO
+
+
+\newpage
+
+\begin{table*}\centering
+\caption{\textbf{Morbidity Incidence and Insurance Coverage in \textit{Rio de Janeiro} Metropolitan Area}}
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l*{7}{c}}
+
+		\hline \hline
+		& & & & \textbf{Age Group} & & & \\
+
+                    & \multicolumn{1}{c}{\textbf{0-17}} & \multicolumn{1}{c}{\textbf{18-29}} & \multicolumn{1}{c}{\textbf{30-39}} & 
+		  \multicolumn{1}{c}{\textbf{40-49}} & \multicolumn{1}{c}{\textbf{50-59}} & \multicolumn{1}{c}{\textbf{60-69}} & \multicolumn{1}{c}{{$\mathbf{\geq 70}$}}\\
+
+\midrule
+\textbf{Arthritis or Rheumatism} & & & & & & & \\
+
+Individual Coverage & -0,35\%\sym{***}& 0,45\% & -0,11\% & -4,51\%\sym{***}& -1,94\% & \cellcolor[gray]{0.9} 9,94\%\sym{*}  & -2,19\% \\
+Employer-Contracted Plan& -0,18\% & -0,44\% & -0,16\% & -2,28\%\sym{*}  & 0,50\% & 1,60\% & -0,50\% \\
+Constant            & 0,35\%\sym{***}& 1,13\%\sym{***}& 2,62\%\sym{***}& 6,15\%\sym{***}& 12,64\%\sym{***}& 25,78\%\sym{***}& 37,72\%\sym{***}\\	
+
+\midrule
+\textbf{Bronchitis or Asthma} & & & & & & & \\
+
+Individual Coverage & 4,88\% & 0,82\% & 1,46\% & 0,55\% & -1,06\% & 0,46\% & -2,41\% \\
+Employer-Contracted Plan& 1,01\% & \cellcolor[gray]{0.9} 2,48\%\sym{**} & -0,02\% & 1,04\% & -0,87\% & \cellcolor[gray]{0.9} 3,35\%\sym{*}  & 2,21\% \\
+Constant            & 5,87\%\sym{***}& 2,35\%\sym{***}& 2,32\%\sym{***}& 1,65\%\sym{***}& 3,20\%\sym{***}& 3,11\%\sym{***}& 4,38\%\sym{***}\\
+
+\midrule
+\textbf{Cancer} & & & & & & & \\
+
+Individual Coverage & -0,03\% & -0,17\%\sym{*}  & -0,06\% & 1,10\% & 0,06\% & 0,85\% & 1,38\% \\
+Employer-Contracted Plan& -0,03\% & 0,17\% & -0,06\% & -0,40\% & 0,58\% & 0,60\% &\cellcolor[gray]{0.9} 2,62\%\sym{*}  \\
+Constant            & 0,03\% & 0,17\%\sym{*}  & 0,06\% & 0,55\%\sym{**} & 0,48\%\sym{*}  & 1,30\%\sym{**} & 1,25\%\sym{**} \\
+
+\midrule
+\textbf{Chronic Renal Disease} & & & & & & & \\
+
+Individual Coverage & 0,98\% & -0,52\%\sym{***}& -0,41\% & 0,06\% & -2,10\%\sym{**} & 1,63\% & -1,66\% \\
+Employer-Contracted Plan& 0,08\% & -0,41\%\sym{*}  & -0,22\% & -0,24\% & -0,94\% & -0,04\% & 0,90\% \\
+Constant            & 0,10\% & 0,52\%\sym{***}& 1,04\%\sym{***}& 1,58\%\sym{***}& 2,64\%\sym{***}& 1,94\%\sym{***}& 2,97\%\sym{***}\\
+
+\midrule
+\textbf{Cirrhosis} & & & & & & & \\
+
+Individual Coverage & -0,06\% & 0,00\% & -0,06\% & -0,24\%\sym{*}  & 0,37\% & -0,52\%\sym{*}  & -0,31\% \\
+Employer-Contracted Plan& -0,06\% & 0,00\% & 0,10\% & -0,24\%\sym{*}  & 0,05\% & 0,24\% & -0,31\% \\
+Constant            & 0,06\% & 0,00\% & 0,06\% & 0,24\%\sym{*}  & 0,16\% & 0,52\%\sym{*}  & 0,31\% \\
+
+\midrule
+\textbf{Depression} & & & & & & & \\
+
+Individual Coverage & -0,16\% & 1,52\% & -0,61\% & 3,80\% & 0,07\% & 4,96\% & 2,17\% \\
+Employer-Contracted Plan& -0,16\% & -0,85\%\sym{*}  & -0,28\% & -0,53\% & -1,37\% & 4,64\% & 4,20\% \\
+Constant            & 0,16\% & 1,65\%\sym{***}& 4,39\%\sym{***}& 5,00\%\sym{***}& 6,88\%\sym{***}& 7,90\%\sym{***}& 7,04\%\sym{***}\\
+
+\midrule
+\textbf{Diabetes} & & & & & & & \\
+
+Individual Coverage & -0,22\%\sym{**} & -0,35\%\sym{**} & -0,22\% & 1,53\% & -0,49\% & 6,20\% & 0,52\% \\
+Employer-Contracted Plan& -0,22\%\sym{**} & -0,00\% & -0,36\% & -1,62\%\sym{*}  & -2,35\% & 0,13\% & -0,70\% \\
+Constant            & 0,22\%\sym{**} & 0,35\%\sym{**} & 0,85\%\sym{***}& 3,41\%\sym{***}& 7,44\%\sym{***}& 11,66\%\sym{***}& 16,59\%\sym{***}\\
+
+\midrule
+\textbf{Heart Disease} & & & & & & & \\
+
+Individual Coverage & -0,44\%\sym{***}& 0,67\% & 0,32\% & 0,01\% & 1,33\% & -0,03\% & 2,37\% \\
+Employer-Contracted Plan& -0,01\% & -0,34\% & -0,39\% & -1,91\%\sym{*}  & -0,25\% & 1,32\% & 2,21\% \\
+Constant            & 0,44\%\sym{***}& 0,91\%\sym{***}& 2,19\%\sym{***}& 5,48\%\sym{***}& 9,36\%\sym{***}& 15,02\%\sym{***}& 20,66\%\sym{***}\\
+
+\midrule
+\textbf{Hypertension} & & & & & & & \\
+
+Individual Coverage & -0,29\%\sym{**} & -0,23\% & -1,31\% & -2,41\% & 4,91\% & 5,65\% & -6,24\% \\
+Employer-Contracted Plan& -0,11\% & -0,31\% & -2,73\%\sym{*}  & 0,38\% & -4,39\% & -7,53\%\sym{*}  & 3,21\% \\
+Constant            & 0,29\%\sym{**} & 2,61\%\sym{***}& 10,12\%\sym{***}& 19,44\%\sym{***}& 36,80\%\sym{***}& 49,35\%\sym{***}& 54,93\%\sym{***}\\
+
+\midrule
+\textbf{Lumbar Pain} & & & & & & & \\
+
+Individual Coverage & 0,31\% & \cellcolor[gray]{0.9} 6,51\%\sym{*}  & -4,46\% & -2,95\% & 1,05\% & 6,85\% & 2,60\% \\
+Employer-Contracted Plan& 0,37\% & 1,85\% & -1,09\% & -0,42\% & -0,20\% & 5,05\% & 1,35\% \\
+Constant            & 0,76\%\sym{***}& 5,40\%\sym{***}& 13,89\%\sym{***}& 22,18\%\sym{***}& 30,50\%\sym{***}& 36,01\%\sym{***}& 38,19\%\sym{***}\\
+
+\midrule
+\textbf{Tendonitis} & & & & & & & \\
+
+Individual Coverage & -0,22\%\sym{*}  & 0,68\% & \cellcolor[gray]{0.9} 6,43\%\sym{**} & 1,04\% & \cellcolor[gray]{0.9} 6,29\%\sym{**} & \cellcolor[gray]{0.9} 8,72\%\sym{**} & -2,41\% \\
+Employer-Contracted Plan&  \cellcolor[gray]{0.9} 0,56\%\sym{*}  & 0,95\% & \cellcolor[gray]{0.9} 1,89\% & \cellcolor[gray]{0.9} 3,41\%\sym{**} & \cellcolor[gray]{0.9} 5,89\%\sym{***}& \cellcolor[gray]{0.9}  3,84\%\sym{*}  & -0,12\% \\
+Constant            & 0,22\%\sym{*}  & 1,70\%\sym{***}& 2,38\%\sym{***}& 2,25\%\sym{***}& 2,80\%\sym{***}& 4,15\%\sym{***}& 4,38\%\sym{***}\\
+
+
+\midrule
+\textbf{Tuberculosis} & & & & & & & \\
+
+Individual Coverage & 0,00\% & -0,17\%\sym{*}  & 0,38\% & 0,12\% & -0,08\% & -0,32\% & -0,47\% \\
+Employer-Contracted Plan& 0,00\% & -0,17\%\sym{*}  & -0,24\%\sym{*}  & -0,28\% & 0,34\% & -1,04\%\sym{*}  & -0,47\% \\
+Constant            & 0,00\% & 0,17\%\sym{*}  & 0,24\%\sym{*}  & 0,43\%\sym{**} & 0,08\% & 1,04\%\sym{*}  & 0,47\% \\
+
+
+\midrule
+
+\textit{Subpopulation Observations} 	&   4.393         & 3.292        & 2.409        & 2.494         & 1.909       & 1.175      & 1.050         \\
+\textit{Expanded Subpop. Size} 		&   2.966.586 & 2.223.110 & 1.626.803 & 1.684.211 & 1.289.167 & 793.486 & 709.069      \\
+
+	\hline \hline
+
+\end{tabular}}
+
+\justify \small \hangindent1cm \textbf{Note:} Survey-adjusted OLS regressions; full sample used in all regressions (384.154 observations representing 177.038.067
+individuals). Dependent variable: each of the 12 types of health problems; independent variables: individual and Employer-
+Contracted plan dummies and a constant term. Robust (linearized) standard errors, which incorporate the survey design, were
+used in the significance tests; * indicates significance at the 5\% level; statistically positive dummy coefficients are shadowed.
+
+\end{table*}
+
+
+\end{document}

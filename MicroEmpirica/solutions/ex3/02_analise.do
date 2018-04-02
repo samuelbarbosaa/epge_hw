@@ -48,10 +48,12 @@ foreach var of varlist arthritis-tuberculosis {
 			estimates store model_`var'_`spg'
 			global splist = "${splist} model_`var'_`spg'"
 	}
-	esttab ${splist} using "${root}\solutions\ex3\sp.csv", plain star append ///
-		noobs nonotes nonumbers not nogaps title(`var') ///
-		mtitles("0-17" "18-29" "30-39" "40-49" "50-59" "60-69" ">= 70") 
+	esttab ${splist} using "${root}\solutions\ex3\sp.tex", plain star append ///
+		label noobs nonotes nonumbers not nogaps title("`: var label `var''") ///
+		mtitles("0-17" "18-29" "30-39" "40-49" "50-59" "60-69" ">= 70") ///
+		fragment b(%8.2f) transform(@*100)
 	global splist = ""
+
 }
 
 * RJ
@@ -62,8 +64,10 @@ foreach var of varlist arthritis-tuberculosis {
 			estimates store model_`var'_`spg'
 			global splist = "${splist} model_`var'_`spg'"
 	}
-	esttab ${splist} using "${root}\solutions\ex3\rj.csv", plain star append ///
-		noobs nonotes nonumbers not nogaps title(`var') ///
-		mtitles("0-17" "18-29" "30-39" "40-49" "50-59" "60-69" ">= 70") 
+	esttab ${splist} using "${root}\solutions\ex3\rj.tex", plain star append ///
+		label noobs nonotes nonumbers not nogaps title("`: var label `var''") ///
+		mtitles("0-17" "18-29" "30-39" "40-49" "50-59" "60-69" ">= 70") ///
+		fragment b(%8.2f) transform(@*100)
 	global splist = ""
+
 }
