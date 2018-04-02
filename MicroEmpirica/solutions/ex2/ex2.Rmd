@@ -1,5 +1,5 @@
 ---
-title: "Micro Empírica - Trabalho 02"
+title: "Micro EmpÃ­rica - Trabalho 02"
 author: "Samuel Barbosa"
 header-includes:
    - \usepackage{booktabs}
@@ -13,21 +13,21 @@ output:
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_knit$set(root.dir = "../../")
-options(scipen = 10) # previne exibição numéros na forma científica
+options(scipen = 10) # previne exibiÃ§Ã£o numÃ©ros na forma cientÃ­fica
 library(tidyverse)
 library(stargazer)
 library(knitr)
 library(kableExtra)
 ```
 
-# Introdução
+# IntroduÃ§Ã£o
 
-Neste exercício vamos estimar a equação de salários (Mincer, 1974) com a
-correção do viés de seleção das informações dos salários através do procedimento
+Neste exercÃ­cio vamos estimar a equaÃ§Ã£o de salÃ¡rios (Mincer, 1974) com a
+correÃ§Ã£o do viÃ©s de seleÃ§Ã£o das informaÃ§Ãµes dos salÃ¡rios atravÃ©s do procedimento
 de Heckman (1979). Vamos utilizar os dados da PNAD 2015, considerando somente a
-subpopulação de indivíduos de 18 a 65 anos de idade.
+subpopulaÃ§Ã£o de indivÃ­duos de 18 a 65 anos de idade.
 
-# Preparação dos dados
+# PreparaÃ§Ã£o dos dados
 
 ```{r, eval=FALSE}
 pnad_df = readRDS("data_raw/pnad/2015 main.rds")
@@ -71,7 +71,7 @@ pnad_df =
 pnad_df = 
   mutate_at(pnad_df, vars(mulher, cor_raca, casado), as.factor)
 
-levels(pnad_df$mulher) = c("Não", "Sim")
+levels(pnad_df$mulher) = c("NÃ£o", "Sim")
 levels(pnad_df$cor_raca)  = c("Indigena", "Branca", "Preta", "Amarela", "Parda", "SemDecl")
 levels(pnad_df$casado) = c("Nao", "Sim")
 
@@ -95,10 +95,10 @@ pnad_design = subset(pnad_design, PIA == 1 & complete.cases(pnad_design$variable
 options(survey.lonely.psu="remove") # remove estratos com PSU unico
 ```
 
-# Estimação da Equação de Mincer (dessconsiderando o problema de seleção)
+# EstimaÃ§Ã£o da EquaÃ§Ã£o de Mincer (dessconsiderando o problema de seleÃ§Ã£o)
 
-Vamos, inicialmente, estimar equaçao de Mincer sem considerar o problema de 
-seleção e analisar os resultados:
+Vamos, inicialmente, estimar equaÃ§ao de Mincer sem considerar o problema de 
+seleÃ§Ã£o e analisar os resultados:
 
 
 $$ log(y_i) = \beta_0 + \beta_1 S_i + \beta_2 E_i + \beta_3 E_i^2 + u_i$$
@@ -113,21 +113,21 @@ stargazer(
   fit,
   type = "latex", 
   header = FALSE, 
-  title = "Equação de Mincer", 
+  title = "EquaÃ§Ã£o de Mincer", 
   style = "aer"
   )
 ```
 
 
-Obtemos $\beta_2 \approx -0.43$. Conforme a especificação acima, este valor
-indicaria uma renda média menor entre as mulheres, de aproximadamente 43,7%.
+Obtemos $\beta_2 \approx -0.43$. Conforme a especificaÃ§Ã£o acima, este valor
+indicaria uma renda mÃ©dia menor entre as mulheres, de aproximadamente 43,7%.
 
-# 1º Estágio (Probit)
+# 1Âº EstÃ¡gio (Probit)
 
-Para lidar com o problema de seleção, vamos criar, primeiramente, um modelo de previsão 
-de ocupação no mercado de trabalho, onde a variável dependente assume o 
-valor um se a pessoa tem trabalho remunerado (com salário positivo) e zero
-caso contrário. Estimamos o seguinte modelo usando Probit:
+Para lidar com o problema de seleÃ§Ã£o, vamos criar, primeiramente, um modelo de previsÃ£o 
+de ocupaÃ§Ã£o no mercado de trabalho, onde a variÃ¡vel dependente assume o 
+valor um se a pessoa tem trabalho remunerado (com salÃ¡rio positivo) e zero
+caso contrÃ¡rio. Estimamos o seguinte modelo usando Probit:
 
 $$ \mathbb{I}(w > 0) = 
       \gamma_0 + \gamma_1 \text{anos_estudo} + 
@@ -150,15 +150,15 @@ stargazer(
   s1,
   type = "latex", 
   header = FALSE, 
-  title = "Participação no mercado de trabalho - Modelo Probit", 
+  title = "ParticipaÃ§Ã£o no mercado de trabalho - Modelo Probit", 
   style = "aer"
   )
 ```
 
-Observamos que, conforme o modelo especificado,  a propensão a participar no 
-mercado de trabalho é menor entre as mulheres ($\gamma_3 = -0.1358$), 
-especialmente se casadas ($\gamma_4 = -0.1755$) e com maior número de filhos 
-($\gamma_6 = -0.2473$). A participação no mercado de trabalho é crescente
+Observamos que, conforme o modelo especificado,  a propensÃ£o a participar no 
+mercado de trabalho Ã© menor entre as mulheres ($\gamma_3 = -0.1358$), 
+especialmente se casadas ($\gamma_4 = -0.1755$) e com maior nÃºmero de filhos 
+($\gamma_6 = -0.2473$). A participaÃ§Ã£o no mercado de trabalho Ã© crescente
 na escolaridade (anos de estudo).
 
 # Heckit
