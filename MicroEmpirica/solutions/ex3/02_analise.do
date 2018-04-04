@@ -18,7 +18,7 @@ quietly {
 	drop if A==1
 }
 
-
+*-------------------------------------------------------------------------------
 * TABELA 1
 
 tabulate age_cat if sp==1 										  // subpopulation observations
@@ -31,6 +31,7 @@ svy, subpop(rj): tabulate employer age_cat, column 				  // Fractions
 
 svy: tabulate employer  // number of observations, population represented
 
+*-------------------------------------------------------------------------------
 * TABELAS 2 E 3
 quietly tabulate age_cat, generate(age)
 
@@ -39,6 +40,7 @@ foreach uf in sp rj {
 		gen `uf'_`var' = `uf' * `var'
 	}
 }
+
 
 * SP
 global splist = ""

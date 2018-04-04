@@ -13,7 +13,8 @@ clear all
 use "${data}\pnad2003.dta", clear
 
 keep uf v1309 v1310 v1311 v1312 v1313 v1314 v1315 v1316 v1317 ///
-	 v1321 v1332 v1324 v1318 v1319 v1320 v8005 v4727 v4618 v4617 v4729
+	 v1321 v1332 v1324 v1318 v1319 v1320 v8005 v4727 v4618 v4617 v4729 ///
+	 v4721
 
 rename v1310 arthritis
 rename v1313 bronchitis
@@ -34,6 +35,7 @@ rename v4727 area_cens
 rename v4618 psu
 rename v4617 strata
 rename v4729 weights
+rename v4721 renda_dom
 
 label var arthritis			"Arthritis or Rheumatism"
 label var bronchitis		"Bronchitis or Asthma"
@@ -60,6 +62,8 @@ recode hypertension		(2=1) (4=0) (9=.)
 recode lumbar_pain			  (3=0) (9=.)
 recode tendinitis			  (3=0) (9=.) 
 recode tuberculosis		(2=1) (4=0) (9=.) 
+
+recode renda_dom (999999999999=.)
 
 order arthritis bronchitis cancer chronic_renal cirrhosis depression ///
 	  diabetes heart_disease hypertension lumbar_pain tendinitis tuberculosis 
